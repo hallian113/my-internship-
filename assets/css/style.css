@@ -550,18 +550,30 @@ color: rgba(35, 80, 150, 0.8);
 }
 
 @media (max-width: 768px) {
+  #hero {
+    height: auto; /* let content determine height */
+    padding: 60px 20px; /* add top-bottom padding */
+  }
+
   #hero h1 {
-    font-size: 2rem;
+    font-size: 1.8rem !important;
+    line-height: 1.3;
   }
 
   #hero h2 {
-    font-size: 1.1rem;
+    font-size: 1rem !important;
+  }
+
+  #hero p {
+    font-size: 0.9rem !important;
+    max-width: 90%;
+    margin: 15px auto 25px auto;
   }
 
   #hero .btn-get-started,
   #hero .btn-get-started-2 {
-    font-size: 14px;
-    padding: 12px 28px;
+    font-size: 13px !important;
+    padding: 10px 22px !important;
   }
 }
 
@@ -724,13 +736,13 @@ section {
 .why-us .content-item span {
   display: block;
   font-size: 24px;
-  font-weight: 350;
+  font-weight: 300;
   color: rgba(35, 80, 150, 0.65);
 }
 
 .why-us .content-item h4 {
   font-size: 26px;
-  font-weight: 390;
+  font-weight: 400;
   padding: 0;
   margin: 20px 0;
 }
@@ -738,7 +750,7 @@ section {
 .why-us .content-item p {
   color: black;
   font-size: 15px;
-  font-weight: 310;
+  font-weight: 300;
   margin: 0;
   padding: 0;
 }
@@ -1742,4 +1754,154 @@ textarea::placeholder {
 
 #header .logo a:hover {
   color: #d4af37 !important;       /* turns gold on hover */
+}
+/*==================== MOBILE RESPONSIVE UPDATES ====================*/
+
+/*-------------------- Hero Section --------------------*/
+@media (max-width: 768px) {
+  #hero {
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  #hero h1 { font-size: 1.8rem !important; line-height: 1.3; }
+  #hero h2 { font-size: 1rem !important; }
+  #hero p { font-size: 0.9rem !important; max-width: 90%; margin: 15px auto 25px auto; }
+  #hero .btn-get-started, #hero .btn-get-started-2 {
+    font-size: 13px !important;
+    padding: 10px 22px !important;
+  }
+}
+/*-------------------- Services Section --------------------*/
+@media (max-width: 768px) {
+  .services .icon-box { padding: 40px 15px 50px 15px !important; }
+  .services .icon-box .icon { width: 70px !important; height: 70px !important; }
+  .services .icon-box h4 { font-size: 18px !important; }
+  .services .icon-box p { font-size: 13px !important; line-height: 1.5; }
+}
+
+/*-------------------- Featured Services --------------------*/
+@media (max-width: 768px) {
+  .featured-services .icon-box {
+    padding: 20px 15px !important;
+    margin-bottom: 20px;
+  }
+
+  .featured-services .icon i {
+    font-size: 32px !important;
+  }
+
+  .featured-services .title {
+    font-size: 16px !important;
+  }
+
+  .featured-services .description {
+    font-size: 13px !important;
+  }
+}
+
+/*-------------------- Portfolio Section --------------------*/
+@media (max-width: 768px) {
+  .portfolio .portfolio-wrap {
+    margin-bottom: 15px !important;
+  }
+
+  .portfolio .portfolio-info h4 {
+    font-size: 16px !important;
+  }
+
+  .portfolio .portfolio-info p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/*-------------------- Team Section --------------------*/
+@media (max-width: 768px) {
+  .team .member {
+    padding: 20px 10px !important;
+  }
+
+  .team .member img {
+    max-width: 80% !important;
+  }
+
+  .team .member h4 {
+    font-size: 16px !important;
+  }
+
+  .team .member span,
+  .team .member p {
+    font-size: 13px !important;
+  }
+}
+
+/*-------------------- Contact Section --------------------*/
+@media (max-width: 768px) {
+  .contact .info,
+  .contact #contact-form {
+    padding: 20px 15px !important;
+  }
+
+  .contact .info h4 {
+    font-size: 16px !important;
+  }
+
+  .contact .info p {
+    font-size: 13px !important;
+  }
+
+  .contact #contact-form input,
+  .contact #contact-form textarea {
+    font-size: 13px !important;
+  }
+
+  .contact #contact-form button[type=submit] {
+    padding: 8px 20px !important;
+    font-size: 13px !important;
+  }
+}
+
+/*-------------------- Breadcrumbs --------------------*/
+@media (max-width: 768px) {
+  .breadcrumbs {
+    padding: 10px 15px !important;
+  }
+
+  .breadcrumbs h2 {
+    font-size: 20px !important;
+  }
+
+  .breadcrumbs ol li {
+    font-size: 12px !important;
+    padding-left: 5px !important;
+  }
+}
+
+/*-------------------- Misc Small Fixes --------------------*/
+@media (max-width: 768px) {
+  section {
+    padding: 35px 15px !important;
+  }
+
+  .why-us .content-item {
+    padding: 25px 10px !important;
+  }
+
+  .cta {
+    padding: 50px 15px !important;
+  }
+
+  .cta h3 {
+    font-size: 20px !important;
+  }
+
+  .cta p {
+    font-size: 14px !important;
+  }
+
+  .cta .cta-btn {
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+  }
 }
