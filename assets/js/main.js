@@ -1,6 +1,7 @@
 /**
 * Template Name: Green
 * Updated: Jan 29 2024 with Bootstrap v5.3.2
+* Updated: Jan 26 2026 with mobile menu and header improvements
 * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
@@ -100,6 +101,19 @@
   }
 
   /**
+   * Header shrink on scroll
+   */
+  const headerShrink = () => {
+    if (window.scrollY > 50) {
+      selectHeader.classList.add('header-scrolled')
+    } else {
+      selectHeader.classList.remove('header-scrolled')
+    }
+  }
+  window.addEventListener('load', headerShrink)
+  onscroll(document, headerShrink)
+
+  /**
    * Back to top button
    */
   let backtotop = select('.back-to-top')
@@ -135,7 +149,7 @@
   }, true)
 
   /**
-   * Scrool with ofset on links with a class name .scrollto
+   * Scroll with offset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {
     if (select(this.hash)) {
@@ -145,15 +159,15 @@
       if (navbar.classList.contains('navbar-mobile')) {
         navbar.classList.remove('navbar-mobile')
         let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
+        navbarToggle.classList.add('bi-list')
+        navbarToggle.classList.remove('bi-x')
       }
       scrollto(this.hash)
     }
   }, true)
 
   /**
-   * Scroll with ofset on page load with hash links in the url
+   * Scroll with offset on page load with hash links in the url
    */
   window.addEventListener('load', () => {
     if (window.location.hash) {
@@ -170,9 +184,9 @@
   let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
   heroCarouselItems.forEach((item, index) => {
-    (index === 0) ?
-    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
-      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+    heroCarouselIndicators.innerHTML += (index === 0) ?
+      "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>" :
+      "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
   });
 
   /**
@@ -212,33 +226,35 @@
   });
 
   /**
-   * Porfolio isotope and filter
+   * Portfolio isotope and filter
    */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+/**
+ * Portfolio isotope and filter
+ */
+window.addEventListener('load', () => {
+  let portfolioContainer = select('.portfolio-container');
+  if (portfolioContainer) {
+    let portfolioIsotope = new Isotope(portfolioContainer, {
+      itemSelector: '.portfolio-item'
+    });
+
+    let portfolioFilters = select('#portfolio-flters li', true);
+
+    on('click', '#portfolio-flters li', function(e) {
+      e.preventDefault();
+      portfolioFilters.forEach(function(el) {
+        el.classList.remove('filter-active');
+      });
+      this.classList.add('filter-active');
+
+      portfolioIsotope.arrange({
+        filter: this.getAttribute('data-filter')
       });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-
-      }, true);
-    }
-
-  });
-
+    }, true); // <-- closes the 'on' function
+  } // <-- closes 'if (portfolioContainer)'
+}); // <-- closes window.addEventListener
+ //
   /**
    * Initiate portfolio lightbox 
    */
@@ -263,4 +279,4 @@
     }
   });
 
-})()
+})();
