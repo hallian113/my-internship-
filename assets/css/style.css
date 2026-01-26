@@ -1757,15 +1757,24 @@ textarea::placeholder {
 }
 @media (max-width: 768px) {
   #header {
-    height: 55px !important; /* smaller header for mobile */
+    height: 50px !important;          /* even more compact */
+    display: flex;
+    align-items: center;              /* vertical centering */
   }
 
   #header .logo {
-    font-size: 1.5em !important; /* smaller logo text */
+    font-size: 1.4em !important;
+    line-height: 1;
+    margin: 0 auto;                   /* center logo horizontally */
+  }
+
+  .navbar {
+    padding: 0 !important;
   }
 
   .navbar a,
   .navbar a:focus {
-    padding: 6px 0 6px 15px !important; /* reduce padding for mobile */
+    padding: 6px 12px !important;     /* balanced tap area */
+    font-size: 14px;                  /* slightly smaller text */
   }
 }
