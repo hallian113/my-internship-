@@ -2157,32 +2157,3 @@ background: #ffffff !important;
     margin-bottom: 30px;
   }
 }
-/* ==========================================================
-   FINAL BORDER FIX: ALL CARDS (INCLUDING COMING SOON)
-   ========================================================== */
-
-/* 1. Targets everything: standard boxes, image wraps, and Coming Soon filters */
-.services .icon-box, 
-.service-img-wrap,
-.soon-filter {
-    border-color: #ffffff !important;
-    transition: all 0.3s ease-in-out !important;
-}
-
-/* 2. HOVER: Turn Gold and remove grayscale for Coming Soon */
-.services .icon-box:hover,
-.services .icon-box:hover .service-img-wrap,
-.services .icon-box:hover .soon-filter {
-    border-color: #feca09 !important;
-}
-
-/* 3. Special fix for Coming Soon: Make image clear on hover */
-.services .icon-box:hover .soon-filter img {
-    filter: grayscale(0%) !important;
-    opacity: 1 !important;
-}
-
-/* 4. Inner line cleanup */
-.service-img-wrap {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-}

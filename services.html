@@ -16,26 +16,35 @@
 
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <style>
-    /* Styling for the circular service images */
-    .service-img-wrap {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      border: 4px solid #d4af37; /* Gold accent border */
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-    }
-    .service-pic {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
+ <style>/* ==========================================================
+   FINAL BORDER FIX: ALL CARDS (INCLUDING COMING SOON)
+   ========================================================== */
+
+/* 1. Targets everything: standard boxes, image wraps, and Coming Soon filters */
+.services .icon-box, 
+.service-img-wrap,
+.soon-filter {
+    border-color: #ffffff !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 2. HOVER: Turn Gold and remove grayscale for Coming Soon */
+.services .icon-box:hover,
+.services .icon-box:hover .service-img-wrap,
+.services .icon-box:hover .soon-filter {
+    border-color: #feca09 !important;
+}
+
+/* 3. Special fix for Coming Soon: Make image clear on hover */
+.services .icon-box:hover .soon-filter img {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+
+/* 4. Inner line cleanup */
+.service-img-wrap {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}</style>
 </head>
 
 <body>
@@ -167,8 +176,7 @@
         <div class="col-lg-4 col-md-6 footer-contact">
           <h3>Get In Touch</h3>
           <p>
-            Serving the Greater Area<br>
-            Ontario, Canada<br><br>
+            Serving GTA and southwestern Ontario<br><br>
             <strong>Phone:</strong> +1 (437) 335-9080<br>
             <strong>Email:</strong> support@cargent.ca<br>
           </p>
