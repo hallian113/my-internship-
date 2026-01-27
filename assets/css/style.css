@@ -11,7 +11,8 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  background-color: #000000 !important;
+  color: #ffffff;
 }
 
 a {
@@ -590,6 +591,7 @@ color: rgba(35, 80, 150, 0.8);
 --------------------------------------------------------------*/
 section {
   padding: 45px 0;
+  background-color: #000000 !important;
 }
 
 .section-bg {
@@ -801,8 +803,10 @@ section {
   text-align: center;
   padding: 70px 20px 80px 20px;
   transition: all ease-in-out 0.3s;
-  background: #fff;
   box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.1);
+  background: #1a1a1a !important; /* Dark grey cards */
+  border: 1px solid #333 !important; /* Subtle border */
+  transition: 0.3s;
 }
 
 .services .icon-box .icon {
@@ -854,7 +858,7 @@ section {
 .services .icon-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  border-color: #fff;
+  border-color: #feca09 !important;
   transition: 0.3s;
 }
 
@@ -1386,10 +1390,11 @@ section {
 
 /*--------------------------------------------------------------
 # Breadcrumbs
---------------------------------------------------------------*/
+/* ======= Breadcrumbs Global Styling ======= */
 .breadcrumbs {
   padding: 15px 0;
-  background: #fbfbfb;
+  background-color: #111111 !important; /* Slightly lighter black for depth */
+  color: #ffffff !important; /* Forces text to white */
   min-height: 40px;
 }
 
@@ -1399,9 +1404,18 @@ section {
   }
 }
 
+/* Page Title (The large text on the left) */
 .breadcrumbs h2 {
   font-size: 28px;
   font-weight: 300;
+  color: #ffffff !important; /* Starts white */
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* Golden hover for Page Title */
+.breadcrumbs h2:hover {
+  color: #feca09 !important;
 }
 
 .breadcrumbs ol {
@@ -1413,14 +1427,30 @@ section {
   font-size: 14px;
 }
 
+/* Base style for BOTH links and plain text in the list */
+.breadcrumbs ol li,
+.breadcrumbs ol li a {
+  color: #ffffff !important; /* All start white */
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+/* Golden hover for the links (Home) and the current page text (About/Contact) */
+.breadcrumbs ol li:hover,
+.breadcrumbs ol li a:hover {
+  color: #feca09 !important;
+  cursor: pointer;
+}
+
 .breadcrumbs ol li+li {
   padding-left: 10px;
 }
 
+/* The "/" separator stays white */
 .breadcrumbs ol li+li::before {
   display: inline-block;
   padding-right: 10px;
-  color: #3c3c3c;
+  color: #ffffff !important;
   content: "/";
 }
 
@@ -1539,7 +1569,9 @@ a:hover {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2); /* slightly stronger shadow */
 }
 
-.navbar a,
+.navbar a {
+  color: #ffffff !important;
+}
 .navbar a:focus {
   color: #ffffff !important;
 }
@@ -1547,7 +1579,7 @@ a:hover {
 .navbar a:hover,
 .navbar .active,
 .navbar li:hover > a {
-  color: #d4af37 !important;
+  color: #feca09 !important; 
 }
 
 .navbar .getstarted {
@@ -1784,4 +1816,27 @@ textarea::placeholder {
     padding: 6px 12px !important;     /* balanced tap area */
     font-size: 14px;                  /* slightly smaller text */
   }
+}
+/* Sets the initial look of the logo text */
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 a, 
+.logo-text {
+  font-family: "Raleway", sans-serif !important; /* Forces the modern font */
+  font-weight: 700 !important;                  /* Makes it bold like your screenshot */
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: none;                         /* Keeps it as 'CarGent Mobile' */
+  color: #ffffff !important;                   /* Default White */
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.logo h1 a:hover,
+.logo-link:hover .logo-text {
+  color: #feca09 !important;                   /* Turns Golden */
 }
