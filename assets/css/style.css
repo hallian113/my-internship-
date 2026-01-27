@@ -552,19 +552,30 @@ color: rgba(35, 80, 150, 0.8);
 
 @media (max-width: 768px) {
   #hero {
-    height: auto; /* let content determine height */
-    padding: 60px 20px; /* add top-bottom padding */
+ height: auto !important;
+    min-height: 100vh; /* Ensures it still feels like a full-screen hero */
+    padding: 100px 0 60px 0; /* Adjusted padding for mobile */
+  }
+#hero .carousel-item {
+    height: auto !important;
+    min-height: 100vh;
   }
 
+  #hero .carousel-container {
+    position: relative !important; /* Changes from absolute to let content flow */
+    height: auto !important;
+    padding: 20px;
+  }
   #hero h1 {
-   font-size: 28px !important;
-    line-height: 1.2;
+ font-size: 24px !important;
+    margin-bottom: 15px;
   }
 
   #hero h2 {
-    font-size: 16px !important;
-    line-height: 1.4;
-    margin-bottom: 20px;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 25px;
+    padding: 0 10px;
   }
 
   #hero p {
@@ -578,8 +589,11 @@ color: rgba(35, 80, 150, 0.8);
 
   #hero .btn-get-started,
   #hero .btn-get-started-2 {
-    font-size: 14px;
-    padding: 8px 24px;
+    font-size: 14px !important;
+    padding: 10px 28px !important;
+    margin-top: 15px !important;
+    display: inline-block !important; /* Ensures the button doesn't stretch full-width */
+    border-radius: 50px !important;
   }
 }
 
