@@ -1,11 +1,3 @@
-/**
-* Template Name: Green
-* Updated: Jan 29 2024 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -823,72 +815,118 @@ section {
 }
 
 /*--------------------------------------------------------------
-/*--------------------------------------------------------------
-# Services
+# Services Section - Consolidated & Updated
 --------------------------------------------------------------*/
+
+/* 1. Main Card Container */
 .services .icon-box {
+padding: 0 0 30px 0 !important;
+  position: relative;
+  overflow: hidden;
+  background: #111; 
+  border-color: #ffffff !important;
+  /* Set this to white as your default */
+  border: 2px solid #ffffff !important; 
+  
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px !important;
+  transition: all 0.3s ease-in-out;
   text-align: center;
-  padding: 70px 20px 80px 20px;
-  transition: all ease-in-out 0.3s;
-  box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.1);
-  background: #1a1a1a !important; /* Dark grey cards */
-  border: 1px solid #333 !important; /* Subtle border */
-  transition: 0.3s;
 }
 
-.services .icon-box .icon {
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
+/* 2. Top Image/Icon Wrapper (Inner container) */
+.service-img-wrap, 
+.service-icon-wrap {
+  width: 100% !important;
+  height: 220px !important;
+  margin: 0 0 20px 0 !important;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: ease-in-out 0.3s;
-  position: relative;
+  
+  /* Match the dark background to avoid white flickering */
+  background: #111; 
+  
+  /* Removed golden inner borders - set to transparent or match outer */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+  border-radius: 13px 13px 0 0 !important;
+  transition: all 0.3s ease;
 }
 
-.services .icon-box .icon i {
-  font-size: 36px;
-  transition: 0.5s;
-  position: relative;
+/* 3. Image & Icon Specifics */
+.service-pic {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
 }
 
-.services .icon-box .icon svg {
-  position: absolute;
-  top: 0;
-  left: 0;
+.service-icon-wrap i {
+  font-size: 80px !important;
+  color: #feca09; /* CarGent Gold */
+  transition: transform 0.3s ease;
 }
 
-.services .icon-box .icon svg path {
-  transition: 0.5s;
-  fill: #f5f5f5;
-}
-
+/* 4. Text Content Styling */
 .services .icon-box h4 {
   font-weight: 600;
   margin: 10px 0 15px 0;
   font-size: 22px;
-}
-
-.services .icon-box h4 a {
-  color: #222222;
-  transition: ease-in-out 0.3s;
+  color: #ffffff; /* White text for dark theme */
 }
 
 .services .icon-box p {
+  color: #cccccc;
   line-height: 24px;
   font-size: 14px;
-  margin-bottom: 0;
+  margin-bottom: 20px;
+  padding: 0 20px;
 }
 
-/* Updated hover effect with lift + shadow */
+.services .icon-box h3 {
+  color: #feca09; /* Gold for "Coming Soon" or Prices */
+  font-weight: 700;
+}
+
+/* 5. HOVER EFFECTS (White to Gold Transition) */
 .services .icon-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  border-color: #feca09 !important;
-  transition: 0.3s;
+transform: translateY(-8px);
+box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  
+  /* This changes the white border to gold when you mouse over */
+border-color: #feca09 !important;
 }
 
+.services .icon-box:hover .service-icon-wrap i {
+  transform: scale(1.1);
+}
+
+/* 6. Button Styling (Black with Gold Outline) */
+.services .icon-box .btn-book, 
+.services .icon-box .btn-success,
+.services .icon-box .btn-outline-secondary {
+  background-color: #000000 !important; /* Pure Black */
+  border: 2px solid #feca09 !important; /* Gold Border */
+  color: #ffffff !important;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Button Hover State */
+.services .icon-box .btn-book:hover,
+.services .icon-box .btn-success:hover,
+.services .icon-box .btn-outline-secondary:hover {
+  background-color: #feca09 !important;
+  color: #000000 !important;
+  transform: scale(1.05);
+}
 /* Icon color transitions per type */
 .services .iconbox-blue i {
   color: #47aeff;
@@ -1499,21 +1537,43 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #090909;
+ background: #000;
+  padding: 0 0 30px 0;
   color: #fff;
-  font-size: 14px;
-  text-align: center;
-  padding: 30px 0;
+  border-top: 12px solid #d4af37; /* Thick Gold Bar */
+  position: relative;
+}
+.footer-logo-container {
+  margin-top: -45px; /* Pulls logo up */
+  position: relative;
+  z-index: 10;
+}
+.footer-logo-main {
+  background: #000;
+  padding: 10px 20px;
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  max-width: 180px;
 }
 
 #footer h3 {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 700;
-  color: #fff;
-  position: relative;
+  color: #d4af37;
+  margin-bottom: 20px;
   font-family: "Poppins", sans-serif;
   padding: 0;
   margin: 0 0 15px 0;
+}
+
+#footer .footer-links ul li {
+  padding: 10px 0;
+}
+
+#footer .footer-links ul a {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 #footer p {
@@ -1529,25 +1589,23 @@ section {
 
 /* Footer Social Links: White BG + Logo Color + Gold Hover */
 #footer .social-links a {
-  background: #ffffff !important;    /* white background */
-  color: inherit !important;         /* will use individual logo color */
-  border-radius: 50%;                /* circular */
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
+ background: #d4af37 !important; /* Gold Circle */
+  width: 38px;
+  height: 38px;
+  border-radius: 50% !important;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  font-size: 18px;
-  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none !important;
 }
-
 /* Individual social logo colors (Boxicons classes) */
-#footer .social-links a.twitter { color: #1DA1F2 !important; }    /* Twitter blue */
+#footer .social-links a.twitter { color: #E1306C !important; }    /* Twitter blue */
 #footer .social-links a.facebook { color: #1877F2 !important; }   /* Facebook blue */
 #footer .social-links a.instagram { color: #E1306C !important; }  /* Instagram pink */
 #footer .social-links a.google-plus { color: #00AFF0 !important; }/* Skype/Google blue */
 #footer .social-links a.linkedin { color: #0A66C2 !important; }   /* LinkedIn blue */
+#footer .social-links a.skype { color: #0A66C2 !important; }   /* LinkedIn blue */
 
 /* Hover effect for all social links */
 #footer .social-links a:hover {
@@ -1667,8 +1725,8 @@ a:hover {
 .team .member,
 .contact .info,
 .contact #contact-form {
-  background: #111111 !important;
-  color: #cccccc !important;
+background: #111111 !important;
+color: #cccccc !important;
 }
 
 /* Icons */
@@ -1871,4 +1929,260 @@ textarea::placeholder {
 .swiper-pagination, 
 .owl-dots {
   display: none !important;
+}
+/* How It Works Section */
+.how-it-works {
+  padding: 60px 0;
+  background: #000; /* Matching your black theme */
+  color: #fff;
+}
+.how-it-works .step-number {
+background: #333333; /* CarGent Green */
+  color: #feca09; /* CarGent Gold */
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+.how-it-works-img-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+.icon-box:hover, .how-it-works-img-wrap:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+.how-it-works .step-text h4 {
+  font-size: 18px;
+  color: #d4af37;
+  margin-bottom: 5px;
+}
+.how-it-works .step-text p {
+  color: #bbb;
+  font-size: 14px;
+}/* Rectangular Action Image Styles */
+.service-img-wrap {
+  width: 100%; /* Spans the full width of the service box like the reference */
+  height: 220px; /* Provides that wide, cinematic look seen in the GoOil example */
+  margin: 0 0 20px 0;
+  border-radius: 15px 15px 0 0; /* Smooth, rounded corners instead of a circle */
+  border: 1px solid #ffffff; /* Subtle border to define the image edges */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); /* Adds a soft lift effect */
+}
+
+.service-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Essential to ensure the mechanic/car fills the frame without stretching */
+  transition: transform 0.5s ease;
+}
+
+/* Hover Effect: Image slightly zooms for a premium feel */
+.icon-box:hover .service-pic {
+  transform: scale(1.05);
+}
+
+.icon-box:hover .service-img-wrap {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Deepens shadow on hover */
+}
+
+/* Grayscale for "Coming Soon" images - stays the same */
+.soon-filter img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}/* Mobile Optimization for Service Cards */
+@media (max-width: 768px) {
+  .service-img-wrap, .service-icon-wrap {
+    height: 180px !important; /* Slightly shorter height for mobile screens */
+  }
+
+  .services .icon-box h4 {
+    font-size: 18px; /* Smaller font so titles stay on one line */
+  }
+
+  .how-it-works .step-item {
+    flex-direction: column; /* Stack the number on top of the text on mobile */
+    text-align: center;
+  }
+
+  .how-it-works .step-number {
+    margin: 0 auto 15px; /* Center the step number */
+  }
+}
+/* ==========================================================
+   FINAL UNIFIED THEME: NAVBAR & FOOTER FIX
+   ========================================================== */
+
+/* 1. Navbar Consistency (White text, Gold hover everywhere) */
+#header {
+  background: #000 !important;
+}
+
+#navbar a, #navbar a:focus {
+  color: #ffffff !important;
+}
+
+#navbar a:hover, #navbar .active, #navbar li:hover > a {
+  color: #feca09 !important;
+}
+
+/* 2. Unified Footer Background */
+#footer {
+  background: #000 !important;
+  padding: 0 !important;
+  color: #fff !important;
+  border-top: none !important; /* Removes the old thick bar */
+}
+
+/* 3. The Gold Line & Logo Positioning */
+.footer-logo-container {
+width: 100%;
+border-top: 5px solid #d4af37 !important; 
+position: relative;
+/* Adjust this to move the logo and line away from the text above */
+margin-top: 110px !important; 
+margin-bottom: 70px !important; 
+}
+
+.footer-logo-box {
+position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000 !important;
+  padding: 12px 20px !important;
+  border: 2px solid #d4af37 !important; 
+  border-radius: 8px;
+  width: 170px !important; 
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px !important; 
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-logo-main {
+
+  border: none !important; 
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  
+  width: 100% !important;
+  height: auto !important;
+  max-width: 140px !important;
+}
+
+/* 4. Footer Content Alignment */
+#footer h3 {
+  color: #feca09 !important;
+  font-size: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+#footer .footer-links {
+  text-align: center !important;
+}
+
+#footer .footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
+}
+
+#footer .footer-list a {
+  color: #d4af37 !important;
+  text-transform: none !important;
+}
+
+/* 5. Social Links (Gold Circles, Black Icons) */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-links a {
+background: #d4af37 !important; /* Default Gold Circle */
+  color: #000 !important;        /* Default Black Icon */
+  width: 38px;
+  height: 38px;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none !important;
+}
+
+.social-links a:hover {
+background: #ffffff !important; 
+  color: #000000 !important;
+  transform: translateY(-3px);
+}
+.social-links a:hover i {
+  color: #000 !important;
+}
+
+/* 6. MOBILE FIXES */
+@media (max-width: 768px) {
+  .footer-logo-box {
+    width: 130px !important;
+  }
+  
+  #footer .footer-contact, 
+  #footer .footer-info {
+    text-align: center !important;
+    margin-bottom: 30px;
+  }
+}
+/* ==========================================================
+   FINAL BORDER FIX: ALL CARDS (INCLUDING COMING SOON)
+   ========================================================== */
+
+/* 1. Targets everything: standard boxes, image wraps, and Coming Soon filters */
+.services .icon-box, 
+.service-img-wrap,
+.soon-filter {
+    border-color: #ffffff !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 2. HOVER: Turn Gold and remove grayscale for Coming Soon */
+.services .icon-box:hover,
+.services .icon-box:hover .service-img-wrap,
+.services .icon-box:hover .soon-filter {
+    border-color: #feca09 !important;
+}
+
+/* 3. Special fix for Coming Soon: Make image clear on hover */
+.services .icon-box:hover .soon-filter img {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+
+/* 4. Inner line cleanup */
+.service-img-wrap {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
