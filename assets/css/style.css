@@ -553,52 +553,47 @@ color: rgba(35, 80, 150, 0.8);
 @media (max-width: 768px) {
   #hero {
     height: auto !important;
-    min-height: 0 !important; /* Removes the forced full-screen gap */
-    margin-top: 70px; /* Adjusts for the fixed header */
-    padding: 60px 0 40px 0 !important; /* Tightens vertical space */
-    display: block !important;
+    min-height: 500px !important; 
+    margin-top: 70px; 
+    padding: 60px 0 !important; 
+    display: block !important; /* Changed from flex to block for better compatibility */
+    overflow: visible !important;
   }
 
   #hero .carousel-item {
     height: auto !important;
-    min-height: 0 !important;
+    min-height: 500px !important;
     position: relative !important;
-    background-size: cover !important; /
+    background-size: cover !important;
     background-position: center center !important;
+    display: flex !important; /* Centering happens here instead */
+    align-items: center !important;
   }
 
   #hero .carousel-container {
     position: relative !important;
     height: auto !important;
-    padding: 0 20px !important;
+    padding: 20px !important;
+    z-index: 5;
+    width: 100%;
   }
 
   #hero h1 {
-    font-size: 24px !important; 
+    font-size: 22px !important; /* Slightly smaller to ensure it fits on one line */
     margin-bottom: 10px !important;
-    padding-top: 0 !important;
-  }
-
-  #hero h2 {
-    font-size: 16px !important; 
-    line-height: 1.3 !important;
-    margin-bottom: 10px !important;
-    padding: 0 10px;
   }
 
   #hero p {
-    font-size: 0.95rem !important;
-    max-width: 100%;
-    margin: 10px auto 20px auto !important; /* Keeps text and button closer */
+    font-size: 0.9rem !important;
     line-height: 1.5 !important;
+    margin: 10px auto 25px auto !important;
+    max-width: 100%;
   }
 
   #hero .btn-get-started,
   #hero .btn-get-started-2 {
     font-size: 14px !important;
     padding: 10px 25px !important;
-    margin-top: 5px !important;
-    margin-bottom: 20px !important;
     display: inline-block !important;
     border-radius: 50px !important;
   }
@@ -606,7 +601,7 @@ color: rgba(35, 80, 150, 0.8);
   .carousel-control-prev, 
   .carousel-control-next,
   .carousel-indicators {
-    display: none !important; /* Hides clutter on small screens */
+    display: none !important;
   }
 }
 
