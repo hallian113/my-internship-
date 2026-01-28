@@ -15,18 +15,77 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
+  
+  <style>
+    /* --- Premium Gold & Black Centered Layout --- */
+    .form-wrapper {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+    
+    .progress { height: 12px; margin-bottom: 30px; background-color: #e9ecef; border-radius: 10px; }
+    .progress-bar { 
+      background: linear-gradient(45deg, #D4AF37, #f2d06b) !important; 
+      transition: width 0.4s ease; 
+    }
+
+    .step-title { 
+      color: #000; 
+      font-weight: 800; 
+      font-family: 'Raleway', sans-serif;
+      margin-bottom: 25px; 
+      font-size: 1.5rem;
+    }
+
+    /* Large Premium Gold Buttons */
+    .next-btn, .php-email-form button[type="submit"] {
+      background: linear-gradient(to bottom, #f2d06b 0%, #D4AF37 100%) !important;
+      color: #000 !important;
+      font-weight: 700 !important;
+      font-size: 1.1rem !important;
+      padding: 15px 30px !important;
+      border: 1px solid #B8860B !important;
+      border-radius: 8px !important;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    .next-btn:hover, .php-email-form button[type="submit"]:hover {
+      background: #000 !important;
+      color: #D4AF37 !important;
+      border-color: #D4AF37 !important;
+    }
+
+    .prev-btn {
+      background: #222 !important;
+      color: #fff !important;
+      padding: 15px 30px !important;
+      border-radius: 8px !important;
+      border: none !important;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Dropdown disabled style */
+    select option:disabled { color: #888; font-style: italic; }
+  </style>
 </head>
 
 <body>
 
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
-    <h1 class="logo me-auto">
-  <a href="index.html" class="logo-link">
-    <img src="assets/img/Cargent Banner.png" alt="" class="img-fluid">
-    <span class="logo-text">CarGent Mobile</span>
-  </a>
-</h1>
+      <h1 class="logo me-auto">
+        <a href="index.html" class="logo-link">
+          <img src="assets/img/Cargent Banner.png" alt="" class="img-fluid">
+          <span class="logo-text" style="color: #D4AF37; font-weight: 800;">CarGent Mobile</span>
+        </a>
+      </h1>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link" href="index.html">Home</a></li>
@@ -43,7 +102,7 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Contact</h2>
+          <h2>Request Maintenance</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
             <li>Contact</li>
@@ -52,141 +111,166 @@
       </div>
     </section>
 
-    <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-title">
-          <h2>Contact Us</h2>
-          <p>Our service representatives will answer any inquries in a timely manner.</p>
-          <br>
+          <h2>Book Your Service</h2>
+          <p>Get professional mobile auto maintenance in 4 simple steps.</p>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="form-wrapper p-4 p-md-5">
+              
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form" id="stepped-form">
+                
+                <div class="progress">
+                  <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 25%;"></div>
+                </div>
 
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>1254 Plains Rd E #11, Burlington, ON L7S 7W6</p>
-              </div>
+                <div class="form-step active text-center">
+                  <h4 class="step-title">1. Select Your Service</h4>
+                  <div class="form-group mb-4 text-start">
+                    <select name="service" id="service" class="form-control form-control-lg" required>
+                      <option value="">-- Choose a Service --</option>
+                      <option value="Oil Change">Mobile Oil Change</option>
+                      <option value="Tire Swap">Tire Swap & Rotation</option>
+                      <option value="Battery">Battery Boost/Replacement</option>
+                      <option value="Inspection">Braking Services</option>
+                      <option value="Detailing" disabled>Mobile Storage (Coming Soon)</option>
+                      <option value="Brakes" disabled>Portable Restrooms (Coming Soon)</option>
+                    </select>
+                  </div>
+                  <button type="button" class="next-btn btn w-100 mt-3">Next: Vehicle Location</button>
+                </div>
 
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>support@cargent.ca</p>
-              </div>
+                <div class="form-step text-center">
+                  <h4 class="step-title">2. Vehicle Location</h4>
+                  <div class="form-group mb-4 text-start">
+                    <input type="text" name="location" class="form-control form-control-lg" placeholder="Where is your vehicle parked? (GTA Address)" required>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="prev-btn btn w-50">Back</button>
+                    <button type="button" class="next-btn btn w-50">Next: Details</button>
+                  </div>
+                </div>
 
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 (437) 335-9080</p>
+                <div class="form-step text-center">
+                  <h4 class="step-title">3. Contact Details</h4>
+                  <div class="row text-start">
+                    <div class="form-group col-md-6 mb-3">
+                      <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required autocomplete="name">
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                      <input type="tel" name="phone" class="form-control form-control-lg" placeholder="Phone Number" required inputmode="tel">
+                    </div>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="prev-btn btn w-50">Back</button>
+                    <button type="button" class="next-btn btn w-50">Next: Finalize</button>
+                  </div>
+                </div>
 
-              </div>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1185.4671588914875!2d-79.82239748178303!3d43.33203898938662!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c9e03877029bb%3A0x6106dd2451f69d19!2s1254%20Plains%20Rd%20E%20%2311%2C%20Burlington%2C%20ON%20L7S%207W6!5e0!3m2!1sen!2sca!4v1710662866599!5m2!1sen!2sca" width="100%" height="290px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="form-step text-center">
+                  <h4 class="step-title">4. Confirm & Send</h4>
+                  <div class="form-group mb-3 text-start">
+                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Email for Digital Receipt" required inputmode="email">
+                  </div>
+                  <div class="form-group mb-3 text-start">
+                    <textarea name="message" class="form-control" rows="4" placeholder="Any special notes for our technician?"></textarea>
+                  </div>
+                  
+                  <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your request has been sent. Thank you!</div>
+                  </div>
+
+                  <div class="d-flex gap-2">
+                    <button type="button" class="prev-btn btn w-50">Back</button>
+                    <button type="submit" class="btn w-50">Submit Request</button>
+                  </div>
+                </div>
+
+              </form>
             </div>
-
           </div>
-
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form name="contact" method="POST" id="contact-form" data-netlify="true">
-<!--          <form name="contact" method="POST" class="php-email-form" data-netlify="true"> DE COMMENT LATER IF NEEDED-->
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" required autocomplete="name">
-              </div>
-              <div class="form-group col-md-6 mt-3 mt-md-0">
-                <label for="name">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" required autocomplete="email">
-              </div>
-            </div>
-            <div class="form-group mt-3"> 
-              <label for="name">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject" required autocomplete="on">
-            </div>
-            <div class="form-group mt-3">
-              <label for="name">Message</label>
-              <textarea class="form-control" name="message" rows="10" required autocomplete="on"></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
         </div>
-
-      </div>
-
-    </div>
-
+        <div class="row mt-5 text-center">
+          <div class="col-md-4">
+            <div class="info-item p-3">
+              <i class="bi bi-geo-alt" style="font-size: 2rem; color: #D4AF37;"></i>
+              <p>Burlington, ON</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-item p-3">
+              <i class="bi bi-phone" style="font-size: 2rem; color: #D4AF37;"></i>
+              <p>+1 (437) 335-9080</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-item p-3">
+              <i class="bi bi-envelope" style="font-size: 2rem; color: #D4AF37;"></i>
+              <p>support@cargent.ca</p>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
   </main>
-<footer id="footer">
-<div class="footer-logo-container">
-  <div class="footer-logo-box">
-     <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main">
-  </div>
-</div>
 
-  <div class="footer-top">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-lg-4 col-md-6 footer-contact">
-          <h3>Get In Touch</h3>
-          <p>
-            Serving GTA and southwestern Ontario<br><br>
-            <strong>Phone:</strong> +1 (437) 335-9080<br>
-            <strong>Email:</strong> support@cargent.ca<br>
-          </p>
-        </div>
-
-        <div class="col-lg-4 col-md-6 footer-links">
-          <h3>Resources</h3>
-          <ul class="footer-list">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-          
-          <div class="social-links">
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="twitter-x"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="skype"><i class="bi bi-skype"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-info">
-          <h3>Proudly Canadian</h3>
-          <p>CarGent Mobile Services is a locally owned mobile automobile maintenance company keeping you on the move.</p>
-        </div>
-
+  <footer id="footer">
+    <div class="container py-4 text-center">
+      <div class="copyright">
+        © Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
       </div>
     </div>
-  </div>
-
-  <div class="container py-4 border-top border-secondary text-center">
-    <div class="copyright">
-      &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <script>
+    const steps = document.querySelectorAll(".form-step");
+    const nextBtns = document.querySelectorAll(".next-btn");
+    const prevBtns = document.querySelectorAll(".prev-btn");
+    const progressBar = document.getElementById("progress-bar");
+    let currentStep = 0;
+
+    function updateForm() {
+      steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+      });
+      progressBar.style.width = ((currentStep + 1) / steps.length) * 100 + "%";
+      window.scrollTo({ top: document.getElementById('contact').offsetTop - 100, behavior: 'smooth' });
+    }
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const inputs = steps[currentStep].querySelectorAll("input, select");
+        let valid = true;
+        inputs.forEach(input => { if(!input.checkValidity()) { input.reportValidity(); valid = false; } });
+        
+        if (valid && currentStep < steps.length - 1) {
+          currentStep++;
+          updateForm();
+        }
+      });
+    });
+
+    prevBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateForm();
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
