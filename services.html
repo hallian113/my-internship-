@@ -16,35 +16,49 @@
 
   <link href="assets/css/style.css" rel="stylesheet">
 
- <style>/* ==========================================================
-   FINAL BORDER FIX: ALL CARDS (INCLUDING COMING SOON)
-   ========================================================== */
+  <style>
+    /* Premium Service Card Styling */
+    .services .icon-box {
+      border: 1px solid #ffffff !important;
+      transition: all 0.3s ease-in-out !important;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0 25px rgba(0, 0, 0, 0.08);
+    }
 
-/* 1. Targets everything: standard boxes, image wraps, and Coming Soon filters */
-.services .icon-box, 
-.service-img-wrap,
-.soon-filter {
-    border-color: #ffffff !important;
-    transition: all 0.3s ease-in-out !important;
-}
+    .services .icon-box:hover {
+      border-color: #D4AF37 !important; /* Gold Border on Hover */
+      transform: translateY(-5px);
+    }
 
-/* 2. HOVER: Turn Gold and remove grayscale for Coming Soon */
-.services .icon-box:hover,
-.services .icon-box:hover .service-img-wrap,
-.services .icon-box:hover .soon-filter {
-    border-color: #feca09 !important;
-}
+    .service-img-wrap {
+      margin-bottom: 20px;
+      overflow: hidden;
+      border-radius: 8px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
 
-/* 3. Special fix for Coming Soon: Make image clear on hover */
-.services .icon-box:hover .soon-filter img {
-    filter: grayscale(0%) !important;
-    opacity: 1 !important;
-}
+    .service-pic {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
-/* 4. Inner line cleanup */
-.service-img-wrap {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-}</style>
+    .btn-book {
+      background: linear-gradient(to bottom, #f2d06b 0%, #D4AF37 100%) !important;
+      color: #000 !important;
+      border: none;
+      font-weight: 700;
+      padding: 10px 25px;
+      transition: 0.3s;
+    }
+
+    .btn-book:hover {
+      background: #000 !important;
+      color: #D4AF37 !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -54,7 +68,7 @@
       <h1 class="logo me-auto">
         <a href="index.html" class="logo-link">
           <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
-          <span class="logo-text">CarGent Mobile</span>
+          <span class="logo-text" style="color: #D4AF37; font-weight: 800;">CarGent Mobile</span>
         </a>
       </h1>
       <nav id="navbar" class="navbar">
@@ -86,136 +100,112 @@
       <div class="container">
         <div class="section-title">
           <h2>Our Services & Pricing</h2>
-          <p>Mobile convenience at a fair price.</p>
+          <p>Professional mobile convenience at your doorstep.</p>
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box iconbox-blue w-100 text-center">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box w-100 text-center">
               <div class="service-img-wrap">
                 <img src="assets/img/oil change.jpg" alt="Oil Change" class="service-pic">
               </div>
               <h4>Oil Change</h4>
-              <p>Swift and convenient oil changes at your location.</p>
+              <p>Swift and convenient oil changes using premium synthetic oils at your location.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $69</h3>
-              <a href="contact.html" class="btn btn-success rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box iconbox-blue w-100 text-center">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box w-100 text-center">
               <div class="service-img-wrap">
                 <img src="assets/img/tire change.jpg" alt="Tire Change" class="service-pic">
               </div>
-              <h4>Tire Change</h4>
-              <p>On-the-go replacements or repairs to keep you moving.</p>
+              <h4>Tire Swap & Rotation</h4>
+              <p>Seasonal tire swaps or rotations to ensure your safety on GTA roads.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $50</h3>
-              <a href="contact.html" class="btn btn-success rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box iconbox-blue w-100 text-center">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box w-100 text-center">
               <div class="service-img-wrap">
                 <img src="assets/img/battery change.jpg" alt="Battery Replacement" class="service-pic">
               </div>
-              <h4>Battery Replacement</h4>
-              <p>Rapid testing and replacement wherever you are.</p>
+              <h4>Battery Boost & Replacement</h4>
+              <p>Don't get stranded. Rapid testing and on-site replacement available 24/7.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $120</h3>
-              <a href="contact.html" class="btn btn-success rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box iconbox-blue w-100 text-center">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box w-100 text-center">
               <div class="service-img-wrap">
                 <img src="assets/img/braking services.jpg" alt="Braking Services" class="service-pic">
               </div>
               <h4>Braking Services</h4>
-              <p>Professional brake pad and rotor replacements on-site.</p>
+              <p>Professional brake pad and rotor replacements performed right in your driveway.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $99</h3>
-              <a href="contact.html" class="btn btn-success rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box iconbox-blue w-100 text-center border border-warning" style="background: #fffdf5;">
-              <div class="icon"><i class="bi bi-box-seam" style="font-size: 48px; color: #6c757d;"></i></div>
-              <h4>Mobile Storage</h4>
-              <p class="text-muted">Convenient portable storage units delivered to your door.</p>
-              <h3 class="my-3 text-warning">Coming Soon</h3>
-              <a href="contact.html" class="btn btn-outline-secondary rounded-pill">Get Notified</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box iconbox-blue w-100 text-center border border-warning" style="background: #fffdf5;">
-              <div class="icon"><i class="bi bi-badge-wc" style="font-size: 48px; color: #6c757d;"></i></div>
-              <h4>Portable Restrooms</h4>
-              <p class="text-muted">Clean, mobile sanitation solutions for your events or sites.</p>
-              <h3 class="my-3 text-warning">Coming Soon</h3>
-              <a href="contact.html" class="btn btn-outline-secondary rounded-pill">Get Notified</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   </main>
 
-<footer id="footer">
-<div class="footer-logo-container">
-  <div class="footer-logo-box">
-     <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main">
-  </div>
-</div>
-
-  <div class="footer-top">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-lg-4 col-md-6 footer-contact">
-          <h3>Get In Touch</h3>
-          <p>
-            Serving GTA and southwestern Ontario<br><br>
-            <strong>Phone:</strong> +1 (437) 335-9080<br>
-            <strong>Email:</strong> support@cargent.ca<br>
-          </p>
-        </div>
-
-        <div class="col-lg-4 col-md-6 footer-links">
-          <h3>Resources</h3>
-          <ul class="footer-list">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-          
-          <div class="social-links">
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="twitter-x"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="skype"><i class="bi bi-skype"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-info">
-          <h3>Proudly Canadian</h3>
-          <p>CarGent Mobile Services is a locally owned mobile automobile maintenance company keeping you on the move.</p>
-        </div>
-
+  <footer id="footer">
+    <div class="footer-logo-container text-center py-3">
+      <div class="footer-logo-box">
+        <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" style="max-width: 200px;">
       </div>
     </div>
-  </div>
 
-  <div class="container py-4 border-top border-secondary text-center">
-    <div class="copyright">
-      &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h3>Get In Touch</h3>
+            <p>
+              Serving GTA and southwestern Ontario<br><br>
+              <strong>Phone:</strong> +1 (437) 335-9080<br>
+              <strong>Email:</strong> support@cargent.ca<br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h3>Resources</h3>
+            <ul class="footer-list" style="list-style: none; padding: 0;">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+            <div class="social-links mt-3">
+              <a href="#" class="facebook mx-2"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram mx-2"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin mx-2"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-info">
+            <h3>Proudly Canadian</h3>
+            <p>CarGent Mobile Services is a locally owned mobile automobile maintenance company keeping you on the move.</p>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div class="container py-4 border-top border-secondary text-center">
+      <div class="copyright">
+        &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -224,5 +214,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
