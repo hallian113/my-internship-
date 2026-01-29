@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>About-Us</title>
+  <title>About Us - CarGent Mobile</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -15,18 +16,90 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* --- Premium Layout Fixes --- */
+    
+    /* Remove the stubborn black bar/border from titles */
+    .section-title h2::before, 
+    .section-title h2::after,
+    .section-title h2 {
+      border-left: none !important;
+      padding-left: 0 !important;
+    }
+
+    .section-title h2 {
+      color: #D4AF37; 
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* Premium Image Mosaic Styling */
+    .premium-img {
+      border: 2px solid #D4AF37;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .premium-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 35px rgba(212, 175, 55, 0.3);
+      z-index: 10;
+    }
+
+    /* Column spacing fix */
+    .image-grid-container .row {
+      margin-bottom: 15px;
+    }
+
+    .content h3 {
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .content ul li {
+      list-style: none;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: flex-start;
+      color: #ccc;
+    }
+
+    .content ul li i {
+      color: #D4AF37;
+      font-size: 1.4rem;
+      margin-right: 15px;
+      line-height: 1;
+    }
+
+    /* Desktop layout optimization */
+    @media (min-width: 992px) {
+      .about .container {
+        max-width: 1200px;
+      }
+      .content {
+        padding-right: 40px;
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body style="background-color: #000; color: #fff;">
 
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
       <h1 class="logo me-auto">
-  <a href="index.html" class="logo-link">
-    <img src="assets/img/Cargent Banner.png" alt="" class="img-fluid">
-    <span class="logo-text">CarGent Mobile</span>
-  </a>
-</h1>
+        <a href="index.html" class="logo-link d-flex align-items-center" style="text-decoration: none;">
+          <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid" style="max-height: 40px; margin-right: 12px;">
+          <span class="logo-text" style="color:#fff; font-weight:700;">CarGent Mobile</span>
+        </a>
+      </h1>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link" href="index.html">Home</a></li>
@@ -40,98 +113,112 @@
   </header>
 
   <main id="main">
-    <section class="breadcrumbs">
+    <section class="breadcrumbs" style="background: #111; padding: 20px 0; border-bottom: 1px solid #222;">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>About Us</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>About</li>
+          <h2 style="color: #D4AF37; margin: 0; font-weight: 700;">About Us</h2>
+          <ol style="margin: 0; padding: 0; list-style: none;" class="d-flex">
+            <li style="margin-right: 10px;"><a href="index.html" style="color: #D4AF37; text-decoration: none;">Home</a> / </li>
+            <li style="color: #fff;">About</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="about" style="padding: 80px 0;">
       <div class="container">
-        <div class="section-title">
+
+        <div class="section-title text-center mb-5">
           <h2>About Us</h2>
-          <p>Your trusted partner in mobile automotive care.</p>
+          <p style="color: #aaa; font-size: 1.1rem;">Your trusted partner in mobile automotive care.</p>
         </div>
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2">
-            <img src="assets/img/team/about2.jpg" class="img-fluid" alt="About Us">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+        <div class="row align-items-center">
+          
+          <div class="col-lg-5 content">
             <h3>15+ Years of Industry Excellence</h3>
-            <p>We bring the garage to you. Our mission is to provide high-quality repairs with the convenience you deserve.</p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Expert technicians with over 15 years of experience.</li>
-              <li><i class="bi bi-check-circle"></i> Transparent, competitive pricing for every job.</li>
-              <li><i class="bi bi-check-circle"></i> Mobile solutions for individuals and corporate fleets.</li>
+            <p style="color: #999; margin-bottom: 30px; line-height: 1.8;">
+              We bring the garage to you. Our mission is to provide high-quality repairs with the convenience you deserve, ensuring your vehicle stays in peak condition without interrupting your schedule.
+            </p>
+            <ul class="p-0">
+              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Expert Technicians:</strong> Over 15 years of hands-on experience in complex diagnostics and repairs.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Transparent Pricing:</strong> Honest quotes and competitive rates for every job, no hidden fees.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Total Flexibility:</strong> Tailored mobile solutions for both individual owners and large corporate fleets.</span></li>
             </ul>
           </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0">
+  <div class="image-grid-container">
+    <div class="row g-3">
+      <div class="col-6">
+        <img src="assets/img/team/about2.jpg" class="premium-img img-fluid" alt="Main" style="height: 250px;">
+      </div>
+      <div class="col-6">
+        <img src="assets/img/cargent1.jpeg" class="premium-img img-fluid" alt="Service 1" style="height: 250px;">
+      </div>
+      <div class="col-6">
+        <img src="assets/img/cargent2.jpeg" class="premium-img img-fluid" alt="Service 2" style="height: 250px;">
+      </div>
+      <div class="col-6">
+        <img src="assets/img/cargent3.jpeg" class="premium-img img-fluid" alt="Service 3" style="height: 250px;">
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
   </main>
 
-<footer id="footer">
-<div class="footer-logo-container">
-  <div class="footer-logo-box">
-     <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main">
-  </div>
-</div>
+  <footer id="footer" style="background: #080808; border-top: 2px solid #D4AF37;">
+    <div class="footer-logo-container text-center py-5">
+      <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" style="max-height: 90px; filter: drop-shadow(0 0 5px rgba(212,175,55,0.3));">
+    </div>
 
-  <div class="footer-top">
-    <div class="container">
-      <div class="row">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h3 style="color: #D4AF37;">Get In Touch</h3>
+            <p style="color: #ccc;">
+              Serving GTA and southwestern Ontario<br><br>
+              <strong>Phone:</strong> +1 (437) 335-9080<br>
+              <strong>Email:</strong> support@cargent.ca<br>
+            </p>
+          </div>
 
-        <div class="col-lg-4 col-md-6 footer-contact">
-          <h3>Get In Touch</h3>
-          <p>
-            Serving GTA and southwestern Ontario<br><br>
-            <strong>Phone:</strong> +1 (437) 335-9080<br>
-            <strong>Email:</strong> support@cargent.ca<br>
-          </p>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h3 style="color: #D4AF37;">Resources</h3>
+            <ul class="list-unstyled">
+              <li><i class="bx bx-chevron-right" style="color:#D4AF37;"></i> <a href="#" style="color: #ccc; text-decoration: none;">Privacy Policy</a></li>
+              <li><i class="bx bx-chevron-right" style="color:#D4AF37;"></i> <a href="#" style="color: #ccc; text-decoration: none;">Terms of Service</a></li>
+              <li><i class="bx bx-chevron-right" style="color:#D4AF37;"></i> <a href="#" style="color: #ccc; text-decoration: none;">FAQ</a></li>
+            </ul>
+            <div class="social-links mt-3">
+              <a href="#" class="facebook me-2" style="font-size: 1.5rem; color: #fff;"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/cargent_mobile" class="instagram me-2" style="font-size: 1.5rem; color: #fff;" target="_blank"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin" style="font-size: 1.5rem; color: #fff;"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-info">
+            <h3 style="color: #D4AF37;">Proudly Canadian</h3>
+            <p style="color: #ccc;">CarGent Mobile Services is a locally owned mobile automobile maintenance company keeping you on the move with professional, on-site care.</p>
+          </div>
         </div>
-
-        <div class="col-lg-4 col-md-6 footer-links">
-          <h3>Resources</h3>
-          <ul class="footer-list">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-          
-          <div class="social-links">
-  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-  <a href="https://www.instagram.com/cargent_mobile?igsh=bGh6cDBxdW03aTFu" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-  <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-  <a href="#" class="twitter-x"><i class="bi bi-twitter-x"></i></a>
-  <a href="#" class="skype"><i class="bi bi-skype"></i></a>
-</div>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-info">
-          <h3>Proudly Canadian</h3>
-          <p>CarGent Mobile Services is a locally owned mobile automobile maintenance company keeping you on the move.</p>
-        </div>
-
       </div>
     </div>
-  </div>
 
-  <div class="container py-4 border-top border-secondary text-center">
-    <div class="copyright">
-      &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
+    <div class="container py-4 text-center" style="border-top: 1px solid #222;">
+      <div class="copyright" style="color: #666;">
+        &copy; Copyright <strong><span style="color: #D4AF37;">CarGent Mobile</span></strong>. All Rights Reserved
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 

@@ -2160,130 +2160,89 @@ background: #ffffff !important;
 /* --- CarGent 4-Step Form Custom Styles --- */
 
 /* 1. Hide steps by default and set transition */
-/* --- CarGent Premium Gold & Black Centered Form --- */
-
-/* 1. Form Card Container (The Centered "Box") */
-.form-wrapper {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Premium shadow */
-  border: 1px solid #eee;
-  padding: 40px;
-  margin-bottom: 30px;
-}
-
-/* 2. Step Logic Styling */
 .form-step {
   display: none;
-  text-align: center; /* Centers titles and buttons */
+  transition: all 0.4s ease-in-out;
 }
 
+/* 2. Show the active step */
 .form-step.active {
   display: block;
   animation: slideIn 0.5s forwards;
 }
 
-/* 3. Progress Bar - Gold Gradient */
+/* 3. Progress Bar Styling */
 .progress {
   height: 12px;
   background-color: #e9ecef;
   border-radius: 10px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .progress-bar {
-  background: linear-gradient(45deg, #D4AF37, #f2d06b) !important;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-  transition: width 0.4s ease;
+background: linear-gradient(45deg, #D4AF37, #f2d06b) !important;
+box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-/* 4. Heading & Labels (Centered) */
+/* 4. Heading & Labels */
 .step-title {
-  color: #000 !important; /* Solid black for premium feel */
-  font-weight: 800 !important;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.6rem;
+  color: #D4AF37 !important;
+  border-left: 5px solid #000; /* Black accent bar */
+  font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 25px;
 }
 
-.form-group label {
-  color: #333;
-  font-weight: 600;
-}
-
-/* 5. Gold & Black Large Buttons */
-.next-btn, 
-.php-email-form button[type="submit"] {
-  background: linear-gradient(to bottom, #f2d06b 0%, #D4AF37 100%) !important;
-  color: #000 !important;
+/* 5. Button Customization */
+.next-btn, .php-email-form button[type="submit"] {
+background: linear-gradient(to bottom, #f2d06b 0%, #D4AF37 100%) !important;
+  color: #000 !important; /* Professional Black text on Gold */
   font-weight: 700 !important;
-  font-size: 1.1rem !important;
-  padding: 16px 40px !important; /* Larger size for mobile/desktop */
+  font-size: 1.1rem !important; /* Larger font */
+  padding: 15px 40px !important; /* Larger button size */
   border: 1px solid #B8860B !important;
   border-radius: 8px !important;
   text-transform: uppercase;
   transition: 0.3s all ease;
-  display: inline-block;
 }
 
-.next-btn:hover, 
-.php-email-form button[type="submit"]:hover {
-  background: #000 !important;
-  color: #D4AF37 !important;
+.next-btn:hover, .php-email-form button[type="submit"]:hover {
+background: #000 !important; /* Flips to Black on hover */
+  color: #D4AF37 !important;   /* Gold text on hover */
   border: 1px solid #D4AF37 !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .prev-btn {
   background: #222 !important;
   color: #fff !important;
   font-weight: 600 !important;
-  padding: 16px 30px !important;
+  padding: 15px 30px !important;
   border: none !important;
   border-radius: 8px !important;
-  transition: 0.3s;
 }
 
 .prev-btn:hover {
   background: #444 !important;
 }
 
-/* 6. Inputs & Focus Glow */
-.php-email-form input, 
-.php-email-form select, 
-.php-email-form textarea {
-  border-radius: 8px !important;
-  padding: 12px 15px !important;
-  border: 1px solid #ccc !important;
+/* 6. Smooth Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-
 .php-email-form input:focus, 
 .php-email-form select:focus, 
 .php-email-form textarea:focus {
   border-color: #D4AF37 !important;
   box-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
-  outline: none;
-}
-
-/* 7. Dropdown 'Coming Soon' styling */
-select option:disabled {
-  color: #888;
-  background-color: #f8f9fa;
-  font-style: italic;
-}
-
-/* 8. Animations */
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .form-wrapper { padding: 20px; }
-  .step-title { font-size: 1.3rem; }
 }
