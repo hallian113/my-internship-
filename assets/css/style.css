@@ -503,25 +503,30 @@ color: rgba(35, 80, 150, 0.8);
 #hero .btn-get-started,
 #hero .btn-get-started-2 {
   font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 1px;
+  font-weight: 700;           /* Bolder for a premium feel */
+  font-size: 14px;
+  text-transform: uppercase;  /* Clean, professional look */
+  letter-spacing: 2px;        /* Spaced out letters look more expensive */
   display: inline-block;
   margin: 20px 10px 0 10px;
   padding: 14px 36px;
-  border-radius: 30px; /* modern rounded pill style */
-  transition: 0.4s;
+  border-radius: 50px;        /* Smooth pill shape */
+  transition: all 0.4s ease;
   line-height: 1;
-  color: #fff;
-  background: #2371a5;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  
+  /* The Premium Gold Look */
+  background: #d4af37 !important; 
+  color: #000 !important;
+  border: 1px solid #d4af37;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 #hero .btn-get-started:hover,
 #hero .btn-get-started-2:hover {
-  background: #2373dc;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-  transform: translateY(-2px);
+  background: #000 !important;     /* Black background on hover for contrast */
+  color: #d4af37 !important;       /* Gold text on hover */
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+  transform: translateY(-3px);
 }
 
 @media (max-width: 992px) {
@@ -1914,8 +1919,8 @@ textarea::placeholder {
   font-family: "Raleway", sans-serif !important; /* Forces the modern font */
   font-weight: 700 !important;                  /* Makes it bold like your screenshot */
   font-size: 28px;
-  letter-spacing: 1px;
-  text-transform: none;                         /* Keeps it as 'CarGent Mobile' */
+  letter-spacing: 2px;
+  text-transform: uppercase;                         /* Keeps it as 'CarGent Mobile' */
   color: #ffffff !important;                   /* Default White */
   transition: 0.3s;
   text-decoration: none;
@@ -1923,7 +1928,7 @@ textarea::placeholder {
 
 .logo h1 a:hover,
 .logo-link:hover .logo-text {
-  color: #feca09 !important;                   
+  color: #D4AF37 !important;                  
 }
 .carousel-indicators, 
 .swiper-pagination, 
@@ -1937,18 +1942,18 @@ textarea::placeholder {
   color: #fff;
 }
 .how-it-works .step-number {
-background: #333333; /* CarGent Green */
-  color: #feca09; /* CarGent Gold */
-  font-weight: bold;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
+display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  margin-right: 20px;
-  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: #000;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 50%;
+  font-weight: 700;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 .how-it-works-img-wrap {
   border-radius: 20px;
@@ -1962,25 +1967,31 @@ background: #333333; /* CarGent Green */
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 .how-it-works .step-text h4 {
-  font-size: 18px;
-  color: #d4af37;
-  margin-bottom: 5px;
+  color: #ffffff !important; 
+  font-weight: 700;
+  margin-top: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
 }
 .how-it-works .step-text p {
-  color: #bbb;
-  font-size: 14px;
+ color: #d1d1d1 !important; /* Silver-grey is much easier to read than dark grey */
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 0;
 }/* Rectangular Action Image Styles */
 .service-img-wrap {
   width: 100%; /* Spans the full width of the service box like the reference */
   height: 220px; /* Provides that wide, cinematic look seen in the GoOil example */
   margin: 0 0 20px 0;
   border-radius: 15px 15px 0 0; /* Smooth, rounded corners instead of a circle */
-  border: 1px solid #ffffff; /* Subtle border to define the image edges */
+  border: 1px solid rgba(212, 175, 55, 0.3);/* Subtle border to define the image edges */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8f9fa;
+  background: #111;
   transition: all 0.3s ease;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); /* Adds a soft lift effect */
 }
@@ -2016,12 +2027,14 @@ background: #333333; /* CarGent Green */
   }
 
   .how-it-works .step-item {
-    flex-direction: column; /* Stack the number on top of the text on mobile */
+    padding: 0 0 40px 0; /* Remove side borders on mobile for space */
+    border-left: none;
+    margin-left: 0;
     text-align: center;
   }
 
   .how-it-works .step-number {
-    margin: 0 auto 15px; /* Center the step number */
+    margin: 0 auto 15px auto; /* Center the step number */
   }
 }
 /* ==========================================================
@@ -2245,4 +2258,108 @@ background: #000 !important; /* Flips to Black on hover */
 .php-email-form textarea:focus {
   border-color: #D4AF37 !important;
   box-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
+}
+/* Premium Floating Button - Icon Visible */
+.floating-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  
+  /* Start State: Clear icon, Gold border */
+  background: rgba(0, 0, 0, 0.7); 
+  border: 2px solid #d4af37;
+  color: #d4af37; /* Icon is gold */
+  font-size: 28px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.floating-contact:hover {
+  /* Hover State: Solid Gold background */
+  background: #d4af37;
+  color: #000; /* Icon turns black for perfect contrast */
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+.how-it-works .step-item {
+  padding: 0 20px 30px 40px; /* More left padding to clear the line */
+  border-left: 2px solid rgba(212, 175, 55, 0.2); /* Solid gold-tinted line */
+  margin-left: 15px;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* Connect the steps with a vertical line */
+.how-it-works .step-item::before {
+  content: '';
+  position: absolute;
+  left: -9px; /* Centers exactly on the border-left */
+  top: 0;
+  width: 15px;
+  height: 15px;
+  background: #d4af37;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.how-it-works .step-item:last-child::before {
+  display: none;
+}
+/* Premium Newsletter Refinement */
+.elite-signup {
+  max-width: 800px;
+  margin: 40px auto; /* Centers the box */
+  padding: 30px;
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle gold border */
+  border-radius: 15px;
+  background: #0a0a0a;
+}
+
+.elite-signup input {
+  height: 50px;
+  padding-left: 20px !important;
+  border-radius: 30px 0 0 30px !important; /* Rounded left side */
+}
+
+.elite-signup .btn {
+  border-radius: 0 30px 30px 0 !important; /* Rounded right side */
+  padding: 0 30px;
+  background-color: #d4af37 !important;
+  color: #000 !important;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .how-it-works-img img {
+    max-width: 140px !important;
+    margin: 0 auto 30px auto;
+    display: block;
+  }
+  
+  .section-title h2 {
+    font-size: 24px !important;
+  }
+}#footer .footer-top {
+  padding: 60px 0 30px 0;
+  background: #000;
+}
+
+#footer .footer-info h3 {
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}.floating-contact {
+  animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
