@@ -2626,3 +2626,20 @@ background: #000 !important; /* Flips to Black on hover */
 .mobile-nav-active .hero-container {
   display: none !important;
 }
+/* ===============================
+   HARD ISOLATION FOR MOBILE MENU
+================================ */
+
+body.mobile-nav-active #hero,
+body.mobile-nav-active section,
+body.mobile-nav-active main,
+body.mobile-nav-active footer {
+  display: none !important;
+}
+
+/* Ensure navbar stays visible */
+body.mobile-nav-active header,
+body.mobile-nav-active #header,
+body.mobile-nav-active #navbar {
+  display: block !important;
+}
