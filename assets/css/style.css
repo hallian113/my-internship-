@@ -322,16 +322,18 @@ color: rgba(35, 80, 150, 0.8);
 }
 
 .navbar-mobile ul {
-  display: block;
-  position: absolute;
-  top: 70px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  padding: 15px 0;
-  background: #000;
-  border: 1px solid #d4af37;
-  overflow-y: auto;
+  display: flex !important;
+  flex-direction: column !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important; /* Forces it to full screen width */
+  height: 100vh !important; /* Forces it to full screen height */
+  margin: 0 !important;
+  padding: 80px 20px 20px 20px !important; /* Top padding to clear the 'X' button */
+  background-color: rgba(0, 0, 0, 0.98) !important; 
+  z-index: 9999999 !important;
+  list-style: none !important;
 }
 
 .navbar-mobile li {
