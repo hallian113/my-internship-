@@ -322,7 +322,7 @@ color: rgba(35, 80, 150, 0.8);
 }
 
 .navbar-mobile ul {
-  display: block;
+  display: block !important;
   position: absolute;
   top: 55px;
   right: 15px;
@@ -332,6 +332,8 @@ color: rgba(35, 80, 150, 0.8);
   background-color: #fff;
   overflow-y: auto;
   transition: 0.3s;
+visibility: visible!important;
+opacity: 1!important;
 }
 
 .navbar-mobile a,
@@ -2598,4 +2600,13 @@ background: #000 !important; /* Flips to Black on hover */
 .whatsapp-fab:hover {
   animation: none;
   transform: scale(1.1);
+}
+/* Ensure Mobile Menu is always on top of the Contact Buttons */
+.navbar-mobile {
+  z-index: 9999999 !important; /* One level higher than our buttons */
+}
+
+/* If your template uses a mobile-nav-toggle button */
+.mobile-nav-toggle {
+  z-index: 10000000 !important;
 }
