@@ -2604,3 +2604,25 @@ background: #000 !important; /* Flips to Black on hover */
 .mobile-nav-toggle {
   z-index: 10000000 !important;
 }
+/* FORCE HIDE PAGE WHEN MOBILE MENU IS OPEN */
+.navbar-mobile ~ * {
+  display: none !important;
+}
+
+/* KEEP NAVBAR MOBILE VISIBLE */
+.navbar-mobile {
+  display: flex !important;
+}
+/* HIDE PAGE CONTENT WHEN MOBILE MENU IS OPEN */
+.navbar-mobile {
+  isolation: isolate;
+}
+
+/* Force-hide all sections behind mobile menu */
+.mobile-nav-active section,
+.mobile-nav-active main,
+.mobile-nav-active footer,
+.mobile-nav-active .hero,
+.mobile-nav-active .hero-container {
+  display: none !important;
+}

@@ -137,11 +137,16 @@
   /**
    * ✅ Mobile nav toggle (UPDATED & MERGED)
    */
-  on("click", ".mobile-nav-toggle", function () {
-    select("#navbar").classList.toggle("navbar-mobile");
-    this.classList.toggle("bi-list");
-    this.classList.toggle("bi-x");
-  });
+ on("click", ".mobile-nav-toggle", function () {
+  const navbar = select("#navbar");
+
+  navbar.classList.toggle("navbar-mobile");
+  document.body.classList.toggle("mobile-nav-active"); // ✅ LOCK BACKGROUND
+
+  this.classList.toggle("bi-list");
+  this.classList.toggle("bi-x");
+});
+
 
   /**
    * Mobile nav dropdowns activate
@@ -170,11 +175,14 @@
 
         let navbar = select("#navbar");
         if (navbar.classList.contains("navbar-mobile")) {
-          navbar.classList.remove("navbar-mobile");
-          let navbarToggle = select(".mobile-nav-toggle");
-          navbarToggle.classList.add("bi-list");
-          navbarToggle.classList.remove("bi-x");
-        }
+  navbar.classList.remove("navbar-mobile");
+  document.body.classList.remove("mobile-nav-active"); // ✅ UNLOCK BACKGROUND
+
+  let navbarToggle = select(".mobile-nav-toggle");
+  navbarToggle.classList.add("bi-list");
+  navbarToggle.classList.remove("bi-x");
+}
+
         scrollto(this.hash);
       }
     },
