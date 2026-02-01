@@ -290,7 +290,11 @@ color: rgba(35, 80, 150, 0.8);
 }
 
 .mobile-nav-toggle.bi-x {
-  color: #fff;
+  color: #d4af37 !important;
+  z-index: 10000000 !important;
+  position: fixed;
+  top: 15px;
+  right: 15px;
 }
 
 @media (max-width: 991px) {
@@ -304,15 +308,16 @@ color: rgba(35, 80, 150, 0.8);
 }
 
 .navbar-mobile {
+  background: rgba(0, 0, 0, 0.95) !important; /* Dark background for the menu */
+  z-index: 9999998 !important; /* Higher than page content */
+  display: block !important;
   position: fixed;
   overflow: hidden;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(9, 9, 9, 0.9);
   transition: 0.3s;
-  z-index: 999;
 }
 
 .navbar-mobile .mobile-nav-toggle {
@@ -324,16 +329,16 @@ color: rgba(35, 80, 150, 0.8);
 .navbar-mobile ul {
   display: block !important;
   position: absolute;
-  top: 55px;
+  top: 60px;
   right: 15px;
   bottom: 15px;
   left: 15px;
   padding: 10px 0;
-  background-color: #fff;
+  background-color: #000 !important; /* Match your CarGent theme */
+  border: 1px solid #d4af37; /* Add a gold border to make it look premium */
   overflow-y: auto;
   transition: 0.3s;
-visibility: visible!important;
-opacity: 1!important;
+  z-index: 9999999 !important; /* The highest layer */
 }
 
 .navbar-mobile a,
@@ -1708,12 +1713,8 @@ a:hover {
 }
 
 /* Mobile Menu */
-.navbar-mobile {
-  background: rgba(0,0,0,0.95) !important;
-}
-.navbar-mobile ul {
-  background: #111111 !important;
-}
+
+
 .navbar-mobile a {
   color: #ffffff !important;
 }
@@ -2602,9 +2603,7 @@ background: #000 !important; /* Flips to Black on hover */
   transform: scale(1.1);
 }
 /* Ensure Mobile Menu is always on top of the Contact Buttons */
-.navbar-mobile {
-  z-index: 9999999 !important; /* One level higher than our buttons */
-}
+
 
 /* If your template uses a mobile-nav-toggle button */
 .mobile-nav-toggle {
