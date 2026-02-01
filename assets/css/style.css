@@ -2456,7 +2456,7 @@ background: #000 !important; /* Flips to Black on hover */
 }
 
 .btn-gold {
-  background: #d4af37;
+  background: #000;
   color: #000;
   font-weight: 700;
   padding: 12px 35px;
@@ -2476,5 +2476,101 @@ background: #000 !important; /* Flips to Black on hover */
 }
 
 @media (max-width: 768px) {
-  .text-center-mobile { text-align: center !important; margin-top: 20px; }
+  .text-center-mobile { 
+    text-align: center !important; 
+    margin-top: 20px; 
+  }
+  .inspection-banner {
+    padding: 20px; /* Smaller padding so it doesn't feel cramped */
+  }
+}
+.cargent-floating-contact {
+  position: fixed;
+  bottom: 30px; 
+  right: 20px;
+  display: flex !important;
+  flex-direction: column !important; /* This stacks them vertically */
+  gap: 12px;                        /* This creates space between the circles */
+  z-index: 999999;
+}
+
+.cargent-fab {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.cargent-fab.whatsapp { background-color: #d4af37; color: black !important; }
+.cargent-fab.phone { background-color: #d4af37; color: black !important; }
+
+/* Critical for centering icons */
+.cargent-fab i {
+  font-size: 24px !important;
+  line-height: 0;
+}
+/* --- BULLETPROOF HOVER LABELS --- */
+.cargent-fab {
+  position: relative;
+}
+
+.cargent-fab::after {
+  content: attr(data-label);
+  position: absolute;
+  /* Push it further left so it's clearly visible */
+  right: 75px; 
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background-color: #333;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: sans-serif;
+  white-space: nowrap;
+  
+  /* Force it to stay on top */
+  z-index: 1000000;
+  
+  /* Initial State: Hidden */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* The Triangle Pointer */
+.cargent-fab::before {
+  content: '';
+  position: absolute;
+  right: 65px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #333;
+  opacity: 0;
+  z-index: 1000000;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover State */
+.cargent-fab:hover::after, 
+.cargent-fab:hover::before {
+  opacity: 1;
+  /* Slight slide-in effect */
+  transform: translateY(-50%) translateX(-5px); 
+}
+/* Make labels ALWAYS visible on Mobile */
+@media (max-width: 768px) {
+  .cargent-fab::after,
+  .cargent-fab::before {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(-50%);
+  }
 }
