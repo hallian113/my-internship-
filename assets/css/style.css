@@ -301,67 +301,85 @@ color: rgba(35, 80, 150, 0.8);
    MOBILE NAV TOGGLE
 ================================ */
 @media (max-width: 991px) {
+  /* 1. Toggle Button: Fixed at the top right so it doesn't move when menu opens */
   .mobile-nav-toggle {
     display: block !important;
     font-size: 35px !important;
     color: #d4af37 !important;
-    z-index: 10001 !important; /* Higher than everything else */
-    position: relative;
+    z-index: 10001 !important; 
+    position: fixed !important; /* Changed to fixed to stay on top of the overlay */
+    right: 20px;
+    top: 15px;
     cursor: pointer;
-  
   }
+
+  /* 2. Hide standard desktop list */
   .navbar ul {
     display: none;
   }
 
-
-/* ===============================
-   FULLSCREEN MOBILE NAV
-================================ */
-.navbar-mobile {
-  position: fixed !important;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.95) !important;
+  /* 3. FULLSCREEN BACKGROUND OVERLAY
+     This class is toggled on the <nav id="navbar"> element */
+  .navbar-mobile {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.98) !important; /* Nearly solid black */
     z-index: 9998 !important;
-    transition: 0.3s;
+    margin: 0 !important;
+    padding: 0 !important;
     display: block !important;
-}
+    overflow: hidden;
+  }
 
-/* REMOVE CONTAINER FEEL */
-.navbar-mobile ul {
-  display: block !important;
-    position: absolute;
-    top: 55px;
-    right: 15px;
-    bottom: 15px;
-    left: 15px;
-    padding: 10px 0;
+  /* 4. THE MENU BOX (The Gold-Bordered Container)
+     Centering the list so it doesn't feel like a tiny box */
+  .navbar-mobile ul {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 80px !important; /* Space for the header/logo */
+    left: 5% !important;  /* Centers the box with 5% margin */
+    right: 5% !important;
+    width: 90% !important;
+    height: auto !important;
+    max-height: 80vh !important;
+    padding: 20px 0 !important;
     background-color: #000 !important;
     border: 1px solid #d4af37 !important;
+    border-radius: 10px;
     overflow-y: auto;
-    transition: 0.3s
-}
+    margin: 0 !important;
+    list-style: none;
+  }
 
-/* MENU ITEMS */
-.navbar-mobile li {
-  width: 100%;
-  margin-bottom: 15px;
-}
+  /* 5. MENU ITEMS */
+  .navbar-mobile li {
+    width: 100% !important;
+    margin: 0 !important;
+  }
 
-/* LINKS */
-.navbar-mobile a,
-.navbar-mobile a:focus {
-  padding: 15px 20px !important;
-    font-size: 18px !important;
-    color: #ffffff !important; /* White text for visibility */
+  /* 6. LINKS: Full width for easy tapping */
+  .navbar-mobile a,
+  .navbar-mobile a:focus {
+    padding: 18px 25px !important;
+    font-size: 20px !important; /* Slightly larger for readability */
+    color: #ffffff !important;
     display: flex !important;
     align-items: center;
-}
-}
+    justify-content: center; /* Centers text inside the box */
+    text-decoration: none !important;
+    border-bottom: 1px solid #1a1a1a;
+    transition: 0.3s;
+  }
+
+  .navbar-mobile a:hover {
+    color: #d4af37 !important;
+    background: #111;
+  }
+
 /* HOVER / ACTIVE */
 .navbar-mobile a:hover,
 .navbar-mobile .active {
@@ -392,7 +410,7 @@ body.mobile-nav-active {
 }
 #hero, .carousel, .py-5 {
     z-index: 1 !important;
-  }
+  }}
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
