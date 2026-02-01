@@ -4,9 +4,79 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Fleet & Commercial - CarGent Mobile</title>
+  
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* 1. Fix the Header & Logo Visibility */
+    #header {
+      height: 80px;
+      z-index: 9997 !important; 
+      background: #000 !important; /* Solid black background */
+      border-bottom: 1px solid #d4af37;
+    }
+    
+    #header .logo img {
+      max-height: 50px !important;
+      width: auto;
+    }
+
+    /* 2. Fix the "Unclickable" Menu Button */
+    /* This pulls the icon above the hero image so it registers your clicks */
+    .mobile-nav-toggle {
+      position: relative;
+      z-index: 9999 !important; 
+      color: #d4af37 !important;
+      cursor: pointer;
+      font-size: 32px;
+      margin-left: 15px;
+    }
+
+    /* 3. Prevent Content from Hiding Under Header */
+    main {
+      margin-top: 80px !important;
+    }
+
+    /* 4. Fix Mobile Menu Overlap (The black background for the menu list) */
+    @media (max-width: 991px) {
+      .navbar-mobile {
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.95) !important;
+        transition: 0.3s;
+        z-index: 9998 !important;
+      }
+
+      .navbar-mobile ul {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 0;
+        background-color: #000 !important;
+        border: 1px solid #d4af37;
+        overflow-y: auto;
+        transition: 0.3s;
+      }
+      
+      .navbar-mobile a {
+        color: #fff !important;
+      }
+    }
+
+    /* 5. Fix Floating Buttons positioning */
+    .cargent-floating-contact {
+      z-index: 1000;
+    }
+  </style>
 </head>
 
 <body class="bg-black text-white">

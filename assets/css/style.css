@@ -307,7 +307,7 @@ color: rgba(35, 80, 150, 0.8);
     cursor: pointer;
     z-index: 10001;
     color: #d4af37;
-  }
+  
 
   .navbar ul {
     display: none;
@@ -320,8 +320,8 @@ color: rgba(35, 80, 150, 0.8);
 .navbar-mobile {
   position: fixed;
   inset: 0;
-  background: #000; /* FULL black — no bleed-through */
-  z-index: 10000;
+  background: #000000 !important; /* FULL black — no bleed-through */
+  z-index: 9998 !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -329,15 +329,17 @@ color: rgba(35, 80, 150, 0.8);
 
 /* REMOVE CONTAINER FEEL */
 .navbar-mobile ul {
+  background: #000000 !important;
   position: relative;
   z-index: 10001;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 420px;
-  padding: 80px 20px;
-  margin: 0;
+  padding: 10px 0;
+  margin: 15px;
   list-style: none;
+  border: 1px solid #d4af37;
 }
 
 /* MENU ITEMS */
@@ -354,9 +356,10 @@ color: rgba(35, 80, 150, 0.8);
   padding: 14px 20px;
   font-size: 18px;
   text-align: center;
-  color: #ffffff;
+  color: #ffffff !important;
   border: 1px solid #d4af37;
   transition: all 0.3s ease;
+  background: none !important;
 }
 
 /* HOVER / ACTIVE */
@@ -387,7 +390,10 @@ color: rgba(35, 80, 150, 0.8);
 body.mobile-nav-active {
   overflow: hidden;
 }
-
+#hero, .carousel, .py-5 {
+    z-index: 1 !important;
+  }
+}
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
