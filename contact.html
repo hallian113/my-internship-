@@ -13,175 +13,127 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <link href="assets/css/style.css" rel="stylesheet">
   
   <style>
-    /* --- Premium Gold & Black Centered Layout --- */
+    /* --- HEADER & MOBILE NAV REPAIR --- */
+    #header {
+      height: 70px !important;
+      background: #000 !important;
+      z-index: 9997 !important;
+      display: flex !important;
+      align-items: center !important;
+      border-bottom: 1px solid #d4af37 !important;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    #header .logo img {
+      max-height: 40px !important;
+    }
+
+    @media (max-width: 991px) {
+      #navbar ul { display: none !important; }
+
+      .navbar-mobile {
+        background: #000000 !important;
+        z-index: 9998 !important;
+        position: fixed;
+        top: 0; right: 0; left: 0; bottom: 0;
+      }
+
+      .navbar-mobile ul {
+        display: block !important;
+        background: #000000 !important;
+        margin: 60px 20px !important;
+        border: 1px solid #d4af37 !important;
+        padding: 10px 0 !important;
+        z-index: 9999 !important;
+      }
+
+      .navbar-mobile ul li a {
+        color: #ffffff !important; 
+        font-size: 18px !important;
+        padding: 15px 20px !important;
+        display: block !important;
+      }
+
+      .mobile-nav-toggle {
+        color: #d4af37 !important;
+        font-size: 32px;
+        cursor: pointer;
+        z-index: 10000 !important;
+        position: relative;
+      }
+
+      .cargent-fab::after, [data-label]::after { display: none !important; content: none !important; }
+    }
+
+    /* Push content below header */
+    main { padding-top: 70px !important; }
+
+    /* --- Form Styling --- */
     .form-wrapper {
       background: #ffffff;
       border-radius: 15px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       border: 1px solid #eee;
     }
-
     .form-step { display: none; }
     .form-step.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+    .progress-bar { background: linear-gradient(45deg, #D4AF37, #f2d06b) !important; }
+    .step-title { color: #000; font-weight: 800; margin-bottom: 25px; }
     
-    .progress { height: 12px; margin-bottom: 30px; background-color: #e9ecef; border-radius: 10px; }
-    .progress-bar { 
-      background: linear-gradient(45deg, #D4AF37, #f2d06b) !important; 
-      transition: width 0.4s ease; 
-    }
-
-    .step-title { 
-  color: #000; 
-  font-weight: 800; 
-  font-family: 'Raleway', sans-serif;
-  margin-bottom: 25px; 
-  font-size: 1.5rem;
-  /* Add these two lines to remove the black bar */
-  border-left: none !important; 
-  padding-left: 0 !important;
-    }
-
-    /* Large Premium Gold Buttons */
     .next-btn, .php-email-form button[type="submit"] {
       background: linear-gradient(to bottom, #f2d06b 0%, #D4AF37 100%) !important;
       color: #000 !important;
       font-weight: 700 !important;
-      font-size: 1.1rem !important;
       padding: 15px 30px !important;
       border: 1px solid #B8860B !important;
       border-radius: 8px !important;
-      text-transform: uppercase;
-      transition: 0.3s;
     }
-
-    .next-btn:hover, .php-email-form button[type="submit"]:hover {
-      background: #000 !important;
-      color: #D4AF37 !important;
-      border-color: #D4AF37 !important;
-    }
-
-    .prev-btn {
-      background: #222 !important;
-      color: #fff !important;
-      padding: 15px 30px !important;
-      border-radius: 8px !important;
-      border: none !important;
-    }
-
+    
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Dropdown disabled style */
-    select option:disabled { color: #888; font-style: italic; }
-    /* --- GLOBAL MOBILE REPAIR --- */
-
-/* 1. Reset Header & Logo for all pages */
-#header {
-  height: 70px !important;
-  background: #000 !important;
-  z-index: 9997 !important;
-  display: flex !important;
-  align-items: center !important;
-  border-bottom: 1px solid #d4af37 !important;
-}
-
-#header .logo img {
-  max-height: 40px !important;
-}
-
-/* 2. Hide Desktop Menu text on Phones */
-@media (max-width: 991px) {
-  #navbar ul {
-    display: none !important; /* This stops the 'Home About' text leak */
-  }
-
-  /* 3. Fix the Mobile Menu (The Hamburger List) */
-  .navbar-mobile {
-    background: #000000 !important;
-    z-index: 9999 !important;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
-
-  .navbar-mobile ul {
-    display: block !important;
-    background: #000000 !important;
-    margin: 60px 20px !important;
-    border: 1px solid #d4af37 !important;
-    padding: 10px 0 !important;
-  }
-
-  /* 4. Kill the Stuck "Chat with us" Labels */
-  .cargent-fab::after, 
-  .cargent-fab::before,
-  [data-label]::after,
-  [data-label]::before,
-  .whatsapp-fab::after,
-  .phone::after {
-    display: none !important;
-    content: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
-
-  /* 5. Fix Text Overlap on Hero Sections */
-  #hero h1, .display-4 {
-    font-size: 26px !important;
-    margin-top: 10px !important;
-  }
-}
-
-/* 6. Push all page content down so it's not under the header */
-main, #hero {
-  margin-top: 0 !important;
-  padding-top: 70px !important; /* Matches header height */
-}
   </style>
 </head>
 
-<body>
+<body style="background-color: #f8f9fa;">
 
   <header id="header" class="fixed-top d-flex align-items-center">
-  <div class="container d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo">
-      <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
-    </a>
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </div>
+  </header>
 
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link" href="index.html">Home</a></li>
-        <li><a class="nav-link" href="about.html">About</a></li>
-        <li><a class="nav-link" href="services.html">Services</a></li>
-        <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
-        <li><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <i class="bi bi-list mobile-nav-toggle"></i>
-  </div>
-</header>
   <main id="main">
-    <section class="breadcrumbs">
+    <section class="breadcrumbs" style="background: #000; color: #fff; padding: 20px 0;">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Request Maintenance</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Contact</li>
+          <h2 style="color: #d4af37;">Request Maintenance</h2>
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="index.html" style="color: #d4af37;">Home</a></li>
+            <li class="breadcrumb-item active" style="color: #fff;">Contact</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact py-5">
       <div class="container">
-
-        <div class="section-title">
+        <div class="section-title text-center mb-5">
           <h2>Book Your Service</h2>
           <p>Get professional mobile auto maintenance in 4 simple steps.</p>
         </div>
@@ -189,79 +141,58 @@ main, #hero {
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="form-wrapper p-4 p-md-5">
-              
               <form action="forms/contact.php" method="post" role="form" class="php-email-form" id="stepped-form">
-                
-                <div class="progress">
+                <div class="progress mb-4" style="height: 10px;">
                   <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 25%;"></div>
                 </div>
 
                 <div class="form-step active text-center">
                   <h4 class="step-title">1. Select Your Service</h4>
-                  <div class="form-group mb-4 text-start">
-                    <select name="service" id="service" class="form-control form-control-lg" required>
-                      <option value="">-- Choose a Service --</option>
-                      <option value="Oil Change">Mobile Oil Change</option>
-                      <option value="Tire Swap">Tire Swap & Rotation</option>
-                      <option value="Battery">Battery Boost/Replacement</option>
-                      <option value="Inspection">Braking Services</option>
-                    </select>
-                  </div>
-                  <button type="button" class="next-btn btn w-100 mt-3">Next: Vehicle Location</button>
+                  <select name="service" id="service" class="form-control form-control-lg mb-4" required>
+                    <option value="">-- Choose a Service --</option>
+                    <option value="Oil Change">Mobile Oil Change</option>
+                    <option value="Tire Swap">Tire Swap & Rotation</option>
+                    <option value="Battery">Battery Boost/Replacement</option>
+                    <option value="Inspection">Braking Services</option>
+                  </select>
+                  <button type="button" class="next-btn btn w-100">Next: Location</button>
                 </div>
 
                 <div class="form-step text-center">
                   <h4 class="step-title">2. Vehicle Location</h4>
-                  <div class="form-group mb-4 text-start">
-                    <input type="text" name="location" class="form-control form-control-lg" placeholder="Where is your vehicle parked? (GTA Address)" required>
-                  </div>
+                  <input type="text" name="location" class="form-control form-control-lg mb-4" placeholder="GTA Parking Address" required>
                   <div class="d-flex gap-2">
-                    <button type="button" class="prev-btn btn w-50">Back</button>
+                    <button type="button" class="btn btn-secondary w-50 prev-btn">Back</button>
                     <button type="button" class="next-btn btn w-50">Next: Details</button>
                   </div>
                 </div>
 
                 <div class="form-step text-center">
                   <h4 class="step-title">3. Contact Details</h4>
-                  <div class="row text-start">
-                    <div class="form-group col-md-6 mb-3">
-                      <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required autocomplete="name">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                      <input type="tel" name="phone" class="form-control form-control-lg" placeholder="Phone Number" required inputmode="tel">
-                    </div>
+                  <div class="row text-start mb-4">
+                    <div class="col-md-6 mb-3"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
+                    <div class="col-md-6"><input type="tel" name="phone" class="form-control" placeholder="Phone Number" required></div>
                   </div>
                   <div class="d-flex gap-2">
-                    <button type="button" class="prev-btn btn w-50">Back</button>
+                    <button type="button" class="btn btn-secondary w-50 prev-btn">Back</button>
                     <button type="button" class="next-btn btn w-50">Next: Finalize</button>
                   </div>
                 </div>
 
                 <div class="form-step text-center">
                   <h4 class="step-title">4. Confirm & Send</h4>
-                  <div class="form-group mb-3 text-start">
-                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Email for Digital Receipt" required inputmode="email">
-                  </div>
-                  <div class="form-group mb-3 text-start">
-                    <textarea name="message" class="form-control" rows="4" placeholder="Any special notes for our technician?"></textarea>
-                  </div>
-                  
-                  <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your request has been sent. Thank you!</div>
-                  </div>
-
+                  <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
+                  <textarea name="message" class="form-control mb-3" rows="4" placeholder="Special notes for our tech?"></textarea>
                   <div class="d-flex gap-2">
-                    <button type="button" class="prev-btn btn w-50">Back</button>
-                    <button type="submit" class="btn w-50">Submit Request</button>
+                    <button type="button" class="btn btn-secondary w-50 prev-btn">Back</button>
+                    <button type="submit" class="btn w-50" style="background:#D4AF37; color:#000;">Submit Request</button>
                   </div>
                 </div>
-
               </form>
             </div>
           </div>
         </div>
+      </div>
         <div class="row mt-5 text-center">
           <div class="col-md-4">
         <a href="https://www.google.com/maps/search/?api=1&query=1254+Plains+Rd+E+%2311+Burlington+ON+L7S+7W6" target="_blank" class="info-link" style="text-decoration: none; color: inherit;">

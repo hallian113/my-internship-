@@ -10,78 +10,94 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <style>
-    /* --- GLOBAL MOBILE REPAIR --- */
+    /* --- GLOBAL MOBILE & HEADER REPAIR --- */
+    #header {
+      height: 70px !important;
+      background: #000 !important;
+      z-index: 9997 !important;
+      display: flex !important;
+      align-items: center !important;
+      border-bottom: 1px solid #d4af37 !important;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
 
-/* 1. Reset Header & Logo for all pages */
-#header {
-  height: 70px !important;
-  background: #000 !important;
-  z-index: 9997 !important;
-  display: flex !important;
-  align-items: center !important;
-  border-bottom: 1px solid #d4af37 !important;
-}
+    #header .logo img {
+      max-height: 40px !important;
+    }
 
-#header .logo img {
-  max-height: 40px !important;
-}
+    @media (max-width: 991px) {
+      /* Hide leaking desktop menu text */
+      #navbar ul { display: none !important; }
 
-/* 2. Hide Desktop Menu text on Phones */
-@media (max-width: 991px) {
-  #navbar ul {
-    display: none !important; /* This stops the 'Home About' text leak */
-  }
+      /* THE FIX: Ensure the mobile menu container is visible */
+      .navbar-mobile {
+        background: #000000 !important;
+        z-index: 9998 !important;
+        position: fixed;
+        top: 0; right: 0; left: 0; bottom: 0;
+        transition: 0.3s;
+      }
 
-  /* 3. Fix the Mobile Menu (The Hamburger List) */
-  .navbar-mobile {
-    background: #000000 !important;
-    z-index: 9999 !important;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
+      /* THE FIX: Force menu links to the FRONT and make them WHITE */
+      .navbar-mobile ul {
+        display: block !important;
+        background: #000000 !important;
+        margin: 60px 20px !important;
+        border: 1px solid #d4af37 !important;
+        padding: 10px 0 !important;
+        z-index: 9999 !important;
+      }
 
-  .navbar-mobile ul {
-    display: block !important;
-    background: #000000 !important;
-    margin: 60px 20px !important;
-    border: 1px solid #d4af37 !important;
-    padding: 10px 0 !important;
-  }
+      .navbar-mobile ul li a {
+        color: #ffffff !important; 
+        font-size: 18px !important;
+        padding: 15px 20px !important;
+        display: block !important;
+        border-bottom: 1px solid #222;
+      }
 
-  /* 4. Kill the Stuck "Chat with us" Labels */
-  .cargent-fab::after, 
-  .cargent-fab::before,
-  [data-label]::after,
-  [data-label]::before,
-  .whatsapp-fab::after,
-  .phone::after {
-    display: none !important;
-    content: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
+      /* THE CLICK FIX: Button must be higher than the Hero Image (Z-index 10000) */
+      .mobile-nav-toggle {
+        color: #d4af37 !important;
+        font-size: 32px;
+        cursor: pointer;
+        z-index: 10000 !important;
+        position: relative;
+      }
 
-  /* 5. Fix Text Overlap on Hero Sections */
-  #hero h1, .display-4 {
-    font-size: 26px !important;
-    margin-top: 10px !important;
-  }
-}
+      /* Kill stuck floating labels */
+      .cargent-fab::after, .cargent-fab::before, [data-label]::after {
+        display: none !important;
+        content: none !important;
+      }
 
-/* 6. Push all page content down so it's not under the header */
-main, #hero {
-  margin-top: 0 !important;
-  padding-top: 70px !important; /* Matches header height */
-}
+      #hero h1, .display-4 {
+        font-size: 26px !important;
+      }
+    }
+
+    /* Push all page content down so it's not under the header */
+    main { padding-top: 70px !important; }
+
+    .fleet-card {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid #222;
+      height: 100%;
+      transition: 0.3s;
+    }
+    .fleet-card:hover { border-color: #d4af37; }
+    .gold-icon { color: #d4af37; font-size: 2.5rem; margin-bottom: 15px; display: block; }
+    .btn-gold { background: #d4af37; color: #000; font-weight: 700; border-radius: 50px; padding: 10px 25px; }
   </style>
 </head>
 
 <body class="bg-black text-white">
 
- <header id="header" class="fixed-top d-flex align-items-center">
+<header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
     <a href="index.html" class="logo">
       <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
@@ -100,7 +116,7 @@ main, #hero {
   </div>
 </header>
 
-  <main style="margin-top: 100px;">
+  <main>
     <section class="py-5 text-center" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1600'); background-size: cover; background-position: center;">
       <div class="container py-5">
         <h1 class="display-4 fw-bold" style="color: #d4af37;">FLEET & CORPORATE</h1>
@@ -139,16 +155,9 @@ main, #hero {
 
     <section class="py-5 bg-dark">
       <div class="container">
-        <div class="inspection-banner">
-          <div class="row align-items-center">
-            <div class="col-lg-8">
-              <h3 class="text-white">Our <span style="color: #d4af37;">Elite 20-Point</span> Fleet Check</h3>
-              <p>Every commercial service includes a full safety and health audit to prevent road breakdowns.</p>
-            </div>
-            <div class="col-lg-4 text-end text-center-mobile">
-              <span class="badge bg-gold text-black p-2">INCLUDED IN EVERY VISIT</span>
-            </div>
-          </div>
+        <div class="p-4" style="border-left: 5px solid #d4af37; background: #111;">
+          <h3 class="text-white">Our <span style="color: #d4af37;">Elite 20-Point</span> Fleet Check</h3>
+          <p>Every commercial service includes a full safety and health audit to prevent road breakdowns.</p>
         </div>
       </div>
     </section>

@@ -16,7 +16,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <style>
-    /* --- GLOBAL MOBILE & HEADER REPAIR --- */
+    /* --- HEADER & MOBILE NAV REPAIR --- */
     #header {
       height: 70px !important;
       background: #000 !important;
@@ -46,54 +46,42 @@
         transition: 0.3s;
       }
 
-      /* Fix Menu Visibility & White Text */
+      /* THE FIX: Force menu links to the FRONT and make them WHITE */
       .navbar-mobile ul {
         display: block !important;
         background: #000000 !important;
         margin: 60px 20px !important;
         border: 1px solid #d4af37 !important;
         padding: 10px 0 !important;
+        z-index: 9999 !important; /* Forces visibility over the black screen */
       }
 
       .navbar-mobile ul li a {
-        color: #ffffff !important; /* Force visibility on black background */
+        color: #ffffff !important; 
         font-size: 18px !important;
         padding: 15px 20px !important;
         display: block !important;
         border-bottom: 1px solid #222;
       }
 
-      /* Hamburger / Close Icon Fix */
+      /* Hamburger / Close Icon Fix - Absolute top layer */
       .mobile-nav-toggle {
         color: #d4af37 !important;
         font-size: 32px;
         cursor: pointer;
-        z-index: 9999 !important;
+        z-index: 10000 !important;
       }
 
-      /* Kill the Stuck "Chat with us" Labels */
-      .cargent-fab::after, 
-      .cargent-fab::before,
-      [data-label]::after,
-      [data-label]::before,
-      .whatsapp-fab::after,
-      .phone::after {
+      /* Kill floating labels */
+      .cargent-fab::after, .cargent-fab::before, [data-label]::after {
         display: none !important;
         content: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
       }
     }
 
-    /* Push all page content down so it's not under the header */
-    main {
-      padding-top: 70px !important;
-    }
-
-    body {
-      background-color: #000;
-      color: #fff;
-    }
+    /* Push content below fixed header */
+    main { padding-top: 70px !important; }
+    body { background-color: #000; color: #fff; }
 
     .icon-box {
       background: #111 !important;
@@ -102,33 +90,30 @@
       border-radius: 10px;
       transition: 0.3s;
     }
-
-    .icon-box:hover {
-      border-color: #d4af37;
-    }
+    .icon-box:hover { border-color: #d4af37; }
   </style>
 </head>
 
 <body>
 
- <header id="header" class="fixed-top d-flex align-items-center">
-  <div class="container d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo">
-      <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
-    </a>
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
+      </a>
 
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link" href="index.html">Home</a></li>
-        <li><a class="nav-link" href="about.html">About</a></li>
-        <li><a class="nav-link" href="services.html">Services</a></li>
-        <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
-        <li><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <i class="bi bi-list mobile-nav-toggle"></i>
-  </div>
-</header>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </div>
+  </header>
 
   <main id="main">
     <section class="breadcrumbs" style="background: #111; padding: 20px 0; border-bottom: 1px solid #222;">
