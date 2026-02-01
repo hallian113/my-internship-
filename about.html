@@ -7,133 +7,106 @@
   <title>About Us - CarGent Mobile</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <link href="assets/css/style.css" rel="stylesheet">
 
   <style>
-    /* --- GLOBAL MOBILE REPAIR --- */
-
-/* 1. Reset Header & Logo for all pages */
-#header {
-  height: 70px !important;
-  background: #000 !important;
-  z-index: 9997 !important;
-  display: flex !important;
-  align-items: center !important;
-  border-bottom: 1px solid #d4af37 !important;
-}
-
-#header .logo img {
-  max-height: 40px !important;
-}
-
-/* 2. Hide Desktop Menu text on Phones */
-@media (max-width: 991px) {
-  #navbar ul {
-    display: none !important; /* This stops the 'Home About' text leak */
-  }
-
-  /* 3. Fix the Mobile Menu (The Hamburger List) */
-  .navbar-mobile {
-    background: #000000 !important;
-    z-index: 9999 !important;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
-
-  .navbar-mobile ul {
-    display: block !important;
-    background: #000000 !important;
-    margin: 60px 20px !important;
-    border: 1px solid #d4af37 !important;
-    padding: 10px 0 !important;
-  }
-
-  /* 4. Kill the Stuck "Chat with us" Labels */
-  .cargent-fab::after, 
-  .cargent-fab::before,
-  [data-label]::after,
-  [data-label]::before,
-  .whatsapp-fab::after,
-  .phone::after {
-    display: none !important;
-    content: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
-
-  /* 5. Fix Text Overlap on Hero Sections */
-  #hero h1, .display-4 {
-    font-size: 26px !important;
-    margin-top: 10px !important;
-  }
-}
-
-/* 6. Push all page content down so it's not under the header */
-main, #hero {
-  margin-top: 0 !important;
-  padding-top: 70px !important; /* Matches header height */
-}
-    /* --- Premium Layout Fixes --- */
-    
-    /* Remove the stubborn black bar/border from titles */
-    .section-title h2::before, 
-    .section-title h2::after,
-    .section-title h2 {
-      border-left: none !important;
-      padding-left: 0 !important;
+    /* --- GLOBAL MOBILE & HEADER REPAIR --- */
+    #header {
+      height: 70px !important;
+      background: #000 !important;
+      z-index: 9997 !important;
+      display: flex !important;
+      align-items: center !important;
+      border-bottom: 1px solid #d4af37 !important;
+      position: fixed;
+      top: 0;
+      width: 100%;
     }
 
+    #header .logo img {
+      max-height: 40px !important;
+    }
+
+    @media (max-width: 991px) {
+      /* Hide leaking desktop menu text */
+      #navbar ul { display: none !important; }
+
+      /* Fix the Mobile Menu Background */
+      .navbar-mobile {
+        background: #000000 !important;
+        z-index: 9999 !important;
+        position: fixed;
+        top: 0; right: 0; left: 0; bottom: 0;
+        transition: 0.3s;
+      }
+
+      /* Fix the Menu List visibility and White Text */
+      .navbar-mobile ul {
+        display: block !important;
+        background: #000000 !important;
+        margin: 60px 20px !important;
+        border: 1px solid #d4af37 !important;
+        padding: 10px 0 !important;
+      }
+
+      .navbar-mobile ul li a {
+        color: #ffffff !important; /* Forces text to show on black */
+        font-size: 18px !important;
+        padding: 15px 20px !important;
+        display: block !important;
+        border-bottom: 1px solid #222;
+      }
+
+      /* Hamburger / Close Icon Fix */
+      .mobile-nav-toggle {
+        color: #d4af37 !important;
+        font-size: 32px;
+        cursor: pointer;
+        z-index: 10000 !important;
+      }
+
+      /* Remove stuck floating labels */
+      .cargent-fab::after, .cargent-fab::before, [data-label]::after {
+        display: none !important;
+        content: none !important;
+      }
+    }
+
+    /* Push content below fixed header */
+    main { padding-top: 70px !important; }
+
+    /* --- About Page Specific Styling --- */
     .section-title h2 {
-      color: #D4AF37; 
+      color: #D4AF37;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 2px;
     }
 
-    /* Premium Image Mosaic Styling */
     .premium-img {
       border: 2px solid #D4AF37;
       border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: all 0.4s ease;
       width: 100%;
       object-fit: cover;
-    }
-
-    .premium-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 35px rgba(212, 175, 55, 0.3);
-      z-index: 10;
-    }
-
-    /* Column spacing fix */
-    .image-grid-container .row {
-      margin-bottom: 15px;
     }
 
     .content h3 {
       font-weight: 800;
       font-size: 2.2rem;
       color: #fff;
-      font-family: 'Raleway', sans-serif;
     }
 
     .content ul li {
       list-style: none;
       margin-bottom: 18px;
       display: flex;
-      align-items: flex-start;
       color: #ccc;
     }
 
@@ -141,40 +114,28 @@ main, #hero {
       color: #D4AF37;
       font-size: 1.4rem;
       margin-right: 15px;
-      line-height: 1;
-    }
-
-    /* Desktop layout optimization */
-    @media (min-width: 992px) {
-      .about .container {
-        max-width: 1200px;
-      }
-      .content {
-        padding-right: 40px;
-      }
     }
   </style>
 </head>
 
 <body style="background-color: #000; color: #fff;">
 
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto">
-        <a href="index.html" class="logo-link d-flex align-items-center" style="text-decoration: none;">
-          <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid" style="max-height: 40px; margin-right: 12px;">
-          <span class="logo-text" style="color:#fff; font-weight:700;">CarGent Mobile</span>
-        </a>
-      </h1>
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
+      </a>
+
       <nav id="navbar" class="navbar">
         <ul>
-  <li><a class="nav-link" href="index.html">Home</a></li>
-  <li><a class="nav-link" href="about.html">About</a></li>
-  <li><a class="nav-link" href="services.html">Services</a></li>
-  <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li> <li><a class="nav-link" href="contact.html">Contact</a></li>
-</ul>
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
       </nav>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+      <i class="bi bi-list mobile-nav-toggle"></i>
     </div>
   </header>
 
@@ -193,50 +154,38 @@ main, #hero {
 
     <section id="about" class="about" style="padding: 80px 0;">
       <div class="container">
-
         <div class="section-title text-center mb-5">
           <h2>About Us</h2>
           <p style="color: #aaa; font-size: 1.1rem;">Your trusted partner in mobile automotive care.</p>
         </div>
 
         <div class="row align-items-center">
-          
           <div class="col-lg-5 content">
             <h3>15+ Years of Industry Excellence</h3>
             <p style="color: #999; margin-bottom: 30px; line-height: 1.8;">
-              We bring the garage to you. Our mission is to provide high-quality repairs with the convenience you deserve, ensuring your vehicle stays in peak condition without interrupting your schedule.
+              We bring the garage to you. Our mission is to provide high-quality repairs with the convenience you deserve.
             </p>
             <ul class="p-0">
-              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Expert Technicians:</strong> Over 15 years of hands-on experience in complex diagnostics and repairs.</span></li>
-              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Transparent Pricing:</strong> Honest quotes and competitive rates for every job, no hidden fees.</span></li>
-              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Total Flexibility:</strong> Tailored mobile solutions for both individual owners and large corporate fleets.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Expert Technicians:</strong> Over 15 years of master-level experience.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Transparent Pricing:</strong> Honest quotes, no hidden fees.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span><strong>Total Flexibility:</strong> Solutions for owners and corporate fleets.</span></li>
             </ul>
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0">
-  <div class="image-grid-container">
-    <div class="row g-3">
-      <div class="col-6">
-        <img src="assets/img/team/about2.jpg" class="premium-img img-fluid" alt="Main" style="height: 250px;">
-      </div>
-      <div class="col-6">
-        <img src="assets/img/cargent1.jpeg" class="premium-img img-fluid" alt="Service 1" style="height: 250px;">
-      </div>
-      <div class="col-6">
-        <img src="assets/img/cargent2.jpeg" class="premium-img img-fluid" alt="Service 2" style="height: 250px;">
-      </div>
-      <div class="col-6">
-        <img src="assets/img/cargent3.jpeg" class="premium-img img-fluid" alt="Service 3" style="height: 250px;">
-      </div>
-    </div>
-  </div>
-</div>
-
+            <div class="image-grid-container">
+              <div class="row g-3">
+                <div class="col-6"><img src="assets/img/team/about2.jpg" class="premium-img img-fluid" style="height: 200px;"></div>
+                <div class="col-6"><img src="assets/img/cargent1.jpeg" class="premium-img img-fluid" style="height: 200px;"></div>
+                <div class="col-6"><img src="assets/img/cargent2.jpeg" class="premium-img img-fluid" style="height: 200px;"></div>
+                <div class="col-6"><img src="assets/img/cargent3.jpeg" class="premium-img img-fluid" style="height: 200px;"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
-
    <footer id="footer">
     <div class="footer-logo-container text-center py-4">
       <div class="footer-logo-box">

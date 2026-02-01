@@ -13,246 +13,213 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <link href="assets/css/style.css" rel="stylesheet">
+
   <style>
-    /* --- GLOBAL MOBILE REPAIR --- */
+    /* --- GLOBAL MOBILE & HEADER REPAIR --- */
+    #header {
+      height: 70px !important;
+      background: #000 !important;
+      z-index: 9997 !important;
+      display: flex !important;
+      align-items: center !important;
+      border-bottom: 1px solid #d4af37 !important;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
 
-/* 1. Reset Header & Logo for all pages */
-#header {
-  height: 70px !important;
-  background: #000 !important;
-  z-index: 9997 !important;
-  display: flex !important;
-  align-items: center !important;
-  border-bottom: 1px solid #d4af37 !important;
-}
+    #header .logo img {
+      max-height: 40px !important;
+    }
 
-#header .logo img {
-  max-height: 40px !important;
-}
+    @media (max-width: 991px) {
+      /* Hide leaking desktop menu text */
+      #navbar ul { display: none !important; }
 
-/* 2. Hide Desktop Menu text on Phones */
-@media (max-width: 991px) {
-  #navbar ul {
-    display: none !important; /* This stops the 'Home About' text leak */
-  }
+      /* Fix the Mobile Menu Background */
+      .navbar-mobile {
+        background: #000000 !important;
+        z-index: 9998 !important;
+        position: fixed;
+        top: 0; right: 0; left: 0; bottom: 0;
+        transition: 0.3s;
+      }
 
-  /* 3. Fix the Mobile Menu (The Hamburger List) */
-  .navbar-mobile {
-    background: #000000 !important;
-    z-index: 9999 !important;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
+      /* Fix Menu Visibility & White Text */
+      .navbar-mobile ul {
+        display: block !important;
+        background: #000000 !important;
+        margin: 60px 20px !important;
+        border: 1px solid #d4af37 !important;
+        padding: 10px 0 !important;
+      }
 
-  .navbar-mobile ul {
-    display: block !important;
-    background: #000000 !important;
-    margin: 60px 20px !important;
-    border: 1px solid #d4af37 !important;
-    padding: 10px 0 !important;
-  }
+      .navbar-mobile ul li a {
+        color: #ffffff !important; /* Force visibility on black background */
+        font-size: 18px !important;
+        padding: 15px 20px !important;
+        display: block !important;
+        border-bottom: 1px solid #222;
+      }
 
-  /* 4. Kill the Stuck "Chat with us" Labels */
-  .cargent-fab::after, 
-  .cargent-fab::before,
-  [data-label]::after,
-  [data-label]::before,
-  .whatsapp-fab::after,
-  .phone::after {
-    display: none !important;
-    content: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
+      /* Hamburger / Close Icon Fix */
+      .mobile-nav-toggle {
+        color: #d4af37 !important;
+        font-size: 32px;
+        cursor: pointer;
+        z-index: 9999 !important;
+      }
 
-  /* 5. Fix Text Overlap on Hero Sections */
-  #hero h1, .display-4 {
-    font-size: 26px !important;
-    margin-top: 10px !important;
-  }
-}
+      /* Kill the Stuck "Chat with us" Labels */
+      .cargent-fab::after, 
+      .cargent-fab::before,
+      [data-label]::after,
+      [data-label]::before,
+      .whatsapp-fab::after,
+      .phone::after {
+        display: none !important;
+        content: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+    }
 
-/* 6. Push all page content down so it's not under the header */
-main, #hero {
-  margin-top: 0 !important;
-  padding-top: 70px !important; /* Matches header height */
-}
+    /* Push all page content down so it's not under the header */
+    main {
+      padding-top: 70px !important;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .icon-box {
+      background: #111 !important;
+      border: 1px solid #222;
+      padding: 30px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .icon-box:hover {
+      border-color: #d4af37;
+    }
   </style>
 </head>
 
 <body>
 
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto">
-        <a href="index.html" class="logo-link">
-          <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
-          <span class="logo-text" style="color: #D4AF37; font-weight: 800;">CarGent Mobile</span>
-        </a>
-      </h1>
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <img src="assets/img/Cargent Banner.png" alt="Logo" class="img-fluid">
+      </a>
+
       <nav id="navbar" class="navbar">
         <ul>
-        <li><a class="nav-link" href="index.html">Home</a></li>
-        <li><a class="nav-link" href="about.html">About</a></li>
-        <li><a class="nav-link" href="services.html">Services</a></li>
-        <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
-       <li><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
       </nav>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </div>
   </header>
 
   <main id="main">
-    <section class="breadcrumbs">
+    <section class="breadcrumbs" style="background: #111; padding: 20px 0; border-bottom: 1px solid #222;">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Services & Pricing</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
+          <h2 style="color: #d4af37; margin: 0;">Services & Pricing</h2>
+          <ol style="list-style: none; margin: 0; padding: 0;" class="d-flex">
+            <li style="margin-right: 10px;"><a href="index.html" style="color: #d4af37; text-decoration: none;">Home</a> /</li>
             <li>Services</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="services" style="padding: 60px 0;">
       <div class="container">
-        <div class="section-title">
-          <h2>Our Services & Pricing</h2>
-          <p>Professional mobile convenience at your doorstep.</p>
+        <div class="section-title text-center mb-5">
+          <h2 style="color: #d4af37;">Our Services & Pricing</h2>
+          <p style="color: #aaa;">Professional mobile convenience at your doorstep.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap">
-                <img src="assets/img/oil change.jpg" alt="Oil Change" class="service-pic">
+              <div class="service-img-wrap mb-3">
+                <img src="assets/img/oil change.jpg" alt="Oil Change" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
               </div>
               <h4>Oil Change</h4>
               <p>Swift and convenient oil changes using premium synthetic oils at your location.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $90</h3>
-              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap">
-                <img src="assets/img/tire change.jpg" alt="Tire Change" class="service-pic">
+              <div class="service-img-wrap mb-3">
+                <img src="assets/img/tire change.jpg" alt="Tire Change" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
               </div>
               <h4>Tire Swap & Rotation</h4>
               <p>Seasonal tire swaps or rotations to ensure your safety on GTA roads.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $60</h3>
-              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap">
-                <img src="assets/img/battery change.jpg" alt="Battery Replacement" class="service-pic">
+              <div class="service-img-wrap mb-3">
+                <img src="assets/img/battery change.jpg" alt="Battery Replacement" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
               </div>
               <h4>Battery Boost & Replacement</h4>
               <p>Don't get stranded. Rapid testing and on-site replacement available 24/7.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $69</h3>
-              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap">
-                <img src="assets/img/braking services.jpg" alt="Braking Services" class="service-pic">
+              <div class="service-img-wrap mb-3">
+                <img src="assets/img/braking services.jpg" alt="Braking Services" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
               </div>
               <h4>Braking Services</h4>
               <p>Professional brake pad and rotor replacements performed right in your driveway.</p>
               <h3 class="my-3" style="color: #d4af37;">Starting at $120</h3>
-              <a href="contact.html" class="btn btn-book rounded-pill">Book Service</a>
+              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="footer">
-    <div class="footer-logo-container text-center py-4">
-      <div class="footer-logo-box">
-        <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main" style="max-height: 100px;">
-      </div>
-    </div>
-<div class="elite-signup mt-4 p-4" style="border: 1px dashed #d4af37;">
-  <h5 style="color: #d4af37;">Join the CarGent Elite</h5>
-  <p class="small">Get priority weekend slots and seasonal maintenance reminders.</p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Your Email">
-    <button class="btn btn-outline-warning" type="button">Join</button>
-  </div>
-</div>
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 footer-contact">
-            <h3>Get In Touch</h3>
-            <p>
-              Serving GTA and southwestern Ontario<br><br>
-              <strong>Phone:</strong> +1 (437) 335-9080<br>
-              <strong>Email:</strong> support@cargent.ca<br>
-            </p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h3>Resources</h3>
-            <ul class="footer-list list-unstyled">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">FAQ</a></li>
-            </ul>
-
-            <div class="social-links mt-3">
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/cargent_mobile?igsh=bGh6cDBxdW03aTFu" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="twitter-x"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="skype"><i class="bi bi-skype"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-12 footer-info">
-            <h3>Proudly Canadian</h3>
-            <p>CarGent Mobile Services is a locally owned mobile automobile maintenance company keeping you on the move.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container py-4 border-top border-secondary text-center">
+  <footer id="footer" style="background: #111; padding: 40px 0; border-top: 1px solid #222;">
+    <div class="container text-center">
+      <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" style="max-height: 80px; margin-bottom: 20px;">
+      <p>Serving GTA and southwestern Ontario | +1 (437) 335-9080</p>
       <div class="copyright">
         &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
       </div>
     </div>
-    
   </footer>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
-<div class="cargent-floating-contact">
-  <a href="https://wa.me/14373359080" class="cargent-fab whatsapp whatsapp-fab" target="_blank" data-label="Chat with us">
-  <i class="bi bi-whatsapp"></i>
-</a>
-  <a href="tel:+14373359080" class="cargent-fab phone" data-label="Call CarGent">
-    <i class="bi bi-telephone-fill"></i>
-  </a>
-</div>
+
+  <div class="cargent-floating-contact">
+    <a href="https://wa.me/14373359080" class="cargent-fab whatsapp whatsapp-fab" target="_blank"><i class="bi bi-whatsapp"></i></a>
+    <a href="tel:+14373359080" class="cargent-fab phone"><i class="bi bi-telephone-fill"></i></a>
+  </div>
 </body>
+
 </html>
