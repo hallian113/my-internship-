@@ -15,6 +15,74 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    /* --- GLOBAL MOBILE REPAIR --- */
+
+/* 1. Reset Header & Logo for all pages */
+#header {
+  height: 70px !important;
+  background: #000 !important;
+  z-index: 9997 !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 1px solid #d4af37 !important;
+}
+
+#header .logo img {
+  max-height: 40px !important;
+}
+
+/* 2. Hide Desktop Menu text on Phones */
+@media (max-width: 991px) {
+  #navbar ul {
+    display: none !important; /* This stops the 'Home About' text leak */
+  }
+
+  /* 3. Fix the Mobile Menu (The Hamburger List) */
+  .navbar-mobile {
+    background: #000000 !important;
+    z-index: 9999 !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .navbar-mobile ul {
+    display: block !important;
+    background: #000000 !important;
+    margin: 60px 20px !important;
+    border: 1px solid #d4af37 !important;
+    padding: 10px 0 !important;
+  }
+
+  /* 4. Kill the Stuck "Chat with us" Labels */
+  .cargent-fab::after, 
+  .cargent-fab::before,
+  [data-label]::after,
+  [data-label]::before,
+  .whatsapp-fab::after,
+  .phone::after {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* 5. Fix Text Overlap on Hero Sections */
+  #hero h1, .display-4 {
+    font-size: 26px !important;
+    margin-top: 10px !important;
+  }
+}
+
+/* 6. Push all page content down so it's not under the header */
+main, #hero {
+  margin-top: 0 !important;
+  padding-top: 70px !important; /* Matches header height */
+}
+  </style>
 </head>
 
 <body>

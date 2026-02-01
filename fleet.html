@@ -10,72 +10,72 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <style>
-    /* 1. Fix the Header & Logo Visibility */
-    #header {
-      height: 80px;
-      z-index: 9997 !important; 
-      background: #000 !important; /* Solid black background */
-      border-bottom: 1px solid #d4af37;
-    }
-    
-    #header .logo img {
-      max-height: 50px !important;
-      width: auto;
-    }
+    /* --- GLOBAL MOBILE REPAIR --- */
 
-    /* 2. Fix the "Unclickable" Menu Button */
-    /* This pulls the icon above the hero image so it registers your clicks */
-    .mobile-nav-toggle {
-      position: relative;
-      z-index: 9999 !important; 
-      color: #d4af37 !important;
-      cursor: pointer;
-      font-size: 32px;
-      margin-left: 15px;
-    }
+/* 1. Reset Header & Logo for all pages */
+#header {
+  height: 70px !important;
+  background: #000 !important;
+  z-index: 9997 !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 1px solid #d4af37 !important;
+}
 
-    /* 3. Prevent Content from Hiding Under Header */
-    main {
-      margin-top: 80px !important;
-    }
+#header .logo img {
+  max-height: 40px !important;
+}
 
-    /* 4. Fix Mobile Menu Overlap (The black background for the menu list) */
-    @media (max-width: 991px) {
-      .navbar-mobile {
-        position: fixed;
-        overflow: hidden;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.95) !important;
-        transition: 0.3s;
-        z-index: 9998 !important;
-      }
+/* 2. Hide Desktop Menu text on Phones */
+@media (max-width: 991px) {
+  #navbar ul {
+    display: none !important; /* This stops the 'Home About' text leak */
+  }
 
-      .navbar-mobile ul {
-        display: block;
-        position: absolute;
-        top: 60px;
-        right: 15px;
-        bottom: 15px;
-        left: 15px;
-        padding: 10px 0;
-        background-color: #000 !important;
-        border: 1px solid #d4af37;
-        overflow-y: auto;
-        transition: 0.3s;
-      }
-      
-      .navbar-mobile a {
-        color: #fff !important;
-      }
-    }
+  /* 3. Fix the Mobile Menu (The Hamburger List) */
+  .navbar-mobile {
+    background: #000000 !important;
+    z-index: 9999 !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
 
-    /* 5. Fix Floating Buttons positioning */
-    .cargent-floating-contact {
-      z-index: 1000;
-    }
+  .navbar-mobile ul {
+    display: block !important;
+    background: #000000 !important;
+    margin: 60px 20px !important;
+    border: 1px solid #d4af37 !important;
+    padding: 10px 0 !important;
+  }
+
+  /* 4. Kill the Stuck "Chat with us" Labels */
+  .cargent-fab::after, 
+  .cargent-fab::before,
+  [data-label]::after,
+  [data-label]::before,
+  .whatsapp-fab::after,
+  .phone::after {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* 5. Fix Text Overlap on Hero Sections */
+  #hero h1, .display-4 {
+    font-size: 26px !important;
+    margin-top: 10px !important;
+  }
+}
+
+/* 6. Push all page content down so it's not under the header */
+main, #hero {
+  margin-top: 0 !important;
+  padding-top: 70px !important; /* Matches header height */
+}
   </style>
 </head>
 
