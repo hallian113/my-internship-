@@ -302,44 +302,48 @@ color: rgba(35, 80, 150, 0.8);
 ================================ */
 @media (max-width: 991px) {
   .mobile-nav-toggle {
-    display: block;
-    font-size: 28px;
+    display: block !important;
+    font-size: 35px !important;
+    color: #d4af37 !important;
+    z-index: 10001 !important; /* Higher than everything else */
+    position: relative;
     cursor: pointer;
-    z-index: 10001;
-    color: #d4af37;
   
-
+  }
   .navbar ul {
     display: none;
   }
-}
-}
+
+
 /* ===============================
    FULLSCREEN MOBILE NAV
 ================================ */
 .navbar-mobile {
-  position: fixed;
-  inset: 0;
-  background: #000000 !important; /* FULL black — no bleed-through */
-  z-index: 9998 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed !important;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95) !important;
+    z-index: 9998 !important;
+    transition: 0.3s;
+    display: block !important;
 }
 
 /* REMOVE CONTAINER FEEL */
 .navbar-mobile ul {
-  background: #000000 !important;
-  position: relative;
-  z-index: 10001;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 420px;
-  padding: 10px 0;
-  margin: 15px;
-  list-style: none;
-  border: 1px solid #d4af37;
+  display: block !important;
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 0;
+    background-color: #000 !important;
+    border: 1px solid #d4af37 !important;
+    overflow-y: auto;
+    transition: 0.3s
 }
 
 /* MENU ITEMS */
@@ -351,17 +355,13 @@ color: rgba(35, 80, 150, 0.8);
 /* LINKS */
 .navbar-mobile a,
 .navbar-mobile a:focus {
-  display: block;
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 18px;
-  text-align: center;
-  color: #ffffff !important;
-  border: 1px solid #d4af37;
-  transition: all 0.3s ease;
-  background: none !important;
+  padding: 15px 20px !important;
+    font-size: 18px !important;
+    color: #ffffff !important; /* White text for visibility */
+    display: flex !important;
+    align-items: center;
 }
-
+}
 /* HOVER / ACTIVE */
 .navbar-mobile a:hover,
 .navbar-mobile .active {
