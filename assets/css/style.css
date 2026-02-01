@@ -300,6 +300,9 @@ color: rgba(35, 80, 150, 0.8);
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10001;
   }
 
   .navbar ul {
@@ -308,91 +311,65 @@ color: rgba(35, 80, 150, 0.8);
 }
 
 .navbar-mobile {
-  background: rgba(0, 0, 0, 0.95) !important; /* Dark background for the menu */
-  z-index: 9999998 !important; /* Higher than page content */
-  display: block !important;
   position: fixed;
-  overflow: hidden;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
   transition: 0.3s;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  padding: 15px 0;
+  background: #000;
+  border: 1px solid #d4af37;
+  overflow-y: auto;
+}
+
+.navbar-mobile li {
+  padding: 0;
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+  display: block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff; /* ✅ FIX: visible text */
+  transition: 0.3s;
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover > a {
+  color: #d4af37; /* gold hover */
 }
 
 .navbar-mobile .mobile-nav-toggle {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 20px;
+  color: #fff;
 }
-
-.navbar-mobile ul {
-  display: block !important;
-  position: absolute;
-  top: 60px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 10px 0;
-  background-color: #000 !important; /* Match your CarGent theme */
-  border: 1px solid #d4af37; /* Add a gold border to make it look premium */
-  overflow-y: auto;
-  transition: 0.3s;
-  z-index: 9999999 !important; /* The highest layer */
-}
-
-.navbar-mobile a,
-.navbar-mobile a:focus {
-  padding: 10px 20px;
-  font-size: 15px;
-  color: #222222;
-}
-
-.navbar-mobile a:hover,
-.navbar-mobile .active,
-.navbar-mobile li:hover>a {
-  color: rgba(35, 80, 150, 1);
-}
-
-.navbar-mobile .getstarted,
-.navbar-mobile .getstarted:focus {
-  margin: 15px;
-}
-
 .navbar-mobile .dropdown ul {
   position: static;
-  display: none;
-  margin: 10px 20px;
-  padding: 10px 0;
-  z-index: 99;
+  top: auto;
+  left: auto;
+  box-shadow: none;
+  background: none;
+  padding: 0;
   opacity: 1;
   visibility: visible;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
 }
-
-.navbar-mobile .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar-mobile .dropdown ul a {
-  padding: 10px 20px;
-}
-
-.navbar-mobile .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar-mobile .dropdown ul a:hover,
-.navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
-  color: rgba(35, 80, 150, 1);
-}
-
-.navbar-mobile .dropdown>.dropdown-active {
-  display: block;
-}
-
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
