@@ -74,6 +74,13 @@
       transition: 0.3s;
     }
     .addon-item:hover { background: #181818; }
+
+    /* FAQ Accordion Styling */
+    .accordion-item { background-color: #0a0a0a; border: 1px solid #222; margin-bottom: 10px; border-radius: 10px !important; overflow: hidden; }
+    .accordion-button { background-color: #0a0a0a !important; color: #fff !important; font-weight: 600; box-shadow: none !important; }
+    .accordion-button:not(.collapsed) { color: #d4af37 !important; border-bottom: 1px solid #222; }
+    .accordion-button::after { filter: invert(1); }
+    .accordion-body { background-color: #0a0a0a; color: #aaa; }
   </style>
 </head>
 
@@ -203,6 +210,33 @@
         </div>
       </div>
     </section>
+
+    <section id="faq" class="py-5" style="background: #000;">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2 style="color: #d4af37;">Frequently Asked Questions</h2>
+          <p class="text-secondary">Quick answers to common inquiries.</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="accordion accordion-flush" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Do I need to be home for the service?</button></h2>
+                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">No, as long as we have access to your vehicle and keys, we can perform the service while you work or relax inside.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Will mobile service void my manufacturer warranty?</button></h2>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Absolutely not. We use OEM-equivalent parts and premium fluids that meet all manufacturer specifications.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">How do you handle waste oil?</button></h2>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">We use a vacuum extraction system to pull oil into a sealed tank. All waste is safely transported and recycled at authorized facilities.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer id="footer">
@@ -236,7 +270,7 @@
             <ul class="footer-list list-unstyled">
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="#faq">FAQ</a></li>
             </ul>
 
             <div class="social-links mt-3">
