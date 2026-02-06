@@ -43,8 +43,8 @@
     }
     .fleet-card:hover { border-color: #d4af37; transform: translateY(-5px); }
     .gold-icon { color: #d4af37; font-size: 2.5rem; margin-bottom: 15px; display: block; }
-    .btn-gold { background: transparent !important; color: #d4af37; font-weight: 700; border-radius: 50px; padding: 12px 30px; border: 1px solid #d4af37; }
-    .btn-gold:hover { background: #ffcc00; color: #d4af37; }
+    .btn-gold { background: transparent !important; color: #d4af37; font-weight: 700; border-radius: 50px; padding: 12px 30px; border: 1px solid #d4af37; transition: 0.3s; }
+    .btn-gold:hover { background: #d4af37 !important; color: #000 !important; }
     
     /* New Section Styles */
     .step-number {
@@ -53,6 +53,12 @@
     }
     .check-list li { margin-bottom: 12px; display: flex; align-items: center; }
     .check-list i { color: #d4af37; margin-right: 10px; }
+
+    /* Comparison Table Styling */
+    .comp-box { background: #080808; border-radius: 15px; overflow: hidden; border: 1px solid #222; }
+    .comp-header { background: #111; padding: 20px; font-weight: bold; color: #d4af37; border-bottom: 1px solid #222; }
+    .comp-row { padding: 15px 20px; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
+    .comp-row:last-child { border-bottom: none; }
   </style>
 </head>
 
@@ -87,23 +93,23 @@
 
   <section class="py-5">
     <div class="container">
-      <div class="row g-4">
+      <div class="row g-4 text-center">
         <div class="col-md-4">
-          <div class="fleet-card text-center">
+          <div class="fleet-card">
             <i class="bi bi-calendar-check gold-icon"></i>
             <h4>After-Hours Service</h4>
             <p>We service your vans while they sleep. Zero disruption to your daily business flow.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="fleet-card text-center">
+          <div class="fleet-card">
             <i class="bi bi-graph-up-arrow gold-icon"></i>
             <h4>Detailed Maintenance Logs</h4>
             <p>Full digital reports for every vehicle to satisfy compliance and insurance requirements.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="fleet-card text-center">
+          <div class="fleet-card">
             <i class="bi bi-tags gold-icon"></i>
             <h4>Volume Discounts</h4>
             <p>Preferential pricing for businesses with 5+ vehicles under our maintenance care.</p>
@@ -114,6 +120,46 @@
   </section>
 
   <section class="py-5 bg-dark">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 style="color: #d4af37;">The Mobile Advantage</h2>
+        <p class="text-secondary">Why GTA businesses are switching to CarGent Mobile.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="comp-box">
+            <div class="comp-header d-flex justify-content-between">
+              <span>Feature</span>
+              <span class="text-white">Traditional Shop</span>
+              <span>CarGent Mobile</span>
+            </div>
+            <div class="comp-row">
+              <span class="fw-bold">Service Location</span>
+              <span class="text-secondary">You go to them</span>
+              <span class="text-success"><i class="bi bi-check-circle-fill"></i> At your yard</span>
+            </div>
+            <div class="comp-row">
+              <span class="fw-bold">Vehicle Downtime</span>
+              <span class="text-secondary">4-8 Hours</span>
+              <span class="text-success"><i class="bi bi-check-circle-fill"></i> 0 Hours (Off-duty)</span>
+            </div>
+            <div class="comp-row">
+              <span class="fw-bold">Employee Labor</span>
+              <span class="text-secondary">Paid driver time</span>
+              <span class="text-success"><i class="bi bi-check-circle-fill"></i> No driver needed</span>
+            </div>
+            <div class="comp-row">
+              <span class="fw-bold">Safety Reports</span>
+              <span class="text-secondary">Paper Invoices</span>
+              <span class="text-success"><i class="bi bi-check-circle-fill"></i> Digital Dashboard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
     <div class="container">
       <div class="text-center mb-5">
         <h2 style="color: #d4af37;">Scalable Fleet Solutions</h2>
@@ -162,32 +208,32 @@
     </div>
   </section>
 
-  <section class="py-5">
+  <section class="py-5 bg-dark">
     <div class="container text-center">
-      <h2 class="mb-5" style="color: #d4af37;">How CarGent Operates</h2>
+      <h2 class="mb-5" style="color: #d4af37;">Our Corporate Process</h2>
       <div class="row g-4">
         <div class="col-md-4">
           <div class="step-number">1</div>
-          <h5>Inventory</h5>
+          <h5>Inventory Audit</h5>
           <p class="small text-secondary px-3">We catalog your VINs and maintenance intervals into our tracking system.</p>
         </div>
         <div class="col-md-4">
           <div class="step-number">2</div>
-          <h5>Schedule</h5>
+          <h5>Mobile Dispatch</h5>
           <p class="small text-secondary px-3">Our mobile units arrive at your location during your fleet's downtime.</p>
         </div>
         <div class="col-md-4">
           <div class="step-number">3</div>
-          <h5>Report</h5>
+          <h5>Compliance Reporting</h5>
           <p class="small text-secondary px-3">You receive instant digital proof of service for your safety records.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5 bg-dark">
+  <section class="py-5">
     <div class="container text-center">
-      <div class="p-5" style="border: 1px dashed #d4af37; background: #111;">
+      <div class="p-5" style="border: 1px dashed #d4af37; background: #111; border-radius: 15px;">
         <h2 class="text-white">Ready to <span style="color: #d4af37;">Streamline</span> Your Maintenance?</h2>
         <p class="mb-4">Stop wasting time at shops. Let CarGent come to you.</p>
         <a href="contact.html" class="btn btn-gold">BOOK A FLEET CONSULTATION</a>

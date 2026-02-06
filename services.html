@@ -16,7 +16,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <style>
-    /* --- HEADER & MOBILE NAV REPAIR --- */
+    /* --- HEADER & NAVIGATION --- */
     #header {
       height: 70px !important;
       background: #000 !important;
@@ -28,25 +28,52 @@
       top: 0;
       width: 100%;
     }
-
-    #header .logo img {
-      max-height: 40px !important;
-    }
-
-    
+    #header .logo img { max-height: 40px !important; }
 
     /* Push content below fixed header */
     main { padding-top: 70px !important; }
     body { background-color: #000; color: #fff; }
 
+    /* --- PREMIUM SERVICE CARDS --- */
     .icon-box {
-      background: #111 !important;
+      background: #0a0a0a !important;
       border: 1px solid #222;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 0; /* Changed to allow image to sit flush if needed */
+      border-radius: 15px;
+      transition: 0.4s;
+      overflow: hidden;
+      height: 100%;
+    }
+    .icon-box:hover {
+      border-color: #d4af37;
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+    }
+    .service-content { padding: 30px; }
+    
+    .price-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.1);
+      color: #d4af37;
+      padding: 5px 15px;
+      border-radius: 50px;
+      border: 1px solid #d4af37;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* --- ADD-ONS SECTION --- */
+    .addon-item {
+      background: #111;
+      border-left: 3px solid #d4af37;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       transition: 0.3s;
     }
-    .icon-box:hover { border-color: #d4af37; }
+    .addon-item:hover { background: #181818; }
   </style>
 </head>
 
@@ -72,11 +99,11 @@
   </header>
 
   <main id="main">
-    <section class="breadcrumbs" style="background: #111; padding: 20px 0; border-bottom: 1px solid #222;">
+    <section class="breadcrumbs" style="background: #080808; padding: 25px 0; border-bottom: 1px solid #222;">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2 style="color: #d4af37; margin: 0;">Services & Pricing</h2>
-          <ol style="list-style: none; margin: 0; padding: 0;" class="d-flex">
+          <h2 style="color: #d4af37; margin: 0; font-weight: 700;">Services & Pricing</h2>
+          <ol style="list-style: none; margin: 0; padding: 0;" class="d-flex text-secondary">
             <li style="margin-right: 10px;"><a href="index.html" style="color: #d4af37; text-decoration: none;">Home</a> /</li>
             <li>Services</li>
           </ol>
@@ -84,59 +111,93 @@
       </div>
     </section>
 
-    <section id="services" class="services" style="padding: 60px 0;">
+    <section id="services" class="services" style="padding: 80px 0;">
       <div class="container">
         <div class="section-title text-center mb-5">
-          <h2 style="color: #d4af37;">Our Services & Pricing</h2>
-          <p style="color: #aaa;">Professional mobile convenience at your doorstep.</p>
+          <h2 style="color: #fff;">Premium <span style="color: #d4af37;">Mobile Care</span></h2>
+          <p style="color: #aaa; max-width: 600px; margin: 0 auto;">Dealership quality tools and Master-Level technicians brought directly to your location.</p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap mb-3">
-                <img src="assets/img/oil change.jpg" alt="Oil Change" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="icon-box">
+              <img src="assets/img/oil change.jpg" alt="Oil Change" class="img-fluid" style="width: 100%; height: 250px; object-fit: cover;">
+              <div class="service-content text-center">
+                <div class="price-badge">Starting at $90</div>
+                <h4>Synthetic Oil Service</h4>
+                <p class="text-secondary">Full fluid extraction, premium filter replacement, and a 20-point digital health inspection.</p>
+                <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
-              <h4>Oil Change</h4>
-              <p>Swift and convenient oil changes using premium synthetic oils at your location.</p>
-              <h3 class="my-3" style="color: #d4af37;">Starting at $90</h3>
-              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap mb-3">
-                <img src="assets/img/tire change.jpg" alt="Tire Change" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
+          <div class="col-lg-6">
+            <div class="icon-box">
+              <img src="assets/img/tire change.jpg" alt="Tire Change" class="img-fluid" style="width: 100%; height: 250px; object-fit: cover;">
+              <div class="service-content text-center">
+                <div class="price-badge">Starting at $60</div>
+                <h4>Tire Swap & Rotation</h4>
+                <p class="text-secondary">Seasonal tire changeovers on rims. We ensure correct torque specs and pressure adjustments.</p>
+                <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
-              <h4>Tire Swap & Rotation</h4>
-              <p>Seasonal tire swaps or rotations to ensure your safety on GTA roads.</p>
-              <h3 class="my-3" style="color: #d4af37;">Starting at $60</h3>
-              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap mb-3">
-                <img src="assets/img/battery change.jpg" alt="Battery Replacement" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
+          <div class="col-lg-6">
+            <div class="icon-box">
+              <img src="assets/img/battery change.jpg" alt="Battery Replacement" class="img-fluid" style="width: 100%; height: 250px; object-fit: cover;">
+              <div class="service-content text-center">
+                <div class="price-badge">Starting at $69</div>
+                <h4>Battery Boost & Install</h4>
+                <p class="text-secondary">Rapid testing and on-site replacement. We stock high-performance batteries for all makes.</p>
+                <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
-              <h4>Battery Boost & Replacement</h4>
-              <p>Don't get stranded. Rapid testing and on-site replacement available 24/7.</p>
-              <h3 class="my-3" style="color: #d4af37;">Starting at $69</h3>
-              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
             </div>
           </div>
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box w-100 text-center">
-              <div class="service-img-wrap mb-3">
-                <img src="assets/img/braking services.jpg" alt="Braking Services" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover;">
+          <div class="col-lg-6">
+            <div class="icon-box">
+              <img src="assets/img/braking services.jpg" alt="Braking Services" class="img-fluid" style="width: 100%; height: 250px; object-fit: cover;">
+              <div class="service-content text-center">
+                <div class="price-badge">Starting at $120</div>
+                <h4>Brake Restoration</h4>
+                <p class="text-secondary">Professional brake pad and rotor replacements performed with precision safety testing.</p>
+                <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
-              <h4>Braking Services</h4>
-              <p>Professional brake pad and rotor replacements performed right in your driveway.</p>
-              <h3 class="my-3" style="color: #d4af37;">Starting at $120</h3>
-              <a href="contact.html" class="btn btn-outline-warning rounded-pill px-4">Book Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" style="background: #080808; border-top: 1px solid #111;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5">
+            <h2 class="mb-4" style="color: #d4af37;">Maintenance <br>Essential Add-ons</h2>
+            <p class="text-secondary">Enhance your service with these critical maintenance items that improve air quality and engine efficiency.</p>
+          </div>
+          <div class="col-lg-7">
+            <div class="addon-item">
+              <div>
+                <h5 class="mb-1">Cabin Air Filter</h5>
+                <p class="small text-secondary mb-0">Eliminate dust and allergens from your interior air.</p>
+              </div>
+              <i class="bi bi-plus-circle-fill text-warning fs-3"></i>
+            </div>
+            <div class="addon-item">
+              <div>
+                <h5 class="mb-1">Engine Air Filter</h5>
+                <p class="small text-secondary mb-0">Improve fuel economy and engine breathing.</p>
+              </div>
+              <i class="bi bi-plus-circle-fill text-warning fs-3"></i>
+            </div>
+            <div class="addon-item">
+              <div>
+                <h5 class="mb-1">Wiper Blade Replacement</h5>
+                <p class="small text-secondary mb-0">Premium beam blades for maximum visibility.</p>
+              </div>
+              <i class="bi bi-plus-circle-fill text-warning fs-3"></i>
             </div>
           </div>
         </div>
@@ -144,20 +205,20 @@
     </section>
   </main>
 
-   <footer id="footer">
+  <footer id="footer">
     <div class="footer-logo-container text-center py-4">
       <div class="footer-logo-box">
         <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main" style="max-height: 100px;">
       </div>
     </div>
-<div class="elite-signup mt-4 p-4" style="border: 1px dashed #d4af37;">
-  <h5 style="color: #d4af37;">Join the CarGent Elite</h5>
-  <p class="small">Get priority weekend slots and seasonal maintenance reminders.</p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Your Email">
-    <button class="btn btn-outline-warning" type="button">Join</button>
-  </div>
-</div>
+    <div class="elite-signup mt-4 p-4" style="border: 1px dashed #d4af37;">
+      <h5 style="color: #d4af37;">Join the CarGent Elite</h5>
+      <p class="small">Get priority weekend slots and seasonal maintenance reminders.</p>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Your Email">
+        <button class="btn btn-outline-warning" type="button">Join</button>
+      </div>
+    </div>
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -183,7 +244,6 @@
               <a href="https://www.instagram.com/cargent_mobile?igsh=bGh6cDBxdW03aTFu" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
               <a href="#" class="twitter-x"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="skype"><i class="bi bi-skype"></i></a>
             </div>
           </div>
 
@@ -200,9 +260,7 @@
         &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
       </div>
     </div>
-    
   </footer>
-
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
