@@ -1,10 +1,7 @@
 /**
 * Template Name: Green
-* Updated: Jan 29 2024 with Bootstrap v5.3.2
-* Updated: Jan 26 2026 with mobile menu and header improvements
-* Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Updated: Feb 08 2026 with Review Submission Logic
+* Author: BootstrapMade.com / CarGent Optimization
 */
 (function () {
   "use strict";
@@ -71,11 +68,9 @@
   const scrollto = (el) => {
     let header = select("#header");
     let offset = header.offsetHeight;
-
     if (!header.classList.contains("header-scrolled")) {
       offset -= 16;
     }
-
     let elementPos = select(el).offsetTop;
     window.scrollTo({
       top: elementPos - offset,
@@ -84,209 +79,133 @@
   };
 
   /**
-   * Header fixed on scroll
+   * Header fixed/shrink on scroll
    */
   let selectHeader = select("#header");
   if (selectHeader) {
-    let headerOffset = selectHeader.offsetTop;
-    let nextElement = selectHeader.nextElementSibling;
-
     const headerFixed = () => {
-      if (headerOffset - window.scrollY <= 0) {
+      if (selectHeader.offsetTop - window.scrollY <= 0) {
         selectHeader.classList.add("fixed-top");
-        nextElement.classList.add("scrolled-offset");
+        selectHeader.nextElementSibling.classList.add("scrolled-offset");
       } else {
         selectHeader.classList.remove("fixed-top");
-        nextElement.classList.remove("scrolled-offset");
+        selectHeader.nextElementSibling.classList.remove("scrolled-offset");
+      }
+      if (window.scrollY > 50) {
+        selectHeader.classList.add("header-scrolled");
+      } else {
+        selectHeader.classList.remove("header-scrolled");
       }
     };
-
     window.addEventListener("load", headerFixed);
     onscroll(document, headerFixed);
   }
 
   /**
-   * Header shrink on scroll
+   * Mobile nav toggle
    */
-  const headerShrink = () => {
-    if (window.scrollY > 50) {
-      selectHeader.classList.add("header-scrolled");
-    } else {
-      selectHeader.classList.remove("header-scrolled");
-    }
-  };
-  window.addEventListener("load", headerShrink);
-  onscroll(document, headerShrink);
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select(".back-to-top");
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add("active");
-      } else {
-        backtotop.classList.remove("active");
-      }
-    };
-    window.addEventListener("load", toggleBacktotop);
-    onscroll(document, toggleBacktotop);
-  }
-
-  /**
-   * ✅ Mobile nav toggle (UPDATED & MERGED)
-   */
- on("click", ".mobile-nav-toggle", function () {
-  const navbar = select("#navbar");
-
-  navbar.classList.toggle("navbar-mobile");
-  document.body.classList.toggle("mobile-nav-active"); // ✅ LOCK BACKGROUND
-
-  this.classList.toggle("bi-list");
-  this.classList.toggle("bi-x");
-});
-
-
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on(
-    "click",
-    ".navbar .dropdown > a",
-    function (e) {
-      if (select("#navbar").classList.contains("navbar-mobile")) {
-        e.preventDefault();
-        this.nextElementSibling.classList.toggle("dropdown-active");
-      }
-    },
-    true
-  );
+  on("click", ".mobile-nav-toggle", function () {
+    const navbar = select("#navbar");
+    navbar.classList.toggle("navbar-mobile");
+    document.body.classList.toggle("mobile-nav-active");
+    this.classList.toggle("bi-list");
+    this.classList.toggle("bi-x");
+  });
 
   /**
    * Scroll with offset on .scrollto links
    */
-  on(
-    "click",
-    ".scrollto",
-    function (e) {
-      if (select(this.hash)) {
-        e.preventDefault();
-
-        let navbar = select("#navbar");
-        if (navbar.classList.contains("navbar-mobile")) {
-  navbar.classList.remove("navbar-mobile");
-  document.body.classList.remove("mobile-nav-active"); // ✅ UNLOCK BACKGROUND
-
-  let navbarToggle = select(".mobile-nav-toggle");
-  navbarToggle.classList.add("bi-list");
-  navbarToggle.classList.remove("bi-x");
-}
-
-        scrollto(this.hash);
+  on("click", ".scrollto", function (e) {
+    if (select(this.hash)) {
+      e.preventDefault();
+      let navbar = select("#navbar");
+      if (navbar.classList.contains("navbar-mobile")) {
+        navbar.classList.remove("navbar-mobile");
+        document.body.classList.remove("mobile-nav-active");
+        let navbarToggle = select(".mobile-nav-toggle");
+        navbarToggle.classList.add("bi-list");
+        navbarToggle.classList.remove("bi-x");
       }
-    },
-    true
-  );
+      scrollto(this.hash);
+    }
+  }, true);
 
   /**
-   * Scroll on page load with hash
+   * Maintenance Calculator
    */
-  window.addEventListener("load", () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash);
+  window.calculateMaintenance = function() {
+    const mileage = document.getElementById('mileageInput').value;
+    const resultsDiv = document.getElementById('calcResults');
+    const list = document.getElementById('serviceList');
+    if (!mileage || mileage < 0) {
+      alert("Please enter a valid mileage.");
+      return;
+    }
+    list.innerHTML = '';
+    resultsDiv.classList.remove('d-none');
+    const schedule = [
+      { name: "Synthetic Oil & Filter", interval: 8000, icon: "bi-droplet-fill" },
+      { name: "Tire Rotation & Brake Check", interval: 10000, icon: "bi-gear-wide-connected" },
+      { name: "Engine & Cabin Air Filters", interval: 24000, icon: "bi-wind" },
+      { name: "Brake Fluid Replacement", interval: 48000, icon: "bi-exclamation-triangle" },
+      { name: "Spark Plug Service", interval: 90000, icon: "bi-lightning-charge" }
+    ];
+    schedule.forEach(service => {
+      let statusClass = "";
+      let statusText = "";
+      let progress = (mileage % service.interval);
+      if (progress > (service.interval - 1500) || progress < 800) {
+        statusClass = "bg-danger text-white";
+        statusText = "DUE NOW";
+      } else if (progress > (service.interval / 1.5)) {
+        statusClass = "bg-warning text-dark";
+        statusText = "Due Soon";
+      } else {
+        statusClass = "bg-dark text-success border border-success";
+        statusText = "Healthy";
       }
-    }
-  });
+      const li = document.createElement('li');
+      li.className = "d-flex justify-content-between align-items-center mb-3 animate__animated animate__fadeInUp";
+      li.innerHTML = `
+        <span class="text-white small"><i class="bi ${service.icon} text-warning me-2"></i> ${service.name}</span>
+        <span class="status-badge ${statusClass}" style="font-size: 0.7rem; padding: 4px 10px; border-radius: 50px; font-weight: 700;">${statusText}</span>
+      `;
+      list.appendChild(li);
+    });
+  };
 
   /**
-   * Hero carousel indicators
+   * ✅ Review Form Logic
    */
-  let heroCarouselIndicators = select("#hero-carousel-indicators");
-  let heroCarouselItems = select("#heroCarousel .carousel-item", true);
+  const reviewForm = select('#reviewForm');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-  heroCarouselItems.forEach((item, index) => {
-    heroCarouselIndicators.innerHTML +=
-      index === 0
-        ? `<li data-bs-target="#heroCarousel" data-bs-slide-to="${index}" class="active"></li>`
-        : `<li data-bs-target="#heroCarousel" data-bs-slide-to="${index}"></li>`;
-  });
+      // Check if rating is selected
+      const rating = document.querySelector('input[name="rating"]:checked');
+      if (!rating) {
+        alert("Please select a star rating!");
+        return;
+      }
 
-  /**
-   * Clients slider
-   */
-  new Swiper(".clients-slider", {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    slidesPerView: "auto",
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      320: { slidesPerView: 2, spaceBetween: 40 },
-      480: { slidesPerView: 3, spaceBetween: 60 },
-      640: { slidesPerView: 4, spaceBetween: 80 },
-      992: { slidesPerView: 6, spaceBetween: 120 },
-    },
-  });
+      // Gather Data (for future use or email)
+      const reviewData = {
+        name: select('#reviewName').value,
+        vehicle: select('#reviewVehicle').value,
+        stars: rating.value,
+        note: select('#reviewNote').value
+      };
 
-  /**
-   * Portfolio isotope and filter
-   */
-  window.addEventListener("load", () => {
-    let portfolioContainer = select(".portfolio-container");
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: ".portfolio-item",
-      });
+      // Show Success Message
+      reviewForm.innerHTML = `
+        <div class="text-center animate__animated animate__zoomIn">
+          <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #d4af37;"></i>
+          <h3 class="text-white mt-3">Review Submitted!</h3>
+          <p class="text-secondary">Thank you, ${reviewData.name}. Your feedback helps the CarGent community grow.</p>
+        </div>
+      `;
+    });
+  }
 
-      let portfolioFilters = select("#portfolio-flters li", true);
-
-      on(
-        "click",
-        "#portfolio-flters li",
-        function (e) {
-          e.preventDefault();
-          portfolioFilters.forEach(el =>
-            el.classList.remove("filter-active")
-          );
-          this.classList.add("filter-active");
-
-          portfolioIsotope.arrange({
-            filter: this.getAttribute("data-filter"),
-          });
-        },
-        true
-      );
-    }
-  });
-
-  /**
-   * Portfolio lightbox
-   */
-  GLightbox({
-    selector: ".portfolio-lightbox",
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper(".portfolio-details-slider", {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
 })();

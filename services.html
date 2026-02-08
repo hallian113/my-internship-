@@ -4,7 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Services - CarGent Mobile</title>
+  
+  <title>Mobile Car Services & Pricing | Oil Change, Tires & Brakes | CarGent Mobile</title>
+  <meta name="title" content="Mobile Car Services & Pricing | Oil Change, Tires & Brakes | CarGent Mobile">
+  <meta name="description" content="View pricing for our premium mobile car services. Synthetic oil changes starting at $90, seasonal tire swaps from $60, and professional brake services delivered to your door.">
+  <meta name="keywords" content="mobile oil change price toronto, tire swap cost gta, brake replacement mobile, car battery replacement price, CarGent service pricing">
+
+  <meta property="og:title" content="CarGent Mobile | Services & Transparent Pricing">
+  <meta property="og:description" content="Dealership quality mobile maintenance. Synthetic oil changes, tire swaps, and brake restoration at your driveway.">
+  <meta property="og:image" content="assets/img/Cargent Banner.png">
+
+  <link href="assets/img/New Favicon.JPG" rel="icon">
+  <link href="assets/img/New Favicon.JPG" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -38,7 +49,7 @@
     .icon-box {
       background: #0a0a0a !important;
       border: 1px solid #222;
-      padding: 0; /* Changed to allow image to sit flush if needed */
+      padding: 0;
       border-radius: 15px;
       transition: 0.4s;
       overflow: hidden;
@@ -81,6 +92,13 @@
     .accordion-button:not(.collapsed) { color: #d4af37 !important; border-bottom: 1px solid #222; }
     .accordion-button::after { filter: invert(1); }
     .accordion-body { background-color: #0a0a0a; color: #aaa; }
+
+    /* Map Styling */
+    .google-map-dark {
+      filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+      border: 1px solid #222;
+      border-radius: 15px;
+    }
   </style>
 </head>
 
@@ -96,7 +114,7 @@
         <ul>
           <li><a class="nav-link" href="index.html">Home</a></li>
           <li><a class="nav-link" href="about.html">About</a></li>
-          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link active" href="services.html">Services</a></li>
           <li><a class="nav-link" href="fleet.html">Fleet & Commercial</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
@@ -237,22 +255,46 @@
         </div>
       </div>
     </section>
+
+    <section id="service-area" class="py-5" style="background: #080808; border-top: 1px solid #111;">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2 style="color: #d4af37;">Service Area</h2>
+          <p class="text-secondary">Mobile automotive excellence delivered across the Greater Toronto Area.</p>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="google-map-dark" style="overflow: hidden; height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11545.981850123512!2d-79.3831842!3d43.653226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c40ba5%3A0x571579444c326628!2sToronto%2C%20ON!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
- <footer id="footer">
+  <footer id="footer">
     <div class="footer-logo-container text-center py-4">
       <div class="footer-logo-box">
         <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main" style="max-height: 100px;">
       </div>
     </div>
-<div class="elite-signup mt-4 p-4" style="border: 1px dashed #d4af37;">
-  <h5 style="color: #d4af37;">Join the CarGent Elite</h5>
-  <p class="small">Get priority weekend slots and seasonal maintenance reminders.</p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Your Email">
-    <button class="btn btn-outline-warning" type="button">Join</button>
-  </div>
-</div>
+    <div class="elite-signup mt-4 p-4" style="border: 1px dashed #d4af37;">
+      <h5 style="color: #d4af37;">Join the CarGent Elite</h5>
+      <p class="small">Get priority weekend slots and seasonal maintenance reminders.</p>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Your Email">
+        <button class="btn btn-outline-warning" type="button">Join</button>
+      </div>
+    </div>
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -292,10 +334,10 @@
 
     <div class="container py-4 border-top border-secondary text-center">
       <div class="copyright">
-        &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
+        © Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
       </div>
     </div>
-    
+
   </footer>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
