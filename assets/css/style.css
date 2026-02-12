@@ -1,6 +1,9 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #000000 !important;
@@ -552,7 +555,7 @@ body.mobile-nav-active {
   margin: 20px 10px 0 10px;
   padding: 14px 36px;
   border-radius: 50px;        /* Smooth pill shape */
-  transition: all 0.4s ease;
+  transition: all 0.3s ease-in-out;
   line-height: 1;
   
   /* The Premium Gold Look */
@@ -615,7 +618,16 @@ body.mobile-nav-active {
     z-index: 5;
     width: 100%;
   }
-
+  .carousel-container .container {
+  background: rgba(255, 255, 255, 0.05); /* Very light transparency */
+  backdrop-filter: blur(15px); /* This creates the "glass" effect */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle gold border */
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  max-width: 800px;
+}
   #hero h1 {
     font-size: 22px !important; /* Slightly smaller to ensure it fits on one line */
     margin-bottom: 10px !important;
@@ -1771,7 +1783,10 @@ a:hover {
 }
 #hero .btn-get-started:hover,
 #hero .btn-get-started-2:hover {
-  background: #b8962e !important;
+  transform: translateY(-5px) scale(1.05); /* Lifts the button */
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4); /* Gold glow */
+  background-color: #D4AF37;
+  color: #000;
 }
 
 /* Sections */
@@ -2693,4 +2708,20 @@ body.mobile-nav-active #navbar {
   transform: translateY(-10px);
   border-color: #d4af37 !important;
   box-shadow: 0 10px 20px rgba(212, 175, 55, 0.05);
+}
+/* For Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 10px;
+}
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #000;
 }
