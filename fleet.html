@@ -253,64 +253,70 @@
   </section>
 </main>
 
-<footer id="footer">
+<footer id="footer" style="background: #000; border-top: 1px solid #111;">
     <div class="footer-logo-container text-center py-4">
       <div class="footer-logo-box">
         <img src="assets/img/Cargent Banner.png" alt="CarGent Logo" class="footer-logo-main" style="max-height: 100px;">
       </div>
     </div>
-<div class="elite-signup mt-4 p-4" style="border: 1px dashed #d4af37;">
-  <h5 style="color: #d4af37;">Join the CarGent Elite</h5>
-  <p class="small">Get priority weekend slots and seasonal maintenance reminders.</p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Your Email">
-    <button class="btn btn-outline-warning" type="button">Join</button>
-  </div>
-</div>
-    <div class="footer-top">
-      <div class="container">
+
+    <div class="container">
+      <div class="elite-signup p-4 mb-5" style="border: 1px dashed #d4af37; border-radius: 15px;">
+        <h5 style="color: #d4af37; font-weight: bold;">Join the CarGent Elite</h5>
+        <p class="small text-secondary">Get priority weekend slots and seasonal maintenance reminders.</p>
+        
+        <form action="forms/contact.php" method="POST" class="input-group mb-3">
+          <input type="hidden" name="service" value="Newsletter Signup">
+          <input type="hidden" name="name" value="Elite Member">
+          <input type="hidden" name="location" value="Footer">
+          
+          <input type="email" name="email" class="form-control bg-dark text-white border-secondary" placeholder="Your Email" required>
+          <button class="btn btn-warning fw-bold" type="submit" style="background:#d4af37; color:#000; border:none;">Join</button>
+        </form>
+      </div>
+
+      <div class="footer-top">
         <div class="row">
-          <div class="col-lg-4 col-md-6 footer-contact">
-            <h3>Get In Touch</h3>
-            <p>
+          <div class="col-lg-6 col-md-6 footer-contact mb-4">
+            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Get In Touch</h3>
+            <p class="text-secondary">
               Serving GTA and southwestern Ontario<br><br>
-              <strong>Phone:</strong> +1 (437) 335-9080<br>
-              <strong>Email:</strong> support@cargent.ca<br>
+              <strong class="text-white">Phone:</strong> +1 (437) 335-9080<br>
+              <strong class="text-white">Email:</strong> support@cargent.ca<br>
             </p>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h3>Resources</h3>
-            <ul class="footer-list list-unstyled">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="services.html#faq">FAQ</a></li>
-            </ul>
-
-            <div class="social-links mt-3">
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/cargent_mobile?igsh=bGh6cDBxdW03aTFu" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="twitter-x"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="skype"><i class="bi bi-skype"></i></a>
+          <div class="col-lg-6 col-md-12 mb-4">
+            <h5 style="color: #d4af37; font-weight: bold;">The CarGent Commitment</h5>
+            <p class="small text-secondary">Uncompromising quality delivered at your convenience. We utilize only premium-grade synthetic lubricants and OEM-spec filters.</p>
+            <div class="d-flex gap-2">
+              <span class="badge border border-warning text-warning">Certified Techs</span>
+              <span class="badge border border-warning text-warning">Zero-Mess</span>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-12">
-          <h5 style="color: #d4af37;">The CarGent Commitment</h5>
-          <p class="small text-secondary">Uncompromising quality delivered at your convenience. We utilize only premium-grade synthetic lubricants and OEM-spec filters.</p>
-          <div class="d-flex gap-2"><span class="badge border border-warning text-warning">Certified Techs</span><span class="badge border border-warning text-warning">Zero-Mess</span></div>
         </div>
+      </div>
+
+      <div class="row mt-4 pt-4 border-top border-secondary">
+        <div class="col-12 text-center">
+          <p class="small text-uppercase text-secondary mb-3" style="letter-spacing: 2px;">Connect With Us</p>
+          <div class="social-links d-flex justify-content-center gap-3">
+            <a href="https://www.instagram.com/cargent_mobile?igsh=bGh6cDBxdW03aTFu" 
+               class="instagram d-flex align-items-center justify-content-center" 
+               target="_blank" 
+               style="width: 45px; height: 45px; background: #1a1a1a; color: #d4af37; border-radius: 50%; font-size: 1.2rem; border: 1px solid #333;">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 text-center">
+        <div class="copyright text-secondary" style="font-size: 0.8rem;">
+          © Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
         </div>
       </div>
     </div>
-
-    <div class="container py-4 border-top border-secondary text-center">
-      <div class="copyright">
-        &copy; Copyright <strong><span>CarGent Mobile</span></strong>. All Rights Reserved
-      </div>
-    </div>
-    
   </footer>
 
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -256,5 +256,29 @@
       <i class="bi bi-telephone-fill"></i>
     </a>
   </div>
+  <script>
+  // Wait for the contact form to be submitted
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevents the page from reloading
+    
+    // Get the name to personalize the message
+    const name = this.querySelector('input[name="name"]').value;
+    
+    // Replace the form content with a premium Thank You message
+    this.innerHTML = `
+      <div class="text-center animate__animated animate__fadeIn" style="padding: 60px 20px; background: #0a0a0a; border-radius: 20px; border: 1px solid #d4af37;">
+        <i class="bi bi-envelope-check" style="font-size: 4rem; color: #d4af37;"></i>
+        <h2 style="color: #fff; margin-top: 20px; font-weight: 700;">Thank You, ${name}!</h2>
+        <p style="color: #aaa; font-size: 1.1rem;">Your request has been sent to the admin. Our team will contact you shortly.</p>
+        <div style="margin-top: 30px;">
+          <a href="index.html" class="btn btn-warning rounded-pill px-4 py-2" style="background: #d4af37; color: #000; font-weight: 700; text-decoration: none;">Return Home</a>
+        </div>
+      </div>
+    `;
+
+    // Optional: Scroll the user to the top of the message
+    window.scrollTo({ top: this.offsetTop - 100, behavior: 'smooth' });
+  });
+</script>
 </body>
 </html>
