@@ -427,242 +427,124 @@ body.mobile-nav-active {
     z-index: 1 !important;
   }}
 /*--------------------------------------------------------------
-# Hero Section
+# Hero Section - THE ULTIMATE CENTERING FIX
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 60vh; /* slightly taller for a better hero feel */
-  background-color: rgba(9, 9, 9, 1);
+  height: 100vh;
+  background-color: #000;
   overflow: hidden;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  margin: 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 #hero .carousel,
 #hero .carousel-inner,
-#hero .carousel-item,
-#hero .carousel-item::before {
+#hero .carousel-item {
+  width: 100%;
+  height: 100vh;
+}
+
+#hero .carousel-item {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  position: relative;
 }
 
 #hero .carousel-item::before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(35, 80, 150, 0.6)); /* gradient overlay for depth */
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
   z-index: 1;
 }
 
+/* THE FIX: Spans full width and forces vertical/horizontal centering */
 #hero .carousel-container {
-  position: relative;
-  z-index: 2; /* bring content above overlay */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  position: relative !important;
+  inset: 0 !important; 
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  z-index: 2 !important;
+  width: 100% !important;
   padding: 0 20px;
 }
 
+#hero .container {
+  width: 100% !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+
 #hero h1 {
-  color: #fff;
-  font-size: 3rem; /* 48px -> scalable for responsiveness */
-  font-weight: 700;
+  color: #ffffff !important;
+  font-size: clamp(2.2rem, 10vw, 4.5rem) !important;
+  font-weight: 800;
   margin-bottom: 20px;
-  line-height: 1.2;
-  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  line-height: 1.1;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+#hero h1 span {
+  color: #d4af37;
 }
 
 #hero h2 {
-  color: #fff;
-  font-size: 1.5rem; /* 24px */
-  font-weight: 500;
-  margin-top: 20px;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  color: #eee;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 400;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.4;
 }
 
-#hero p {
-  color: #f0f0f0;
-  margin: 20px auto 40px auto;
-  max-width: 650px;
-  line-height: 1.7;
-  animation-delay: 0.4s;
-}
-
-#hero .carousel-inner .carousel-item {
-  transition: opacity 1s ease-in-out;
-  opacity: 0;
-  background-position: center top;
-}
-
-#hero .carousel-inner .active,
-#hero .carousel-inner .carousel-item-next.carousel-item-start,
-#hero .carousel-inner .carousel-item-prev.carousel-item-end {
-  opacity: 1;
-}
-
-#hero .carousel-control-next-icon,
-#hero .carousel-control-prev-icon {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  color: #fff;
-  transition: 0.3s;
-}
-
-#hero .carousel-control-next-icon:hover,
-#hero .carousel-control-prev-icon:hover {
-  background: rgba(255, 255, 255, 0.6);
-  color: #fff;
-}
-
-#hero .carousel-indicators li {
-  background: #fff;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
-#hero .carousel-indicators li.active {
-  opacity: 1;
-}
-
-#hero .btn-get-started,
-#hero .btn-get-started-2 {
+#hero .btn-get-started {
   font-family: "Raleway", sans-serif;
-  font-weight: 700;           /* Bolder for a premium feel */
+  font-weight: 700;
   font-size: 14px;
-  text-transform: uppercase;  /* Clean, professional look */
-  letter-spacing: 2px;        /* Spaced out letters look more expensive */
-  display: inline-block;
-  margin: 20px 10px 0 10px;
-  padding: 14px 36px;
-  border-radius: 50px;        /* Smooth pill shape */
-  transition: all 0.3s ease-in-out;
-  line-height: 1;
-  
-  /* The Premium Gold Look */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block !important;
+  padding: 16px 40px;
+  border-radius: 50px;
+  transition: 0.3s;
   background: #d4af37 !important; 
   color: #000 !important;
-  border: 1px solid #d4af37;
+  border: none;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  text-decoration: none;
+
+  /* --- ADD THESE THREE LINES --- */
+  position: relative !important;
+  z-index: 9999 !important;      /* Pulls button to the front */
+  pointer-events: auto !important; /* Forces the mouse to see it */
 }
 
-#hero .btn-get-started:hover,
-#hero .btn-get-started-2:hover {
-  background: #000 !important;     /* Black background on hover for contrast */
-  color: #d4af37 !important;       /* Gold text on hover */
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+#hero .btn-get-started:hover {
+  background: #fff !important;
   transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
 }
 
-@media (max-width: 992px) {
-  #hero {
-    height: 80vh;
-  }
-
-  #hero h1 {
-    font-size: 2.5rem;
-  }
-
-  #hero h2 {
-    font-size: 1.3rem;
-  }
-
-  #hero p {
-    font-size: 0.95rem;
-  }
-}
-
+/* Responsive Overrides */
 @media (max-width: 768px) {
   #hero {
-    height: auto !important;
-    min-height: 500px !important; 
-    margin-top: 70px; 
-    padding: 60px 0 !important; 
-    display: block !important; /* Changed from flex to block for better compatibility */
-    overflow: visible !important;
+    height: 100vh !important;
   }
-
-  #hero .carousel-item {
-    height: auto !important;
-    min-height: 500px !important;
-    position: relative !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    display: flex !important; /* Centering happens here instead */
-    align-items: center !important;
-  }
-
-  #hero .carousel-container {
-    position: relative !important;
-    height: auto !important;
-    padding: 20px !important;
-    z-index: 5;
-    width: 100%;
-  }
-  .carousel-container .container {
-  background: rgba(255, 255, 255, 0.05); /* Very light transparency */
-  backdrop-filter: blur(15px); /* This creates the "glass" effect */
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle gold border */
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-  max-width: 800px;
-}
-  #hero h1 {
-    font-size: 22px !important; /* Slightly smaller to ensure it fits on one line */
-    margin-bottom: 10px !important;
-  }
-
-  #hero p {
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-    margin: 10px auto 25px auto !important;
-    max-width: 100%;
-  }
-
-  #hero .btn-get-started,
-  #hero .btn-get-started-2 {
-    font-size: 14px !important;
-    padding: 10px 25px !important;
-    display: inline-block !important;
-    border-radius: 50px !important;
-  }
-
   .carousel-control-prev, 
   .carousel-control-next,
   .carousel-indicators {
     display: none !important;
   }
 }
-
-@media (min-width: 1024px) {
-  #hero .carousel-control-prev,
-  #hero .carousel-control-next {
-    width: 5%;
-  }
-}
-
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -1763,32 +1645,56 @@ a:hover {
 .navbar-mobile a:hover {
   color: #d4af37 !important;
 }
-
-/* Hero */
+/* Hero - Line 1700 Final Fix */
 #hero {
   background-color: #000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
-#hero .carousel-item::before {
-  background: rgba(0,0,0,0.75) !important;
+
+#hero .carousel-container {
+  position: absolute !important;
+  inset: 0 !important; /* Spans top, bottom, left, right to 0 */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
 }
-#hero h1,
-#hero h2,
-#hero p {
+
+#hero .container {
+  max-width: 90% !important; /* Prevents the squashed 200px look */
+  width: 100% !important;
+}
+
+#hero h1 {
   color: #ffffff !important;
+  font-size: 4rem !important; /* Makes it big and centered */
+  width: 100% !important;
+  display: block !important;
 }
+
+#hero h2, #hero p {
+  color: #ffffff !important;
+  max-width: 800px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 #hero .btn-get-started,
 #hero .btn-get-started-2 {
   background: #d4af37 !important;
   color: #000 !important;
-}
-#hero .btn-get-started:hover,
-#hero .btn-get-started-2:hover {
-  transform: translateY(-5px) scale(1.05); /* Lifts the button */
-  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4); /* Gold glow */
-  background-color: #D4AF37;
-  color: #000;
+  display: inline-block !important;
 }
 
+#hero .btn-get-started:hover,
+#hero .btn-get-started-2:hover {
+  transform: translateY(-5px) scale(1.05) !important;
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4) !important;
+}
 /* Sections */
 .section-bg {
   background: #111111 !important;
@@ -2758,4 +2664,50 @@ body.mobile-nav-active #navbar {
   0% { text-shadow: 0 0 0 rgba(212, 175, 55, 0.7); }
   70% { text-shadow: 0 0 15px rgba(212, 175, 55, 0); }
   100% { text-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+}
+/* Logo Slider Styling */
+.logo-slider {
+  overflow: hidden;
+  padding: 20px 0;
+  position: relative;
+}
+
+.logo-slide-track {
+  display: flex;
+  width: calc(250px * 10); /* Adjust based on number of logos */
+  animation: scroll 30s linear infinite;
+}
+
+/* Container for the logo */
+.slide {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+/* The Fixed Constant Logo Style */
+.slide img {
+  max-width: 150px;    /* Keeps them uniform and compact */
+  max-height: 60px;    /* Prevents them from being too big */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: none !important; 
+  opacity: 1 !important;
+  mix-blend-mode: screen; 
+  
+  display: block;
+}
+
+.slide img:hover {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-250px * 5)); } /* Adjust to loop back */
 }
