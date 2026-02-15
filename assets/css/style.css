@@ -531,9 +531,10 @@ body.mobile-nav-active {
 }
 
 #hero .btn-get-started:hover {
-  background: #fff !important;
+  background: #ffffff !important; /* White hover instead of grey */
+  color: #000000 !important;    /* Black text */
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5) !important;
 }
 
 /* Responsive Overrides */
