@@ -473,9 +473,10 @@ body.mobile-nav-active {
   justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
-  z-index: 2 !important;
+  z-index: 10 !important;
   width: 100% !important;
   padding: 0 20px;
+  pointer-events: none;
 }
 
 #hero .container {
@@ -526,6 +527,7 @@ body.mobile-nav-active {
   position: relative !important;
   z-index: 9999 !important;      /* Pulls button to the front */
   pointer-events: auto !important; /* Forces the mouse to see it */
+  cursor: pointer !important
 }
 
 #hero .btn-get-started:hover {
@@ -1653,16 +1655,7 @@ a:hover {
   justify-content: center !important;
 }
 
-#hero .carousel-container {
-  position: absolute !important;
-  inset: 0 !important; /* Spans top, bottom, left, right to 0 */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  width: 100% !important;
-}
+
 
 #hero .container {
   max-width: 90% !important; /* Prevents the squashed 200px look */
