@@ -48,14 +48,36 @@
     .progress-bar { background: linear-gradient(45deg, #D4AF37, #f2d06b) !important; }
     .step-title { color: #000; font-weight: 800; margin-bottom: 25px; }
     
-    .next-btn, button[type="submit"] {
+    .next-btn, .fleet-btn, button[type="submit"] {
       background: linear-gradient(to bottom, #f2d06b 0%, #D4AF37 100%) !important;
       color: #000 !important;
       font-weight: 700 !important;
       padding: 15px 30px !important;
       border: 1px solid #B8860B !important;
       border-radius: 8px !important;
+      transition: 0.3s;
     }
+
+    .btn-type-select {
+        border: 2px solid #D4AF37;
+        color: #D4AF37;
+        background: transparent;
+        padding: 20px;
+        border-radius: 15px;
+        transition: 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-type-select:hover {
+        background: rgba(212, 175, 55, 0.1);
+        color: #D4AF37;
+    }
+
+    .btn-type-select i { font-size: 2.5rem; margin-bottom: 10px; }
     
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .skeleton {
@@ -98,7 +120,7 @@
     <section class="breadcrumbs" style="background: #000; color: #fff; padding: 20px 0;">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2 style="color: #d4af37;">Request Maintenance</h2>
+          <h2 style="color: #d4af37;">Book Your Service</h2>
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="index.html" style="color: #d4af37;">Home</a></li>
             <li class="breadcrumb-item active" style="color: #fff;">Contact</li>
@@ -109,15 +131,33 @@
 
     <section id="contact" class="contact py-5">
       <div class="container">
-        <div class="section-title text-center mb-5">
-          <h2>Book Your Service</h2>
-          <p>Get professional mobile auto maintenance in 4 simple steps.</p>
-        </div>
-
+        
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="form-wrapper p-4 p-md-5">
-              <form action="forms/contact.php" method="post" id="stepped-form">
+
+              <div id="type-selection" class="text-center animate__animated animate__fadeIn">
+                  <h3 class="step-title">How can we help you today?</h3>
+                  <div class="row g-3">
+                      <div class="col-md-6">
+                          <button class="btn btn-type-select w-100" onclick="startForm('individual')">
+                              <i class="bi bi-person-badge"></i>
+                              <strong>Individual Vehicle</strong>
+                              <small>Mobile Maintenance & Swaps</small>
+                          </button>
+                      </div>
+                      <div class="col-md-6">
+                          <button class="btn btn-type-select w-100" onclick="startForm('fleet')">
+                              <i class="bi bi-truck"></i>
+                              <strong>Fleet & Commercial</strong>
+                              <small>Multi-vehicle Service Solutions</small>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+
+              <form action="forms/contact.php" method="post" id="stepped-form" style="display: none;">
+                <input type="hidden" name="booking_type" value="Individual">
                 <div class="progress mb-4" style="height: 10px;">
                   <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 25%;"></div>
                 </div>
@@ -165,6 +205,33 @@
                   </div>
                 </div>
               </form>
+
+              <form action="forms/contact.php" method="post" id="fleet-form" style="display: none;" class="animate__animated animate__fadeIn">
+                  <input type="hidden" name="booking_type" value="Fleet">
+                  <h4 class="step-title text-center">Commercial Fleet Inquiry</h4>
+                  <div class="row">
+                      <div class="col-md-6 mb-3"><input type="text" name="company" class="form-control" placeholder="Company Name" required></div>
+                      <div class="col-md-6 mb-3"><input type="text" name="name" class="form-control" placeholder="Contact Person" required></div>
+                      <div class="col-md-6 mb-3"><input type="tel" name="phone" class="form-control" placeholder="Phone Number" required></div>
+                      <div class="col-md-6 mb-3"><input type="email" name="email" class="form-control" placeholder="Business Email" required></div>
+                      <div class="col-md-12 mb-3">
+                          <select name="fleet_size" class="form-control">
+                              <option value="">Estimated Fleet Size</option>
+                              <option value="1-5">1-5 Vehicles</option>
+                              <option value="6-20">6-20 Vehicles</option>
+                              <option value="20+">20+ Vehicles</option>
+                          </select>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                          <textarea name="message" class="form-control" rows="4" placeholder="Tell us about your fleet requirements (Vehicle types, frequency, etc.)"></textarea>
+                      </div>
+                  </div>
+                  <div class="d-flex gap-2">
+                      <button type="button" class="btn btn-secondary w-25" onclick="location.reload()">Back</button>
+                      <button type="submit" class="btn fleet-btn w-75">Submit Fleet Request</button>
+                  </div>
+              </form>
+
             </div>
           </div>
         </div>
@@ -217,6 +284,16 @@
     const progressBar = document.getElementById("progress-bar");
     let currentStep = 0;
 
+    // Control Form Branching
+    function startForm(type) {
+        document.getElementById('type-selection').style.display = 'none';
+        if(type === 'individual') {
+            document.getElementById('stepped-form').style.display = 'block';
+        } else {
+            document.getElementById('fleet-form').style.display = 'block';
+        }
+    }
+
     function updateForm() {
       steps.forEach((step, index) => {
         step.classList.toggle("active", index === currentStep);
@@ -246,6 +323,30 @@
         }
       });
     });
+
+    // Handling both forms for success message
+    const handleSubmission = (form) => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[name="name"]').value;
+            const wrapper = this.closest('.form-wrapper');
+            
+            wrapper.innerHTML = `
+                <div class="text-center animate__animated animate__fadeIn" style="padding: 60px 20px; background: #0a0a0a; border-radius: 20px; border: 1px solid #d4af37;">
+                    <i class="bi bi-envelope-check" style="font-size: 4rem; color: #d4af37;"></i>
+                    <h2 style="color: #fff; margin-top: 20px; font-weight: 700;">Thank You, ${name}!</h2>
+                    <p style="color: #aaa; font-size: 1.1rem;">Your request has been received. Our team will contact you shortly.</p>
+                    <div style="margin-top: 30px;">
+                        <a href="index.html" class="btn btn-warning rounded-pill px-4 py-2" style="background: #d4af37; color: #000; font-weight: 700; text-decoration: none;">Return Home</a>
+                    </div>
+                </div>
+            `;
+            window.scrollTo({ top: wrapper.offsetTop - 100, behavior: 'smooth' });
+        });
+    }
+
+    handleSubmission(document.getElementById('stepped-form'));
+    handleSubmission(document.getElementById('fleet-form'));
   </script>
 
   <div class="cargent-floating-contact">
@@ -256,29 +357,5 @@
       <i class="bi bi-telephone-fill"></i>
     </a>
   </div>
-  <script>
-  // Wait for the contact form to be submitted
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevents the page from reloading
-    
-    // Get the name to personalize the message
-    const name = this.querySelector('input[name="name"]').value;
-    
-    // Replace the form content with a premium Thank You message
-    this.innerHTML = `
-      <div class="text-center animate__animated animate__fadeIn" style="padding: 60px 20px; background: #0a0a0a; border-radius: 20px; border: 1px solid #d4af37;">
-        <i class="bi bi-envelope-check" style="font-size: 4rem; color: #d4af37;"></i>
-        <h2 style="color: #fff; margin-top: 20px; font-weight: 700;">Thank You, ${name}!</h2>
-        <p style="color: #aaa; font-size: 1.1rem;">Your request has been sent to the admin. Our team will contact you shortly.</p>
-        <div style="margin-top: 30px;">
-          <a href="index.html" class="btn btn-warning rounded-pill px-4 py-2" style="background: #d4af37; color: #000; font-weight: 700; text-decoration: none;">Return Home</a>
-        </div>
-      </div>
-    `;
-
-    // Optional: Scroll the user to the top of the message
-    window.scrollTo({ top: this.offsetTop - 100, behavior: 'smooth' });
-  });
-</script>
 </body>
 </html>

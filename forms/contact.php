@@ -1,6 +1,6 @@
 <?php
 /**
- * CarGent Mobile - Standard 4-Step Booking Controller
+ * CarGent Mobile - Unified Booking Controller (Individual & Fleet)
  */
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -9,60 +9,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $receiving_email_address = 'support@cargent.ca';
     $website_name = "CarGent Mobile";
 
-    // 2. Collect Data from HTML names
-    $service  = isset($_POST['service']) ? strip_tags($_POST['service']) : 'Not Selected';
-    $location = isset($_POST['location']) ? strip_tags($_POST['location']) : 'Not Provided';
-    $name     = isset($_POST['name']) ? strip_tags($_POST['name']) : 'Web Customer';
-    $phone    = isset($_POST['phone']) ? strip_tags($_POST['phone']) : 'Not Provided';
-    $email    = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_EMAIL) : '';
-    $message  = isset($_POST['message']) ? strip_tags($_POST['message']) : 'No notes';
+    // 2. Identify the Booking Type (Fleet or Individual)
+    $booking_type = isset($_POST['booking_type']) ? strip_tags($_POST['booking_type']) : 'Individual';
 
-    // 3. Create Subject Line
-    $subject = "NEW SERVICE REQUEST: " . $service . " - " . $name;
+    // 3. Collect Common Data
+    $name    = isset($_POST['name']) ? strip_tags($_POST['name']) : 'Web Customer';
+    $phone   = isset($_POST['phone']) ? strip_tags($_POST['phone']) : 'Not Provided';
+    $email   = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_EMAIL) : '';
+    $message = isset($_POST['message']) ? strip_tags($_POST['message']) : 'No notes';
 
-    // 4. Construct Email Body (The layout you will see in your inbox)
-    $email_body = "You have received a new booking request from your website.\n\n";
+    // 4. Collect Type-Specific Data
+    if ($booking_type === 'Fleet') {
+        $company    = isset($_POST['company']) ? strip_tags($_POST['company']) : 'Not Provided';
+        $fleet_size = isset($_POST['fleet_size']) ? strip_tags($_POST['fleet_size']) : 'Not Specified';
+        $service    = "Fleet & Commercial Service";
+        $subject    = "FLEET INQUIRY: " . $company . " - " . $name;
+    } else {
+        $service    = isset($_POST['service']) ? strip_tags($_POST['service']) : 'Not Selected';
+        $location   = isset($_POST['location']) ? strip_tags($_POST['location']) : 'Not Provided';
+        $subject    = "NEW SERVICE REQUEST: " . $service . " - " . $name;
+    }
+
+    // 5. Construct Email Body
+    $email_body = "You have received a new $booking_type booking request from your website.\n\n";
     $email_body .= "--------------------------------------------------\n";
-    $email_body .= "SERVICE DETAILS\n";
-    $email_body .= "--------------------------------------------------\n";
-    $email_body .= "Service Type:   $service\n";
-    $email_body .= "Location:       $location\n\n";
-    
-    $email_body .= "--------------------------------------------------\n";
-    $email_body .= "CUSTOMER DETAILS\n";
+    $email_body .= "CLIENT DETAILS\n";
     $email_body .= "--------------------------------------------------\n";
     $email_body .= "Name:           $name\n";
+    if ($booking_type === 'Fleet') {
+        $email_body .= "Company:        $company\n";
+        $email_body .= "Fleet Size:     $fleet_size\n";
+    }
     $email_body .= "Phone:          $phone\n";
     $email_body .= "Email:          $email\n\n";
     
     $email_body .= "--------------------------------------------------\n";
+    $email_body .= "SERVICE DETAILS\n";
+    $email_body .= "--------------------------------------------------\n";
+    $email_body .= "Request Type:   $booking_type\n";
+    $email_body .= "Service Type:   $service\n";
+    if ($booking_type === 'Individual') {
+        $email_body .= "Location:       $location\n";
+    }
+    
+    $email_body .= "\n--------------------------------------------------\n";
     $email_body .= "ADDITIONAL NOTES\n";
     $email_body .= "--------------------------------------------------\n";
     $email_body .= "$message\n\n";
     $email_body .= "--------------------------------------------------";
 
-    // 5. Email Headers
+    // 6. Email Headers
+    // Note: On most live servers, 'From' should use an email associated with the domain
     $headers = "From: $website_name <no-reply@cargent.ca>\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
-    // 6. Send Email and Redirect
+    // 7. Send Email and Respond
     if(mail($receiving_email_address, $subject, $email_body, $headers)) {
-        // SUCCESS: Show an alert and go back to home
-        echo "<script>
-                alert('Thank you! Your request for $service has been sent to our team.');
-                window.location.href = '../index.html';
-              </script>";
+        // Since we are using JavaScript/AJAX in the HTML to show a thank you message, 
+        // we just need to send a simple success code.
+        http_response_code(200);
+        echo "Success";
     } else {
-        // FAILURE
-        echo "<script>
-                alert('Error: We could not process your request. Please call us directly at +1 (437) 335-9080.');
-                window.history.back();
-              </script>";
+        http_response_code(500);
+        echo "Error";
     }
 
 } else {
-    // If someone tries to access this file directly
     header("Location: ../contact.html");
     exit;
 }
