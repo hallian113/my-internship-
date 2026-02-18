@@ -93,44 +93,36 @@
   }, true);
 
   /**
-   * 🔥 NEW Price Animation Function
+   * Price Animation Function
    */
   function animatePrice(targetValue) {
     const el = document.getElementById('priceDisplay');
     if (!el) return;
-
     let start = null;
     const duration = 1000;
-
     const step = (timestamp) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
       const current = Math.floor(progress * targetValue);
       el.innerHTML = "$" + current;
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
+      if (progress < 1) window.requestAnimationFrame(step);
     };
-
     window.requestAnimationFrame(step);
   }
 
   /**
-   * Maintenance Calculator (Updated)
+   * Maintenance Calculator
    */
   window.calculateMaintenance = function() {
     const mileage = document.getElementById('mileageInput').value;
     const resultsDiv = document.getElementById('calcResults');
     const list = document.getElementById('serviceList');
-
     if (!mileage || mileage < 0) {
       alert("Please enter a valid mileage.");
       return;
     }
-
     list.innerHTML = '';
     resultsDiv.classList.remove('d-none');
-
     const schedule = [
       { name: "Synthetic Oil & Filter", interval: 8000, icon: "bi-droplet-fill" },
       { name: "Tire Rotation & Brake Check", interval: 10000, icon: "bi-gear-wide-connected" },
@@ -138,12 +130,10 @@
       { name: "Brake Fluid Replacement", interval: 48000, icon: "bi-exclamation-triangle" },
       { name: "Spark Plug Service", interval: 90000, icon: "bi-lightning-charge" }
     ];
-
     schedule.forEach(service => {
       let statusClass = "";
       let statusText = "";
       let progress = (mileage % service.interval);
-
       if (progress > (service.interval - 1500) || progress < 800) {
         statusClass = "bg-danger text-white";
         statusText = "DUE NOW";
@@ -154,63 +144,78 @@
         statusClass = "bg-dark text-success border border-success";
         statusText = "Healthy";
       }
-
       const li = document.createElement('li');
       li.className = "d-flex justify-content-between align-items-center mb-3 animate__animated animate__fadeInUp";
       li.innerHTML = `
         <span class="text-white small">
           <i class="bi ${service.icon} text-warning me-2"></i> ${service.name}
         </span>
-        <span class="status-badge ${statusClass}" 
-              style="font-size: 0.7rem; padding: 4px 10px; border-radius: 50px; font-weight: 700;">
+        <span class="status-badge ${statusClass}" style="font-size: 0.7rem; padding: 4px 10px; border-radius: 50px; font-weight: 700;">
           ${statusText}
-        </span>
-      `;
+        </span>`;
       list.appendChild(li);
     });
-
-    /**
-     * 🔥 Example Pricing Logic
-     * (Adjust this however you want)
-     */
-    let estimatedPrice = 79; // base
+    let estimatedPrice = 79;
     if (mileage > 50000) estimatedPrice = 129;
     if (mileage > 100000) estimatedPrice = 179;
-
     animatePrice(estimatedPrice);
   };
 
   /**
-   * Review Form Logic
+   * Review Form & Booking Form Submission Logic
+   * This handles sending data to the server via fetch.
    */
-  const reviewForm = select('#reviewForm');
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+  const handleGenericSubmission = (formId, endpoint) => {
+    const form = select(formId);
+    if (!form) return;
 
-      const rating = document.querySelector('input[name="rating"]:checked');
-      if (!rating) {
-        alert("Please select a star rating!");
-        return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const submitBtn = this.querySelector('button[type="submit"]');
+      
+      // Visual feedback: Loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
       }
 
-      const reviewData = {
-        name: select('#reviewName').value,
-        vehicle: select('#reviewVehicle').value,
-        stars: rating.value,
-        note: select('#reviewNote').value
-      };
-
-      reviewForm.innerHTML = `
-        <div class="text-center animate__animated animate__zoomIn">
-          <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #d4af37;"></i>
-          <h3 class="text-white mt-3">Review Submitted!</h3>
-          <p class="text-secondary">
-            Thank you, ${reviewData.name}. Your feedback helps the CarGent community grow.
-          </p>
-        </div>
-      `;
+      fetch(endpoint, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          const name = formData.get('name') || "Customer";
+          const wrapper = this.closest('.form-wrapper') || this.parentElement;
+          
+          wrapper.innerHTML = `
+            <div class="text-center animate__animated animate__zoomIn" style="padding: 40px; background: #0a0a0a; border-radius: 15px; border: 1px solid #d4af37;">
+              <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #d4af37;"></i>
+              <h3 class="text-white mt-3">Success, ${name}!</h3>
+              <p class="text-secondary">Your information has been securely sent to our team.</p>
+              <a href="index.html" class="btn btn-warning mt-3 rounded-pill px-4">Return Home</a>
+            </div>`;
+        } else {
+          throw new Error('Server returned ' + response.status);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Submission failed. Please check your connection or try again later.");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Retry Submission';
+        }
+      });
     });
-  }
+  };
+
+  // Initialize all form listeners
+  window.addEventListener('load', () => {
+    handleGenericSubmission('#reviewForm', 'forms/reviews.php'); // Review form
+    handleGenericSubmission('#stepped-form', 'forms/contact.php'); // Individual booking
+    handleGenericSubmission('#fleet-form', 'forms/contact.php');   // Fleet booking
+  });
 
 })();

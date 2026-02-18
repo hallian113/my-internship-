@@ -284,7 +284,6 @@
     const progressBar = document.getElementById("progress-bar");
     let currentStep = 0;
 
-    // Control Form Branching
     function startForm(type) {
         document.getElementById('type-selection').style.display = 'none';
         if(type === 'individual') {
@@ -323,31 +322,8 @@
         }
       });
     });
-
-    // Handling both forms for success message
-    const handleSubmission = (form) => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = this.querySelector('input[name="name"]').value;
-            const wrapper = this.closest('.form-wrapper');
-            
-            wrapper.innerHTML = `
-                <div class="text-center animate__animated animate__fadeIn" style="padding: 60px 20px; background: #0a0a0a; border-radius: 20px; border: 1px solid #d4af37;">
-                    <i class="bi bi-envelope-check" style="font-size: 4rem; color: #d4af37;"></i>
-                    <h2 style="color: #fff; margin-top: 20px; font-weight: 700;">Thank You, ${name}!</h2>
-                    <p style="color: #aaa; font-size: 1.1rem;">Your request has been received. Our team will contact you shortly.</p>
-                    <div style="margin-top: 30px;">
-                        <a href="index.html" class="btn btn-warning rounded-pill px-4 py-2" style="background: #d4af37; color: #000; font-weight: 700; text-decoration: none;">Return Home</a>
-                    </div>
-                </div>
-            `;
-            window.scrollTo({ top: wrapper.offsetTop - 100, behavior: 'smooth' });
-        });
-    }
-
-    handleSubmission(document.getElementById('stepped-form'));
-    handleSubmission(document.getElementById('fleet-form'));
-  </script>
+    // NOTE: handleSubmission has been moved to assets/js/main.js to handle the backend fetch
+</script>
 
   <div class="cargent-floating-contact">
     <a href="https://wa.me/14373359080" class="cargent-fab whatsapp whatsapp-fab" target="_blank" data-label="Chat with us">
