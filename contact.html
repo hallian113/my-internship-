@@ -129,6 +129,15 @@
       display: block;
     }
 
+    .info-item {
+      transition: 0.3s;
+      border-radius: 10px;
+    }
+    .info-link:hover .info-item {
+      background: rgba(212, 175, 55, 0.05);
+      transform: translateY(-5px);
+    }
+
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
@@ -245,16 +254,16 @@
                     <div class="col-md-6 mb-3">
                       <label class="small fw-bold mb-1" style="color: #333;">City</label>
                       <select name="city" id="city-select" class="form-select" required>
-  <option value="" selected disabled>Select City</option>
-  <option value="GTA">GTA (Toronto/Peel/York/Durham)</option>
-  <option value="Niagara Falls">Niagara Falls</option>
-  <option value="Cambridge">Cambridge</option>
-  <option value="K-W Area">K-W Area (Kitchener/Waterloo)</option>
-  <option value="Hamilton">Hamilton</option>
-  <option value="London">London</option>
-  <option value="Brantford">Brantford</option>
-  <option value="Woodstock">Woodstock</option>
-                    </select>
+                        <option value="" selected disabled>Select City</option>
+                        <option value="GTA">GTA (Toronto/Peel/York/Durham)</option>
+                        <option value="Niagara Falls">Niagara Falls</option>
+                        <option value="Cambridge">Cambridge</option>
+                        <option value="K-W Area">K-W Area (Kitchener/Waterloo)</option>
+                        <option value="Hamilton">Hamilton</option>
+                        <option value="London">London</option>
+                        <option value="Brantford">Brantford</option>
+                        <option value="Woodstock">Woodstock</option>
+                      </select>
                     </div>
                     <div class="col-md-6 mb-3">
                       <label class="small fw-bold mb-1" style="color: #333;">Postal Code</label>
@@ -329,10 +338,12 @@
 
       <div class="row mt-5 text-center">
         <div class="col-md-4">
-          <div class="info-item p-3">
-            <i class="bi bi-geo-alt" style="font-size: 2rem; color: #D4AF37;"></i>
-            <p>1254 Plains Rd E #11, Burlington, ON L7S 7W6</p>
-          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=1254+Plains+Rd+E+%2311+Burlington+ON+L7S+7W6" target="_blank" class="info-link" style="text-decoration: none; color: inherit;">
+            <div class="info-item p-3">
+              <i class="bi bi-geo-alt" style="font-size: 2rem; color: #D4AF37;"></i>
+              <p>1254 Plains Rd E #11, Burlington, ON L7S 7W6</p>
+            </div>
+          </a>
         </div>
         <div class="col-md-4">
           <a href="tel:+14373359080" class="info-link" style="text-decoration: none; color: inherit;">
@@ -372,7 +383,6 @@
     const progressBar = document.getElementById("progress-bar");
     let currentStep = 0;
 
-    // Mapping: City -> Valid Postal Code Prefixes
     const cityPostalMap = {
         "GTA": ["M", "L4", "L5", "L6"], 
         "Niagara Falls": ["L2"],
@@ -417,10 +427,8 @@
         const inputs = currentDiv.querySelectorAll("input, select, textarea");
         let valid = true;
         
-        // Reset any existing custom validity messages
         inputs.forEach(input => input.setCustomValidity(""));
 
-        // Check basic HTML5 validity first (required fields, etc.)
         inputs.forEach(input => { 
           if(!input.checkValidity()) { 
             input.reportValidity(); 
@@ -428,7 +436,6 @@
           } 
         });
 
-        // Step 2 Only: Check City vs Postal Code
         if (valid && currentStep === 1) {
           const citySelect = currentDiv.querySelector("#city-select");
           const postalInput = currentDiv.querySelector("#postal-input");
@@ -436,8 +443,6 @@
           if (citySelect && postalInput) {
             const selectedCity = citySelect.value;
             const postalVal = postalInput.value.toUpperCase().trim();
-            
-            // 1. Check basic Canada Postal Format (A1B 2C3)
             const formatRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
             
             if (!formatRegex.test(postalVal)) {
@@ -445,12 +450,10 @@
               postalInput.reportValidity();
               valid = false;
             } else {
-              // 2. Check if the postal prefix matches the city
               const allowedPrefixes = cityPostalMap[selectedCity];
               if (allowedPrefixes) {
                 const matches = allowedPrefixes.some(p => postalVal.startsWith(p));
                 if (!matches) {
-                  // TRIGGER YOUR SPECIFIC MESSAGE HERE
                   postalInput.setCustomValidity("Please enter the correct postal code according to the selected city");
                   postalInput.reportValidity();
                   valid = false;
