@@ -14,8 +14,8 @@
   <meta property="og:description" content="Dealership quality mobile maintenance. Synthetic oil changes, tire swaps, and brake restoration at your driveway.">
   <meta property="og:image" content="assets/img/Cargent Banner.png">
 
-  <link href="assets/img/New Favicon.JPG" rel="icon">
-  <link href="assets/img/New Favicon.JPG" rel="apple-touch-icon">
+  <link href="assets/img/New Favicon.JPG?v=2" rel="icon">
+  <link href="assets/img/New Favicon.JPG?v=2" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -41,7 +41,6 @@
     }
     #header .logo img { max-height: 40px !important; }
 
-    /* Push content below fixed header */
     main { padding-top: 70px !important; }
     body { background-color: #000; color: #fff; }
 
@@ -85,13 +84,23 @@
       transition: 0.3s;
     }
     .addon-item:hover { background: #181818; }
+    .addon-label { color: #d4af37; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* FAQ Accordion Styling */
-    .accordion-item { background-color: #0a0a0a; border: 1px solid #222; margin-bottom: 10px; border-radius: 10px !important; overflow: hidden; }
-    .accordion-button { background-color: #0a0a0a !important; color: #fff !important; font-weight: 600; box-shadow: none !important; }
-    .accordion-button:not(.collapsed) { color: #d4af37 !important; border-bottom: 1px solid #222; }
-    .accordion-button::after { filter: invert(1); }
-    .accordion-body { background-color: #0a0a0a; color: #aaa; }
+    /* --- SERVICE AREA BADGES --- */
+    .area-badge {
+      background: #000;
+      border: 1px solid #d4af37;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 50px;
+      transition: 0.3s;
+      cursor: default;
+    }
+    .area-badge:hover {
+      background: #d4af37;
+      color: #000;
+    }
 
     /* Map Styling */
     .google-map-dark {
@@ -150,7 +159,8 @@
               <div class="service-content text-center">
                 <div class="price-badge">Starting at $90</div>
                 <h4>Synthetic Oil Service</h4>
-                <p class="text-secondary">Full synthetic oil, premium filter replacement, and  20-point  inspection.</p>
+                <p class="text-secondary">Full synthetic oil, premium filter replacement, and 20-point inspection.</p>
+                <p class="small text-secondary italic mb-2">Surcharges apply on some makes/models</p>
                 <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
             </div>
@@ -163,6 +173,7 @@
                 <div class="price-badge">Starting at $60</div>
                 <h4>Tire Swap & Rotation</h4>
                 <p class="text-secondary">Seasonal tire changeovers on rims. We ensure correct torque specs and pressure adjustments.</p>
+                <p class="small text-secondary italic mb-2">Surcharges apply on some makes/models</p>
                 <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
             </div>
@@ -175,6 +186,7 @@
                 <div class="price-badge">Starting at $69</div>
                 <h4>Battery Boost & Install</h4>
                 <p class="text-secondary">Rapid testing and on-site replacement. We stock high-performance batteries for all makes.</p>
+                <p class="small text-secondary italic mb-2">Surcharges apply on some makes/models</p>
                 <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
             </div>
@@ -187,6 +199,7 @@
                 <div class="price-badge">Starting at $120</div>
                 <h4>Brake Restoration</h4>
                 <p class="text-secondary">Professional brake pad and rotor replacements performed with precision safety testing.</p>
+                <p class="small text-secondary italic mb-2">Surcharges apply on some makes/models</p>
                 <a href="contact.html" class="btn btn-outline-warning rounded-pill px-5 mt-3">Book Now</a>
               </div>
             </div>
@@ -201,6 +214,7 @@
           <div class="col-lg-5">
             <h2 class="mb-4" style="color: #d4af37;">Maintenance <br>Essential Add-ons</h2>
             <p class="text-secondary">Enhance your service with these critical maintenance items that improve air quality and engine efficiency.</p>
+            <p class="small text-secondary">*Surcharges apply on some makes/models</p>
           </div>
           <div class="col-lg-7">
             <div class="addon-item">
@@ -208,21 +222,21 @@
                 <h5 class="mb-1">Cabin Air Filter</h5>
                 <p class="small text-secondary mb-0">Eliminate dust and allergens from your interior air.</p>
               </div>
-              <i class="bi bi-plus-circle-fill text-warning fs-3"></i>
+              <span class="addon-label">Available Add-on</span>
             </div>
             <div class="addon-item">
               <div>
                 <h5 class="mb-1">Engine Air Filter</h5>
                 <p class="small text-secondary mb-0">Improve fuel economy and engine breathing.</p>
               </div>
-              <i class="bi bi-plus-circle-fill text-warning fs-3"></i>
+              <span class="addon-label">Available Add-on</span>
             </div>
             <div class="addon-item">
               <div>
                 <h5 class="mb-1">Wiper Blade Replacement</h5>
                 <p class="small text-secondary mb-0">Premium beam blades for maximum visibility.</p>
               </div>
-              <i class="bi bi-plus-circle-fill text-warning fs-3"></i>
+              <span class="addon-label">Available Add-on</span>
             </div>
           </div>
         </div>
@@ -232,21 +246,37 @@
     <section id="service-area" class="py-5" style="background: #080808; border-top: 1px solid #111;">
       <div class="container">
         <div class="section-title text-center mb-5">
-          <h2 style="color: #d4af37;">Service Area</h2>
-          <p class="text-secondary">Mobile automotive excellence delivered across the Greater Toronto Area.</p>
+          <h2 style="color: #d4af37;">Our Coverage</h2>
+          <p class="text-secondary mb-4">We bring the shop to you across these major hubs:</p>
+          
+          <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            <span class="area-badge">GTA</span>
+            <span class="area-badge">Niagara Falls</span>
+            <span class="area-badge">Cambridge</span>
+            <span class="area-badge">K-W Area</span>
+            <span class="area-badge">Hamilton</span>
+            <span class="area-badge">London</span>
+            <span class="area-badge">Brantford</span>
+            <span class="area-badge">Woodstock</span>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="google-map-dark" style="overflow: hidden; height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="google-map-dark" style="overflow: hidden; height: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 1px solid #d4af37; border-radius: 20px;">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11545.981850123512!2d-79.3831842!3d43.653226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c40ba5%3A0x571579444c326628!2sToronto%2C%20ON!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500000!2d-79.8!3d43.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1708450000000!5m2!1sen!2sca" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
                 allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                loading="lazy">
               </iframe>
+            </div>
+            <div class="text-center mt-3">
+               <span style="color: #d4af37; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">
+                 <i class="bi bi-geo-alt-fill me-1"></i> Serving all residential & commercial addresses in these regions
+               </span>
             </div>
           </div>
         </div>

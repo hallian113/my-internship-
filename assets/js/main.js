@@ -184,8 +184,9 @@
         method: 'POST',
         body: formData
       })
-      .then(response => {
-        if (response.ok) {
+      .then(response => response.text()) 
+      .then(data => {
+        if (data.includes("Success")) {
           const name = formData.get('name') || "Customer";
           const wrapper = this.closest('.form-wrapper') || this.parentElement;
           
@@ -194,15 +195,15 @@
               <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #d4af37;"></i>
               <h3 class="text-white mt-3">Success, ${name}!</h3>
               <p class="text-secondary">Your information has been securely sent to our team.</p>
-              <a href="index.html" class="btn btn-warning mt-3 rounded-pill px-4">Return Home</a>
+              <a href="index.html" class="btn mt-3 rounded-pill px-4" style="background:#d4af37; color:#000; font-weight:700; border:none;">Return Home</a>
             </div>`;
         } else {
-          throw new Error('Server returned ' + response.status);
+          throw new Error(data);
         }
       })
       .catch(error => {
         console.error('Error:', error);
-        alert("Submission failed. Please check your connection or try again later.");
+        alert("Submission failed. Details: " + error.message);
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Retry Submission';
@@ -213,9 +214,20 @@
 
   // Initialize all form listeners
   window.addEventListener('load', () => {
-    handleGenericSubmission('#reviewForm', 'forms/reviews.php'); // Review form
-    handleGenericSubmission('#stepped-form', 'forms/contact.php'); // Individual booking
-    handleGenericSubmission('#fleet-form', 'forms/contact.php');   // Fleet booking
+    handleGenericSubmission('#reviewForm', 'forms/reviews.php'); 
+    handleGenericSubmission('#stepped-form', 'forms/contact.php'); 
+    handleGenericSubmission('#fleet-form', 'forms/contact.php');
+
+    // Logic to prevent repeat animations
+    const typeSelection = document.getElementById('type-selection');
+    if (typeSelection) {
+      if (sessionStorage.getItem('animationPlayed')) {
+        typeSelection.classList.remove('animate__animated', 'animate__fadeIn');
+        typeSelection.style.opacity = "1";
+      } else {
+        sessionStorage.setItem('animationPlayed', 'true');
+      }
+    }
   });
 
 })();

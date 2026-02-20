@@ -78,21 +78,58 @@
     }
 
     .btn-type-select i { font-size: 2.5rem; margin-bottom: 10px; }
+
+    /* --- ADD-ONS STYLING --- */
+    .addons-container {
+      background: #0a0a0a;
+      border: 2px solid #D4AF37;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+    }
     
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .skeleton {
-      background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      border-radius: 10px;
-      height: 40px;
-      margin-bottom: 15px;
+    .addon-checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .addon-checkbox-group:last-child { border-bottom: none; }
+    
+    .addon-checkbox-group:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+    
+    .addon-checkbox-group input[type="checkbox"] { 
+      width: 22px; 
+      height: 22px; 
+      accent-color: #D4AF37;
+      cursor: pointer;
+    }
+    
+    .addon-info { text-align: left; }
+    
+    .addon-info label { 
+      font-weight: 700; 
+      color: #D4AF37;
+      margin: 0; 
+      cursor: pointer;
+      display: block;
+      font-size: 1.05rem;
+    }
+    
+    .addon-info small { 
+      color: #cccccc; 
+      font-size: 0.85rem; 
+      display: block;
     }
 
-    @keyframes loading {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 
@@ -131,7 +168,6 @@
 
     <section id="contact" class="contact py-5">
       <div class="container">
-        
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="form-wrapper p-4 p-md-5">
@@ -156,7 +192,7 @@
                   </div>
               </div>
 
-              <form action="forms/contact.php" method="post" id="stepped-form" style="display: none;">
+              <form action="forms/contact.php" method="post" id="stepped-form" style="display: none;" novalidate>
                 <input type="hidden" name="booking_type" value="Individual">
                 <div class="progress mb-4" style="height: 10px;">
                   <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 25%;"></div>
@@ -164,19 +200,67 @@
 
                 <div class="form-step active text-center">
                   <h4 class="step-title">1. Select Your Service</h4>
-                  <select name="service" id="service" class="form-control form-control-lg mb-4" required>
+                  <select name="service" id="service" class="form-control form-control-lg mb-3" required>
                     <option value="">-- Choose a Service --</option>
                     <option value="Oil Change">Mobile Oil Change</option>
                     <option value="Tire Swap">Tire Swap & Rotation</option>
                     <option value="Battery">Battery Boost/Replacement</option>
                     <option value="Inspection">Brake Services</option>
                   </select>
+
+                  <div class="addons-container mb-4">
+                    <p class="text-start mb-2 fw-bold text-uppercase" style="color: #D4AF37; font-size: 0.75rem; letter-spacing: 2px;">Enhance Your Service</p>
+                    <label class="addon-checkbox-group">
+                      <input type="checkbox" name="addon_cabin_filter" value="Yes">
+                      <div class="addon-info">
+                        <label>Cabin Air Filter</label>
+                        <small>Purifies cabin air from dust & allergens</small>
+                      </div>
+                    </label>
+                    <label class="addon-checkbox-group">
+                      <input type="checkbox" name="addon_engine_filter" value="Yes">
+                      <div class="addon-info">
+                        <label>Engine Air Filter</label>
+                        <small>Boosts engine performance & fuel economy</small>
+                      </div>
+                    </label>
+                    <label class="addon-checkbox-group">
+                      <input type="checkbox" name="addon_wipers" value="Yes">
+                      <div class="addon-info">
+                        <label>Premium Wiper Blades</label>
+                        <small>Crystal clear visibility in all conditions</small>
+                      </div>
+                    </label>
+                  </div>
                   <button type="button" class="next-btn btn w-100">Next: Location</button>
                 </div>
 
                 <div class="form-step text-center">
                   <h4 class="step-title">2. Vehicle Location</h4>
-                  <input type="text" name="location" class="form-control form-control-lg mb-4" placeholder="Address" required>
+                  <div class="text-start mb-3">
+                    <label class="small fw-bold mb-1" style="color: #333;">Street Address</label>
+                    <input type="text" name="location" class="form-control" placeholder="House #, Street name" required>
+                  </div>
+                  <div class="row text-start mb-4">
+                    <div class="col-md-6 mb-3">
+                      <label class="small fw-bold mb-1" style="color: #333;">City</label>
+                      <select name="city" id="city-select" class="form-select" required>
+  <option value="" selected disabled>Select City</option>
+  <option value="GTA">GTA (Toronto/Peel/York/Durham)</option>
+  <option value="Niagara Falls">Niagara Falls</option>
+  <option value="Cambridge">Cambridge</option>
+  <option value="K-W Area">K-W Area (Kitchener/Waterloo)</option>
+  <option value="Hamilton">Hamilton</option>
+  <option value="London">London</option>
+  <option value="Brantford">Brantford</option>
+  <option value="Woodstock">Woodstock</option>
+                    </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="small fw-bold mb-1" style="color: #333;">Postal Code</label>
+                      <input type="text" name="postal_code" id="postal-input" class="form-control" placeholder="A1B 2C3" required>
+                    </div>
+                  </div>
                   <div class="d-flex gap-2">
                     <button type="button" class="btn btn-secondary w-50 prev-btn">Back</button>
                     <button type="button" class="next-btn btn w-50">Next: Details</button>
@@ -186,8 +270,14 @@
                 <div class="form-step text-center">
                   <h4 class="step-title">3. Contact Details</h4>
                   <div class="row text-start mb-4">
-                    <div class="col-md-6 mb-3"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
-                    <div class="col-md-6"><input type="tel" name="phone" class="form-control" placeholder="Phone Number" required></div>
+                    <div class="col-md-6 mb-3">
+                      <label class="small fw-bold mb-1" style="color: #333;">Full Name</label>
+                      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="small fw-bold mb-1" style="color: #333;">Phone</label>
+                      <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                    </div>
                   </div>
                   <div class="d-flex gap-2">
                     <button type="button" class="btn btn-secondary w-50 prev-btn">Back</button>
@@ -198,7 +288,7 @@
                 <div class="form-step text-center">
                   <h4 class="step-title">4. Confirm & Send</h4>
                   <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
-                  <textarea name="message" class="form-control mb-3" rows="4" placeholder="Special notes for our tech?"></textarea>
+                  <textarea name="message" class="form-control mb-3" rows="4" placeholder="Special notes (Vehicle model, specific spot for tech, etc.)"></textarea>
                   <div class="d-flex gap-2">
                     <button type="button" class="btn btn-secondary w-50 prev-btn">Back</button>
                     <button type="submit" class="btn w-50" style="background:#D4AF37; color:#000;">Submit Request</button>
@@ -223,7 +313,7 @@
                           </select>
                       </div>
                       <div class="col-md-12 mb-3">
-                          <textarea name="message" class="form-control" rows="4" placeholder="Tell us about your fleet requirements (Vehicle types, frequency, etc.)"></textarea>
+                          <textarea name="message" class="form-control" rows="4" placeholder="Tell us about your fleet requirements..."></textarea>
                       </div>
                   </div>
                   <div class="d-flex gap-2">
@@ -239,12 +329,10 @@
 
       <div class="row mt-5 text-center">
         <div class="col-md-4">
-          <a href="https://maps.google.com" target="_blank" class="info-link" style="text-decoration: none; color: inherit;">
-            <div class="info-item p-3">
-              <i class="bi bi-geo-alt" style="font-size: 2rem; color: #D4AF37;"></i>
-              <p>1254 Plains Rd E #11, Burlington, ON L7S 7W6</p>
-            </div>
-          </a>
+          <div class="info-item p-3">
+            <i class="bi bi-geo-alt" style="font-size: 2rem; color: #D4AF37;"></i>
+            <p>1254 Plains Rd E #11, Burlington, ON L7S 7W6</p>
+          </div>
         </div>
         <div class="col-md-4">
           <a href="tel:+14373359080" class="info-link" style="text-decoration: none; color: inherit;">
@@ -284,6 +372,28 @@
     const progressBar = document.getElementById("progress-bar");
     let currentStep = 0;
 
+    // Mapping: City -> Valid Postal Code Prefixes
+    const cityPostalMap = {
+        "GTA": ["M", "L4", "L5", "L6"], 
+        "Niagara Falls": ["L2"],
+        "Cambridge": ["N1", "N3"],
+        "K-W Area": ["N2"],
+        "Hamilton": ["L8", "L9"],
+        "London": ["N5", "N6"],
+        "Brantford": ["N3"],
+        "Woodstock": ["N4"]
+    };
+
+    window.addEventListener('load', () => {
+      const typeSelection = document.getElementById('type-selection');
+      if (sessionStorage.getItem('contactIntroPlayed')) {
+        typeSelection.classList.remove('animate__animated', 'animate__fadeIn');
+        typeSelection.style.opacity = "1";
+      } else {
+        sessionStorage.setItem('contactIntroPlayed', 'true');
+      }
+    });
+
     function startForm(type) {
         document.getElementById('type-selection').style.display = 'none';
         if(type === 'individual') {
@@ -303,10 +413,53 @@
 
     nextBtns.forEach(btn => {
       btn.addEventListener("click", () => {
-        const inputs = steps[currentStep].querySelectorAll("input, select");
+        const currentDiv = steps[currentStep];
+        const inputs = currentDiv.querySelectorAll("input, select, textarea");
         let valid = true;
-        inputs.forEach(input => { if(!input.checkValidity()) { input.reportValidity(); valid = false; } });
         
+        // Reset any existing custom validity messages
+        inputs.forEach(input => input.setCustomValidity(""));
+
+        // Check basic HTML5 validity first (required fields, etc.)
+        inputs.forEach(input => { 
+          if(!input.checkValidity()) { 
+            input.reportValidity(); 
+            valid = false; 
+          } 
+        });
+
+        // Step 2 Only: Check City vs Postal Code
+        if (valid && currentStep === 1) {
+          const citySelect = currentDiv.querySelector("#city-select");
+          const postalInput = currentDiv.querySelector("#postal-input");
+          
+          if (citySelect && postalInput) {
+            const selectedCity = citySelect.value;
+            const postalVal = postalInput.value.toUpperCase().trim();
+            
+            // 1. Check basic Canada Postal Format (A1B 2C3)
+            const formatRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
+            
+            if (!formatRegex.test(postalVal)) {
+              postalInput.setCustomValidity("Format: A1B 2C3 (Ensure a space is included)");
+              postalInput.reportValidity();
+              valid = false;
+            } else {
+              // 2. Check if the postal prefix matches the city
+              const allowedPrefixes = cityPostalMap[selectedCity];
+              if (allowedPrefixes) {
+                const matches = allowedPrefixes.some(p => postalVal.startsWith(p));
+                if (!matches) {
+                  // TRIGGER YOUR SPECIFIC MESSAGE HERE
+                  postalInput.setCustomValidity("Please enter the correct postal code according to the selected city");
+                  postalInput.reportValidity();
+                  valid = false;
+                }
+              }
+            }
+          }
+        }
+
         if (valid && currentStep < steps.length - 1) {
           currentStep++;
           updateForm();
@@ -322,14 +475,13 @@
         }
       });
     });
-    // NOTE: handleSubmission has been moved to assets/js/main.js to handle the backend fetch
 </script>
 
   <div class="cargent-floating-contact">
-    <a href="https://wa.me/14373359080" class="cargent-fab whatsapp whatsapp-fab" target="_blank" data-label="Chat with us">
+    <a href="https://wa.me/14373359080" class="cargent-fab whatsapp whatsapp-fab" target="_blank">
       <i class="bi bi-whatsapp"></i>
     </a>
-    <a href="tel:+14373359080" class="cargent-fab phone" data-label="Call CarGent">
+    <a href="tel:+14373359080" class="cargent-fab phone">
       <i class="bi bi-telephone-fill"></i>
     </a>
   </div>
